@@ -330,6 +330,7 @@ AddDefaultCharset utf-8
 
     # (4)
     # RewriteBase /
+    RewriteBase     /
 
     # (5)
     # RewriteOptions <options>
@@ -339,6 +340,16 @@ AddDefaultCharset utf-8
     RewriteRule ^ - [env=proto:https]
     RewriteCond %{HTTPS} !=on
     RewriteRule ^ - [env=proto:http]
+
+    RewriteCond     %{REQUEST_URI} !^(/index\.php|/img|/js|/css|/robots\.txt|/favicon\.ico)
+  
+     # If an existing asset or directory is requested go to it as it is
+      RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+      RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+      RewriteRule ^ - [L]
+
+      # If the requested resource doesn't exist, use index.html
+      RewriteRule ^ /index.html
 
 </IfModule>
 
