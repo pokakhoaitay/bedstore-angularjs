@@ -1,3 +1,6 @@
+$primary-color: #1565C0;
+$accent-color: #E24301;
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -26,4 +29,42 @@
   content: "";
   padding: 0;
 }
+
+md-toolbar.top-bar {
+  background: #2F6FAD;
+  color: #FFF;
+  height: 32px;
+  min-height: 0;
+}
+
+md-toolbar.main-toolbar {
+  background-color: #FFF;
+  color: #666;
+  border-bottom: solid 2px #D2D2D2;
+  -webkit-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  -moz-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  &.fixed {
+    position: fixed;
+  }
+}
+
+md-icon.logo-icon { color: $primary-color !important;
+  margin-right: 5px;
+  width: 48px;
+  height: 48px; }
+
+.comp-name { font-weight: 200; font-size: 24px }
+
+.top-menu-item { margin: 0 15px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #A7A7A7!important;
+  &:hover, &.active {
+    color: $accent-color!important;
+  }
+}
+
 

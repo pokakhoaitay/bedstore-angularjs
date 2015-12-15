@@ -10,7 +10,7 @@
 	font-style: normal;
 }
 
-i {
+[class^="ton-li-"], [class*=" ton-li-"]  {
 	font-family: 'Tonicons';
 	speak: none;
 	font-style: normal;
