@@ -6,6 +6,7 @@ angular.module('myApp', [
     'myApp.home',
     'myApp.about',
     'myApp._topMenu',
+    'myApp.buildABed',
     'myApp.version',
     'ngMaterial'
 ]).

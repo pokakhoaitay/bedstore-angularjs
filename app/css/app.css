@@ -1,62 +1,62 @@
 .menu {
-    list-style: none;
-    border-bottom: 0.1em solid black;
-    margin-bottom: 2em;
-    padding: 0 0 0.5em; }
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em; }
 
 .menu:before {
-    content: "["; }
+  content: "["; }
 
 .menu:after {
-    content: "]"; }
+  content: "]"; }
 
 .menu > li {
-    display: inline; }
+  display: inline; }
 
 .menu > li:before {
-    content: "|";
-    padding-right: 0.3em; }
+  content: "|";
+  padding-right: 0.3em; }
 
 .menu > li:nth-child(1):before {
-    content: "";
-    padding: 0; }
+  content: "";
+  padding: 0; }
 
 md-toolbar.top-bar {
-    background: #2F6FAD;
-    color: #FFF;
-    height: 32px;
-    min-height: 0; }
+  background: #2F6FAD;
+  color: #FFF;
+  height: 32px;
+  min-height: 0; }
 
 md-toolbar.main-toolbar {
-    background-color: #FFF;
-    color: #666;
-    border-bottom: solid 2px #D2D2D2;
-    -webkit-box-shadow: 0 4px 7px -2px rgba(182, 182, 182, 0.34);
-    -moz-box-shadow: 0 4px 7px -2px rgba(182, 182, 182, 0.34);
-    box-shadow: 0 4px 7px -2px rgba(182, 182, 182, 0.34); }
-
-md-toolbar.main-toolbar.fixed {
+  background-color: #FFF;
+  color: #666;
+  border-bottom: solid 2px #D2D2D2;
+  -webkit-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  -moz-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34); }
+  md-toolbar.main-toolbar.fixed {
     position: fixed; }
+  md-toolbar.main-toolbar .md-toolbar-tools {
+    padding: 0 !important; }
 
 md-icon.logo-icon {
-    color: #1565C0 !important;
-    margin-right: 5px;
-    width: 48px;
-    height: 48px; }
+  color: #1565C0 !important;
+  margin-right: 5px;
+  width: 48px;
+  height: 48px; }
 
 .comp-name {
-    font-weight: 200;
-    font-size: 24px; }
+  font-weight: 200;
+  font-size: 24px; }
 
 .top-menu-item {
-    margin: 0 15px;
-    text-transform: uppercase;
-    font-size: 18px;
-    font-size: 16px;
-    font-weight: 700;
-    color: #A7A7A7 !important; }
-
-.top-menu-item:hover, .top-menu-item.active {
+  margin: 0 15px;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #A7A7A7 !important; }
+  .top-menu-item:hover, .top-menu-item.active {
     color: #E24301 !important; }
 
 /*# sourceMappingURL=app.css.map */
