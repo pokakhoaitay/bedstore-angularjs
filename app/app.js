@@ -5,13 +5,15 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.home',
     'myApp.about',
-    'myApp._topMenu',
     'myApp.buildABed',
+    'myApp._topMenu',
+    'myApp._leftSidenav',
+
     'myApp.version',
+    'utils',
     'ngMaterial'
 ]).
-config(['$routeProvider','$locationProvider','$mdThemingProvider',
-    function ($routeProvider,$locationProvider, $mdThemingProvider) {
+config(function ($routeProvider,$locationProvider, $mdThemingProvider) {
 
     $routeProvider.otherwise({redirectTo: '/404'});
     $locationProvider.html5Mode(true);
@@ -42,4 +44,8 @@ config(['$routeProvider','$locationProvider','$mdThemingProvider',
     $mdThemingProvider.theme('default')
         .primaryPalette('blue')
         .accentPalette('deep-purple');
-}]);
+})
+    .controller('AppCtrl', function () {
+
+    })
+;

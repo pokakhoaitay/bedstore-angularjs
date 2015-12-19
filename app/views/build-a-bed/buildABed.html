@@ -1,7 +1,17 @@
-<div ng-controller="BuildABedCtrl" layout layout-align="center center">
-    <div flex="70">
-        <md-content>
-            <h3>Build A Bed</h3>
-        </md-content>
+<div ng-controller="BuildABedCtrl" layout="row" layout-align="center center" class="container">
+    <div flex="70" flex-sm="100">
+        <h3>Build A Bed</h3>
+        <div layout="row">
+            <div style="background: indianred;" flex="">1</div>
+            <div style="background: royalblue;" flex>2</div>
+            <div style="background: green;" flex>3</div>
+        </div>
+        <br/>
+        <div layout="column">
+            <div style="background: indianred;" flex="">1</div>
+            <div style="background: royalblue;" flex>2</div>
+            <div style="background: green;" flex>3</div>
+        </div>
     </div>
+
 </div>

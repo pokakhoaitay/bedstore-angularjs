@@ -21,20 +21,32 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/Tonicons-Outline/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/app.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-cloak>
-<div ng-include="'views/partials/top-menu/_topMenu.html'"></div>
+<body ng-cloak layout="row">
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
+<div ng-include="'views/partials/left-sidenav/_leftSidenav.html'"></div>
 
-<div ng-view></div>
+<div layout="column" flex="">
+    <div ng-include="'views/partials/top-menu/_topMenu.html'"></div>
+    <md-content id="divMainContent">
+        <div ng-view>
+
+        </div>
+    </md-content>
+
+</div>
+
+
+
+
 
 
 <!-- In production use:
@@ -49,9 +61,11 @@
 
 <script src="js/vendor/jquery-1.11.3.min.js"></script>
 <script src="app.js"></script>
+<script src="js/services/utils.js"></script>
 <script src="views/home/home.js"></script>
 <script src="views/about/about.js"></script>
 <script src="views/partials/top-menu/_topMenu.js"></script>
+<script src="views/partials/left-sidenav/_leftSidenav.js"></script>
 <script src="views/build-a-bed/buildABed.js"></script>
 
 <script src="components/version/version.js"></script>

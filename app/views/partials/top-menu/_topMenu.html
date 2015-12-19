@@ -1,22 +1,33 @@
 <div ng-controller="_TopMenuCtrl">
-    <md-toolbar class="top-bar animate-hide" ng-hide="isFixed">
+    <md-toolbar class="top-bar" ng-hide="isFixed">
     </md-toolbar>
-    <md-toolbar class="main-toolbar" ng-class="{fixed:isFixed}">
+    <md-toolbar class="container main-toolbar">
         <div layout="column">
             <div layout="row" layout-align="center center">
-                <div flex="70" flex-sm="100">
+                <div flex flex-sm="100" flex-gt-lg="70">
                     <div class="md-toolbar-tools">
-                        <md-icon md-svg-src="img/logo.svg" class="logo-icon"></md-icon>
-                        <a href="/" class="comp-name" >BED STORE</a>
+
+                        <a href="/" class="comp-name">
+                            <md-icon md-svg-src="img/logo.svg" class="logo-icon"></md-icon>
+                            <span>BED STORE</span></a>
                         <span flex></span>
-                        <a href="/" class="top-menu-item">Home</a>
-                        <a href="home" class="top-menu-item">Shop</a>
-                        <a href="/build-a-bed" class="top-menu-item">Build a Bed</a>
-                        <a href="home" class="top-menu-item">About</a>
-                        <a href="home" class="top-menu-item">Contact</a>
+                        <div hide-sm class="menu-items">
+                            <a href="/" class="top-menu-item">Home</a>
+                            <a href="home" class="top-menu-item">Shop</a>
+                            <a href="/build-a-bed" class="top-menu-item">Build a Bed</a>
+                            <a href="home" class="top-menu-item">About</a>
+                            <a href="home" class="top-menu-item">Contact</a>
+                        </div>
+                        <md-button class="md-icon-button btn-toggle-nav" hide-gt-sm aria-label="Toggle Nav"
+                                   ng-click="toggleSideNav()">
+                            <md-icon class="ti-menu"/>
+                        </md-button>
                     </div>
                 </div>
             </div>
         </div>
     </md-toolbar>
+
+
+
 </div>
