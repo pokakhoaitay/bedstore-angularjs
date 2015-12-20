@@ -2,20 +2,34 @@
     <div layout="column" layout-fill>
         <md-card id="divBuildBedBg" style="background: url('img/bg-small.jpg') no-repeat center center; height: 670px"
                  layout="row" layout-fill
-        ng-class="{padding:appVm.isFixed}">
+                 ng-class="{padding:appVm.isFixed}">
             <div layout="row" flex layout-align="center">
-                <div flex flex-gt-lg="70" flex-sm="100">
-                    <h2>STEP 1</h2>
-                    <h4>ORIENTATION</h4>
-                    <md-radio-group class="md-primary">
-                        <md-radio-button value="Vertical">Vertical</md-radio-button>
-                        <md-radio-button value="Horizontal">Horizontal</md-radio-button>
-                    </md-radio-group>
-                    <h4>CABINET FINISH</h4>
-                    <ul>
-                        <li value="7" ng-click="changeCabinet(7)">Black</li>
-                        <li value="3" ng-click="changeCabinet(3)">International White</li>
-                    </ul>
+                <div flex flex-gt-lg="70" flex-sm="100" class="container" layout="row">
+                    <div class="steper" layout="column" layout-align="center center">
+                        <a ng-repeat="step in stepDatas" class="step-item" flex layout-align="center center"
+                           ng-click="changeStep(step.stepNum)"
+                           layout="column"
+                           href="javascript:void(0)"
+                           ng-class="{selected:step.isSelected()}"
+                           title="{{step.description}}">
+                            <img ng-src="{{step.img()}}" alt="Step {{step.stepNum}}">
+                            <span>{{step.stepNum}}</span>
+                        </a>
+                    </div>
+                    <div>
+                        <h2>STEP 1</h2>
+                        <h4>ORIENTATION</h4>
+                        <md-radio-group class="md-primary">
+                            <md-radio-button value="Vertical">Vertical</md-radio-button>
+                            <md-radio-button value="Horizontal">Horizontal</md-radio-button>
+                        </md-radio-group>
+                        <h4>CABINET FINISH</h4>
+                        <ul>
+                            <li value="7" ng-click="changeCabinet(7)">Black</li>
+                            <li value="3" ng-click="changeCabinet(3)">International White</li>
+                        </ul>
+                    </div>
+
                     <div class="bed-container">
                         <div id="cabinetShadow">
                             <img src="img/build-bed/V/cabinetShadow-nolights.png" alt="">

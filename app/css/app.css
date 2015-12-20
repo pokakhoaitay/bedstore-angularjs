@@ -87,10 +87,35 @@ md-toolbar .btn-toggle-nav md-icon {
   z-index: 1;
   height: 596px;
   right: 0;
-  bottom: 174px; }
+  top: 174px; }
   .bed-container div {
     position: absolute;
     width: 100%; }
+
+.steper {
+  width: 64px;
+  background: rgba(255, 255, 255, 0.32);
+  margin: 5% 20px 5% 0;
+  border-radius: 3px; }
+  .steper .step-item {
+    text-transform: uppercase;
+    padding: 10px 10px;
+    text-decoration: none;
+    border-bottom: 1px solid #1565C0; }
+    .steper .step-item.selected {
+      background: #1565C0; }
+      .steper .step-item.selected span {
+        color: #FFF; }
+    .steper .step-item:last-child {
+      border: 0; }
+    .steper .step-item span {
+      font-size: 50px;
+      font-weight: 300;
+      color: #1565C0;
+      display: block;
+      text-align: center;
+      line-height: 1;
+      margin-top: 7px; }
 
 @media (max-width: 767px) {
   .menu-items .top-menu-item {
