@@ -81,6 +81,9 @@ md-icon.logo-icon { color: $primary-color !important;
 }
 
 md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
+#divBuildBedBg{
+  &.padding{margin-top: 90px}
+}
 
 .bed-container {
   width: 891px;
@@ -88,7 +91,7 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   z-index: 1;
   height: 596px;
   right: 0;
-  top:174px;
+  bottom:174px;
   div { position: absolute;
     width: 100% }
 }

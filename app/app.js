@@ -45,7 +45,17 @@ config(function ($routeProvider,$locationProvider, $mdThemingProvider) {
         .primaryPalette('blue')
         .accentPalette('deep-purple');
 })
-    .controller('AppCtrl', function () {
+    .controller('AppCtrl', function ($scope, $document) {
+        var appVm=this;
 
+        var find = $document[0].getElementById('divMainContent');
+        angular.element(find).bind('scroll', function () {
+                $scope.$apply(function () {
+                    appVm.isFixed = find.scrollTop >= 90;
+                });
+            })
+            .bind('resize', function () {
+                $scope.$apply();
+            });
     })
 ;

@@ -23,12 +23,12 @@ angular.module('myApp._topMenu', ['ngRoute', 'ngMaterial'])
                 Helper.broadcastWhat('callToggleSideNav');
             }
             var find = $document[0].getElementById('divMainContent');
-            angular.element(find).bind('scroll', function () {
-                    $scope.$apply(function () {
-                        $scope.isFixed = find.scrollTop >= 90;
-                    });
-                })
-                .bind('resize', function () {
-                    $scope.$apply();
-                });
+            //angular.element(find).bind('scroll', function () {
+            //        $scope.$apply(function () {
+            //            $scope.isFixed = find.scrollTop >= 90;
+            //        });
+            //    })
+            //    .bind('resize', function () {
+            //        $scope.$apply();
+            //    });
         });

@@ -1,7 +1,7 @@
 <div ng-controller="_TopMenuCtrl">
-    <md-toolbar class="top-bar" ng-hide="isFixed">
+    <md-toolbar class="top-bar" ng-hide="appVm.isFixed">
     </md-toolbar>
-    <md-toolbar class="container main-toolbar" ng-class="{fixed:isFixed}">
+    <md-toolbar class="container main-toolbar" ng-class="{fixed:appVm.isFixed}">
         <div layout="column">
             <div layout="row" layout-align="center center">
                 <div flex flex-sm="100" flex-gt-lg="70">
