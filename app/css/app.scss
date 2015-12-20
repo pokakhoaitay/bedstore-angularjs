@@ -1,8 +1,10 @@
 $primary-color: #1565C0;
 $accent-color: #E24301;
 
-html { height:100%; overflow-y: auto}
-body {  _overflow-x: hidden; _overflow-y: auto }
+html { height: 100%; overflow-y: auto }
+
+body { _overflow-x: hidden; _overflow-y: auto }
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -64,6 +66,7 @@ md-icon.logo-icon { color: $primary-color !important;
   height: 48px; }
 
 .comp-name { font-weight: 200; font-size: 24px }
+
 .comp-name span { vertical-align: middle }
 
 .top-menu-item { margin: 0 15px;
@@ -79,9 +82,20 @@ md-icon.logo-icon { color: $primary-color !important;
 
 md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 
-@media  ( max-width: 767px) {
+.bed-container {
+  width: 891px;
+  position: absolute;
+  z-index: 1;
+  height: 596px;
+  right: 0;
+  top:174px;
+  div { position: absolute;
+    width: 100% }
+}
+
+@media (max-width: 767px) {
   .menu-items {
-    .top-menu-item { font-size: 13px;margin: 0 10px; }
+    .top-menu-item { font-size: 13px; margin: 0 10px; }
   }
 }
 

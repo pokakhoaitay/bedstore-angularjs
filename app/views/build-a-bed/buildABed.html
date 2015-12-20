@@ -1,17 +1,79 @@
-<div ng-controller="BuildABedCtrl" layout="row" layout-align="center center" class="container">
-    <div flex="70" flex-sm="100">
-        <h3>Build A Bed</h3>
-        <div layout="row">
-            <div style="background: indianred;" flex="">1</div>
-            <div style="background: royalblue;" flex>2</div>
-            <div style="background: green;" flex>3</div>
-        </div>
-        <br/>
-        <div layout="column">
-            <div style="background: indianred;" flex="">1</div>
-            <div style="background: royalblue;" flex>2</div>
-            <div style="background: green;" flex>3</div>
-        </div>
+<div ng-controller="BuildABedCtrl" layout="column" layout-align="center center">
+    <div layout="column" layout-fill>
+        <md-card style="background: url('img/bg-small.jpg') no-repeat center center; height: 670px"
+                 layout="row" layout-fill>
+            <div layout="row" flex layout-align="center">
+                <div flex="70" flex-sm="100">
+                    <h2>STEP 1</h2>
+                    <h4>ORIENTATION</h4>
+                    <md-radio-group class="md-primary">
+                        <md-radio-button value="Vertical">Vertical</md-radio-button>
+                        <md-radio-button value="Horizontal">Horizontal</md-radio-button>
+                    </md-radio-group>
+                    <h4>CABINET FINISH</h4>
+                    <ul>
+                        <li value="7" ng-click="changeCabinet(7)">Black</li>
+                        <li value="3" ng-click="changeCabinet(3)">International White</li>
+                    </ul>
+                    <div class="bed-container">
+                        <div id="cabinetShadow">
+                            <img src="img/build-bed/V/cabinetShadow-nolights.png" alt="">
+                        </div>
+                        <div id="mainCabinet">
+                            <img ng-src="img/build-bed/{{bedData.cabinet}}/V/cabinet.png" alt="">
+                        </div>
+                        <div id="potlights"></div>
+                        <div id="cabinetShadow-left">
+                            <img src="img/build-bed/V/cabinetShadow-left.png">
+                        </div>
+                        <div id="cabinetShadow-right">
+                            <img src="img/build-bed/V/cabinetShadow-right.png">
+                        </div>
+                        <div id="sideCabinet-left" style="display: none;"></div>
+                        <div id="sideCabinet-right" style="display: none;"></div>
+                        <div id="accessory-upper-left" style="display: none;">
+                            <img src="img/build-bed/2/V/3-left.png">
+                        </div>
+                        <div id="accessory-lower-left" style="display: none;">
+                            <img src="img/build-bed/2/V/2-left.png">
+                        </div>
+                        <div id="ntable-left" style="display: none;">
+                            <img src="img/build-bed/2/V/ntable-left.png">
+                        </div>
+                        <div id="accessory-upper-right" style="display: none;">
+                            <img src="img/build-bed/2/V/1-right.png">
+                        </div>
+                        <div id="accessory-lower-right" style="display: none;">
+                            <img src="img/build-bed/2/V/4-right.png">
+                        </div>
+                        <div id="ntable-right" style="display: none;">
+                            <img src="img/build-bed/2/V/ntable-right.png">
+                        </div>
+                        <div id="headboard"><img src="img/build-bed/18/V/headboard.png"></div>
+                        <div id="cabinetDoors" style="display: none;"><img src="img/build-bed/2/V/cabinet-doors.png">
+                        </div>
+                        <div id="moulding" style="display: none;">
+                            <img src="img/build-bed/2/V/moulding.png">
+                        </div>
+                        <div id="moulding-left" style="display: none;">
+                            <img src="img/build-bed/2/V/moulding-left.png">
+                        </div>
+                        <div id="moulding-right" style="display: none;">
+                            <img src="img/build-bed/2/V/moulding-right.png">
+                        </div>
+                        <div id="bedopen2" style="display: none;"><img src="img/build-bed/2/V/open2.png"></div>
+                        <div id="bedopen" style="_display: none;"><img src="img/build-bed/V/open-nolights.png"></div>
+                        <div id="bedFront"></div>
+                    </div>
+                </div>
+            </div>
+
+        </md-card>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
     </div>
+
 
 </div>

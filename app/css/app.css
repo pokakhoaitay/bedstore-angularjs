@@ -78,6 +78,17 @@ md-icon.logo-icon {
 md-toolbar .btn-toggle-nav md-icon {
   color: #1565C0 !important; }
 
+.bed-container {
+  width: 891px;
+  position: absolute;
+  z-index: 1;
+  height: 596px;
+  right: 0;
+  top: 174px; }
+  .bed-container div {
+    position: absolute;
+    width: 100%; }
+
 @media (max-width: 767px) {
   .menu-items .top-menu-item {
     font-size: 13px;
