@@ -148,58 +148,58 @@
                     </div>
 
                     <div class="bed-container animate-show-hide offset-left"
-                         ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet}">
+                         ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet, 'offset-center':!isShowPanel}">
                         <div id="cabinetShadow">
-                            <img src="img/build-bed/V/cabinetShadow-nolights.png" alt="">
+                            <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-nolights.png" alt="">
                         </div>
                         <div id="mainCabinet">
-                            <img ng-src="img/build-bed/{{bedData.cabinet}}/V/cabinet.png" alt="">
+                            <img ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet.png" alt="">
                         </div>
                         <div id="potlights"></div>
                         <div id="cabinetShadow-left" ng-style="bedData.isLeftCabinet&&{'left':' -112px'}">
-                            <img src="img/build-bed/V/cabinetShadow-left.png">
+                            <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-left.png">
                         </div>
                         <div id="cabinetShadow-right" ng-style="bedData.isRightCabinet&&{'right':' -112px'}">
-                            <img src="img/build-bed/V/cabinetShadow-right.png">
+                            <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-right.png">
                         </div>
                         <div id="sideCabinet-left" ng-show="bedData.isLeftCabinet">
-                            <img ng-src="img/build-bed/{{bedData.cabinet}}/V/sideCabinet-left.png" alt="Left Cabinet">
+                            <img ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/sideCabinet-left.png" alt="Left Cabinet">
                         </div>
                         <div id="sideCabinet-right" ng-show="bedData.isRightCabinet">
-                            <img ng-src="img/build-bed/{{bedData.cabinet}}/V/sideCabinet-right.png" alt="Right Cabinet">
+                            <img ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/sideCabinet-right.png" alt="Right Cabinet">
                         </div>
                         <div id="accessory-upper-left" ng-show="bedData.leftUpperAccessory!=0">
-                            <img ng-src="img/build-bed/{{bedData.leftUpperFinish}}/V/{{bedData.leftUpperAccessory}}-left.png">
+                            <img ng-src="img/build-bed/{{bedData.leftUpperFinish}}/{{bedData.orientation}}/{{bedData.leftUpperAccessory}}-left.png">
                         </div>
                         <div id="accessory-lower-left" ng-show="bedData.leftLowerAccessory!=0">
-                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/V/{{bedData.leftLowerAccessory}}-left.png">
+                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/{{bedData.leftLowerAccessory}}-left.png">
                         </div>
                         <div id="ntable-left" ng-show="bedData.isLeftNightTable">
-                            <img ng-src="img/build-bed/{{bedData.leftLowerFinish}}/V/ntable-left.png">
+                            <img ng-src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/ntable-left.png">
                         </div>
                         <div id="accessory-upper-right" style="display: none;">
-                            <img src="img/build-bed/2/V/1-right.png">
+                            <img src="img/build-bed/2/{{bedData.orientation}}/1-right.png">
                         </div>
                         <div id="accessory-lower-right" style="display: none;">
-                            <img src="img/build-bed/2/V/4-right.png">
+                            <img src="img/build-bed/2/{{bedData.orientation}}/4-right.png">
                         </div>
                         <div id="ntable-right" style="display: none;">
-                            <img src="img/build-bed/2/V/ntable-right.png">
+                            <img src="img/build-bed/2/{{bedData.orientation}}/ntable-right.png">
                         </div>
-                        <div id="headboard"><img src="img/build-bed/18/V/headboard.png"></div>
-                        <div id="cabinetDoors" style="display: none;"><img src="img/build-bed/2/V/cabinet-doors.png">
+                        <div id="headboard"><img src="img/build-bed/18/{{bedData.orientation}}/headboard.png"></div>
+                        <div id="cabinetDoors" style="display: none;"><img src="img/build-bed/2/{{bedData.orientation}}/cabinet-doors.png">
                         </div>
                         <div id="moulding" style="display: none;">
-                            <img src="img/build-bed/2/V/moulding.png">
+                            <img src="img/build-bed/2/{{bedData.orientation}}/moulding.png">
                         </div>
                         <div id="moulding-left" style="display: none;">
-                            <img src="img/build-bed/2/V/moulding-left.png">
+                            <img src="img/build-bed/2/{{bedData.orientation}}/moulding-left.png">
                         </div>
                         <div id="moulding-right" style="display: none;">
-                            <img src="img/build-bed/2/V/moulding-right.png">
+                            <img src="img/build-bed/2/{{bedData.orientation}}/moulding-right.png">
                         </div>
-                        <div id="bedopen2" style="display: none;"><img src="img/build-bed/2/V/open2.png"></div>
-                        <div id="bedopen" style="_display: none;"><img src="img/build-bed/V/open-nolights.png"></div>
+                        <div id="bedopen2" style="display: none;"><img src="img/build-bed/2/{{bedData.orientation}}/open2.png"></div>
+                        <div id="bedopen" style="_display: none;"><img src="img/build-bed/{{bedData.orientation}}/open-nolights.png"></div>
                         <div id="bedFront"></div>
                     </div>
                 </div>

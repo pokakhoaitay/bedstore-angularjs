@@ -98,6 +98,8 @@ md-toolbar .btn-toggle-nav md-icon {
     right: 0px; }
   .bed-container.offset-right {
     right: 64px; }
+  .bed-container.offset-center {
+    right: 264px; }
 
 .steper {
   width: 64px;
@@ -125,7 +127,7 @@ md-toolbar .btn-toggle-nav md-icon {
       margin-top: 7px; }
 
 .animate-show-hide {
-  transition: all 0.7s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .build-control {
   margin: 5% 20px 5% 0;

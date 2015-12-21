@@ -104,6 +104,9 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   &.offset-right {
     right: 64px;
   }
+  &.offset-center {
+    right: 264px;
+  }
 }
 
 .steper {
@@ -130,7 +133,7 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   }
 }
 
-.animate-show-hide { transition: all .7s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+.animate-show-hide { transition: all .5s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
 //.animate-show-hide { transition: all .7s cubic-bezier(0.000, 1, 0.0, 1.000); }
 //.animate-show-hide { transition: all .3s cubic-bezier(1.000, 0.000, 0.000, 1.000); }
 
