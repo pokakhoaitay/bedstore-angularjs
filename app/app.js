@@ -58,5 +58,7 @@ config(function ($routeProvider,$locationProvider, $mdThemingProvider) {
             .bind('resize', function () {
                 $scope.$apply();
             });
+
+
     })
 ;

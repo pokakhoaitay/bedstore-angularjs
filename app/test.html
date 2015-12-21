@@ -6,7 +6,7 @@
 <!--[if IE 8]>
 <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<html lang="en" class="no-js"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,11 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bed Store</title>
     <base href="/">
-    <link rel='shortcut icon' type='image/x-svg' href='img/logo.svg'/>
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link href="js/vendor/google-material-icons/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+
     <link rel="stylesheet" href="js/vendor/outline-icons/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/Tonicons-Outline/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
@@ -40,12 +36,33 @@
 
 <div layout="column" flex="">
 
-    <md-content id="divMainContent">
-        <div ng-include="'views/partials/top-menu/_topMenu.html'"></div>
-        <div ng-view>
+    <div id="layerslider" style="width: 1000px; height: 500px;">
 
+        <!--LayerSlider layer-->
+        <div class="ls-layer">
+
+            <!--LayerSlider background-->
+            <img class="ls-bg" src="bower_components/layerslider/bg/city_bg.jpg" alt="layer1-background">
+
+            <!--LayerSlider sublayers-->
+            <img class="ls-s-1" src="bower_components/layerslider/bg/mist_bg.jpg" alt="layer1-sublayer1">
+            <!--<img class="ls-s-1" src=".." alt="layer1-sublayer2">-->
+            <!--<img class="ls-s-1 src=".." alt="layer1-sublayer3">-->
         </div>
-    </md-content>
+
+        <!--LayerSlider layer-->
+        <div class="ls-layer">
+
+            <!--LayerSlider background-->
+            <img class="ls-bg" src="bower_components/layerslider/bg/mist_bg.jpg" alt="layer2-background">
+
+            <!--LayerSlider sublayers-->
+            <!--<img class="ls-s1" src=".." alt="layer2-sublayer1">-->
+            <!--<img class="ls-s2" src=".." alt="layer2-sublayer2">-->
+            <!--<img class="ls-s3" src=".." alt="layer2-sublayer3">-->
+        </div>
+
+    </div>
 
 </div>
 
@@ -57,12 +74,7 @@
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/angular-animate/angular-animate.min.js"></script>
-<script src="bower_components/angular-aria/angular-aria.min.js"></script>
-<script src="bower_components/angular-messages/angular-messages.min.js"></script>
-<script src="bower_components/angular-material/angular-material.min.js"></script>
+
 
 <script src="js/vendor/jquery-1.11.3.min.js"></script>
 <script src="bower_components/jquery.easing/js/jquery.easing.min.js" type="text/javascript"></script>
@@ -70,26 +82,16 @@
 <script src="bower_components/layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
 <script src="bower_components/layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
 
-<script src="app.js"></script>
-<script src="js/services/utils.js"></script>
-<script src="views/home/home.js"></script>
-<script src="views/about/about.js"></script>
-<script src="views/partials/top-menu/_topMenu.js"></script>
-<script src="views/partials/left-sidenav/_leftSidenav.js"></script>
-<script src="views/build-a-bed/buildABed.js"></script>
 
-<script src="components/version/version.js"></script>
-<script src="components/version/version-directive.js"></script>
-<script src="components/version/interpolate-filter.js"></script>
 
 
 
 <script>
-//    $('document').ready(function(){
-//
-//        // Calling LayerSlider on your selected element after the document loaded
-//        $('#layerslider').layerSlider();
-//    });
+    $('document').ready(function(){
+
+        // Calling LayerSlider on your selected element after the document loaded
+        $('#layerslider').layerSlider();
+    });
 </script>
 </body>
 </html>

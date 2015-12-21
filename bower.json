@@ -12,6 +12,9 @@
     "angular-mocks": "~1.4.0",
     "html5-boilerplate": "~5.2.0",
     "angular-messages": "~1.4.8",
-    "angular-material": "~0.11.4"
+    "angular-material": "~0.11.4",
+    "layerslider": "~5.0.4",
+    "jquery.easing": "~1.3.1",
+    "jquery.transit": "~0.9.12"
   }
 }
