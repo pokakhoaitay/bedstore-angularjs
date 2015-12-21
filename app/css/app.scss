@@ -1,10 +1,11 @@
 $primary-color: #1565C0;
 $primary-color-1: #3D83D2;
 $accent-color: #E24301;
+$text-color: #666;
 
 html { height: 100%; overflow-y: auto }
 
-body { _overflow-x: hidden; _overflow-y: auto }
+body { overflow-x: hidden; _overflow-y: auto }
 
 .menu {
   list-style: none;
@@ -86,40 +87,110 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 #divBuildBedBg {
   &.padding { margin-top: 90px }
 }
+#divMainContent{overflow-x: hidden}
 
 .bed-container {
   width: 891px;
   position: absolute;
   z-index: 1;
   height: 596px;
-  right: 0;
+  right: 0px;
   top: 174px;
   div { position: absolute;
     width: 100% }
+  &.offset-left {
+    right: 0px;
+  }
+  &.offset-right {
+    right: 64px;
+  }
 }
 
 .steper {
   width: 64px;
-  background: rgba(255, 255, 255, 0.32);
-  margin: 5% 20px 5% 0;
+  margin: 5% 0px 5% 0;
   border-radius: 3px;
   .step-item {
     text-transform: uppercase;
     padding: 10px 10px;
     text-decoration: none;
-    border-bottom: 1px solid $primary-color;
+    border-bottom: 1px solid $primary-color-1;
+    background: $primary-color;
     &.selected {
-      background: $primary-color;
+      background: #FFF;
       span {
-        color: #FFF;
+        color: $primary-color;
       }
     }
     &:last-child { border: 0; }
     span {
-      font-size: 50px; font-weight: 300; color: $primary-color; display: block; text-align: center;
+      font-size: 50px; font-weight: 300; color: #FFF; display: block; text-align: center;
       line-height: 1; margin-top: 7px;
     }
   }
+}
+
+.animate-show-hide { transition: all .7s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
+//.animate-show-hide { transition: all .7s cubic-bezier(0.000, 1, 0.0, 1.000); }
+//.animate-show-hide { transition: all .3s cubic-bezier(1.000, 0.000, 0.000, 1.000); }
+
+.build-control {
+  margin: 5% 20px 5% 0;
+  padding: 0 20px;
+  background-color: #FFF;
+  opacity: 1;
+  color: $text-color;
+  width: 35%;
+  &.ng-hide {
+    opacity: 0;
+    margin: 5% 20px 5% -10px;
+  }
+  &.ng-hide-remove {
+  }
+  .md-display-1 {
+    font-weight: 300;
+    color: $primary-color;
+    margin: 15px 0 0 0;
+  }
+  .md-subhead {
+    margin: 0;
+    color: $primary-color;
+    text-transform: uppercase;
+  }
+  .sub-option { margin-bottom: 4px; font-size: 14px; color: #969696; }
+  .sub-rad-group {
+    margin: 0 0 15px 40px;
+    font-size: 13px;
+    md-radio-button {
+      margin: 0; padding: 0;
+    }
+
+  }
+  md-radio-button {
+    color: $text-color;
+  }
+}
+
+#eleStep3 {
+  md-input-container { margin-top: 10px }
+}
+
+//------------------------
+//TOOL
+//------------------------
+.rad-white {
+  .md-on {
+    background-color: #FFF !important;
+  }
+  .md-off:not(.md-checked .md-off) {
+    background-color: #FFF !important;
+  }
+}
+
+.border {
+  border: 1px solid rgba(68, 138, 218, 0.28);
+  border-radius: 5px;
+  background: #D6E1EC;
 }
 
 @media (max-width: 767px) {

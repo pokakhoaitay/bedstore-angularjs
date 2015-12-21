@@ -11,7 +11,8 @@ angular.module('myApp', [
 
     'myApp.version',
     'utils',
-    'ngMaterial'
+    'ngMaterial',
+    'ngAnimate'
 ]).
 config(function ($routeProvider,$locationProvider, $mdThemingProvider) {
 
