@@ -197,7 +197,7 @@
                             <img ng-src="img/build-bed/{{bedData.leftUpperFinish}}/{{bedData.orientation}}/{{bedData.leftUpperAccessory>0?bedData.leftUpperAccessory:1}}-left.png">
                         </div>
                         <div id="accessory-lower-left" ng-show="bedData.leftLowerAccessory!=0 && bedData.isLeftCabinet">
-                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/{{bedData.leftLowerAccessory>0?bedData.leftLowerAccessory:1}}-left.png">
+                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/V/{{bedData.leftLowerAccessory>0?bedData.leftLowerAccessory:1}}-left.png">
                         </div>
                         <div id="ntable-left" ng-show="bedData.isLeftNightTable && bedData.isLeftCabinet">
                             <img ng-src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/ntable-left.png">
@@ -235,6 +235,10 @@
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
         <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
+    <div>
+        <md-checkbox ng-model="bedData.isLeftCabinet">{{'Left cabinet'|uppercase}}
+        </md-checkbox>
     </div>
 
 
