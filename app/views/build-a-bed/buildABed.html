@@ -29,12 +29,16 @@
                                 </md-radio-button>
                             </md-radio-group>
                             <h4 class="sub-option">MURPHY BED SIZE</h4>
-                            <md-radio-group class="md-primary border" layout="row" ng-model="bedData.size">
-                                <md-radio-button ng-repeat="item in sizes" ng-value="item.value" name="{{item.name}}"
-                                                 flex>
-                                    {{item.name}}
-                                </md-radio-button>
-                            </md-radio-group>
+                            <div class="note">Note: size changes not shown in preview, but reflected in dimensions below</div>
+                            <div class="border">
+                                <md-radio-group class="md-primary" layout="row" ng-model="bedData.size">
+                                    <md-radio-button ng-repeat="item in sizes" ng-value="item.value" name="{{item.name}}"
+                                                     flex>
+                                        {{item.name}}
+                                    </md-radio-button>
+                                </md-radio-group>
+                            </div>
+
 
                             <h4 class="sub-option">MURPHY BED FRAME </h4>
                             <md-radio-group class="md-primary border" layout="row" ng-model="bedData.frame">
@@ -142,6 +146,27 @@
                                             </md-option>
                                         </md-select>
                                     </md-input-container>
+
+                                    <md-checkbox ng-model="bedData.isRightNightTable">{{'Night Table'|uppercase}}
+                                    </md-checkbox>
+
+                                    <md-input-container>
+                                        <label>LOWER ACCESSORY</label>
+                                        <md-select ng-model="bedData.rightLowerAccessory">
+                                            <md-option ng-repeat="item in lowerAccessories" ng-value="item.value">
+                                                {{item.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <md-input-container>
+                                        <label>LOWER FINISH</label>
+                                        <md-select ng-model="bedData.rightLowerFinish">
+                                            <md-option ng-repeat="item in lowerFinishes" ng-value="item.value">
+                                                {{item.name}}
+                                            </md-option>
+                                        </md-select>
+                                    </md-input-container>
                                 </div>
                             </div>
                         </section>
@@ -168,23 +193,23 @@
                         <div id="sideCabinet-right" ng-show="bedData.isRightCabinet">
                             <img ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/sideCabinet-right.png" alt="Right Cabinet">
                         </div>
-                        <div id="accessory-upper-left" ng-show="bedData.leftUpperAccessory!=0">
-                            <img ng-src="img/build-bed/{{bedData.leftUpperFinish}}/{{bedData.orientation}}/{{bedData.leftUpperAccessory}}-left.png">
+                        <div id="accessory-upper-left" ng-show="bedData.leftUpperAccessory!=0 && bedData.isLeftCabinet">
+                            <img ng-src="img/build-bed/{{bedData.leftUpperFinish}}/{{bedData.orientation}}/{{bedData.leftUpperAccessory>0?bedData.leftUpperAccessory:1}}-left.png">
                         </div>
-                        <div id="accessory-lower-left" ng-show="bedData.leftLowerAccessory!=0">
-                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/{{bedData.leftLowerAccessory}}-left.png">
+                        <div id="accessory-lower-left" ng-show="bedData.leftLowerAccessory!=0 && bedData.isLeftCabinet">
+                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/{{bedData.leftLowerAccessory>0?bedData.leftLowerAccessory:1}}-left.png">
                         </div>
-                        <div id="ntable-left" ng-show="bedData.isLeftNightTable">
+                        <div id="ntable-left" ng-show="bedData.isLeftNightTable && bedData.isLeftCabinet">
                             <img ng-src="img/build-bed/{{bedData.leftLowerFinish}}/{{bedData.orientation}}/ntable-left.png">
                         </div>
-                        <div id="accessory-upper-right" style="display: none;">
-                            <img src="img/build-bed/2/{{bedData.orientation}}/1-right.png">
+                        <div id="accessory-upper-right" ng-show="bedData.rightUpperAccessory!=0 && bedData.isRightCabinet">
+                            <img src="img/build-bed/{{bedData.rightUpperFinish}}/{{bedData.orientation}}/{{bedData.rightUpperAccessory>0?bedData.rightUpperAccessory:1}}-right.png">
                         </div>
-                        <div id="accessory-lower-right" style="display: none;">
-                            <img src="img/build-bed/2/{{bedData.orientation}}/4-right.png">
+                        <div id="accessory-lower-right" ng-show="bedData.rightLowerAccessory!=0 && bedData.isRightCabinet">
+                            <img src="img/build-bed/{{bedData.rightLowerFinish}}/{{bedData.orientation}}/{{bedData.rightLowerAccessory>0?bedData.rightLowerAccessory:1}}-right.png">
                         </div>
-                        <div id="ntable-right" style="display: none;">
-                            <img src="img/build-bed/2/{{bedData.orientation}}/ntable-right.png">
+                        <div id="ntable-right" ng-show="bedData.isRightNightTable && bedData.isRightCabinet">
+                            <img src="img/build-bed/{{bedData.rightLowerFinish}}/{{bedData.orientation}}/ntable-right.png">
                         </div>
                         <div id="headboard"><img src="img/build-bed/18/{{bedData.orientation}}/headboard.png"></div>
                         <div id="cabinetDoors" style="display: none;"><img src="img/build-bed/2/{{bedData.orientation}}/cabinet-doors.png">

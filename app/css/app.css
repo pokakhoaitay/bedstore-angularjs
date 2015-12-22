@@ -148,9 +148,11 @@ md-toolbar .btn-toggle-nav md-icon {
     color: #1565C0;
     text-transform: uppercase; }
   .build-control .sub-option {
-    margin-bottom: 4px;
+    margin-bottom: 0;
     font-size: 14px;
     color: #969696; }
+    .build-control .sub-option + .border {
+      margin-top: 4px; }
   .build-control .sub-rad-group {
     margin: 0 0 15px 40px;
     font-size: 13px; }
@@ -159,6 +161,11 @@ md-toolbar .btn-toggle-nav md-icon {
       padding: 0; }
   .build-control md-radio-button {
     color: #666; }
+  .build-control .note {
+    font-size: 12px;
+    font-style: italic; }
+    .build-control .note + .border {
+      margin-top: 4px; }
 
 #eleStep3 md-input-container {
   margin-top: 10px; }
