@@ -25,6 +25,8 @@ angular.module('myApp.buildABed', ['ngRoute'])
         $scope.bedData.isRightNightTable = false;
         $scope.bedData.leftLowerAccessory = 0;
         $scope.bedData.leftLowerFinish = 9;
+        $scope.bedData.rightLowerAccessory = 0;
+        $scope.bedData.rightLowerFinish = 9;
 
         $scope.orientations = [
             {name: 'Vertical', value: 'V'},
