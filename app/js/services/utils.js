@@ -16,8 +16,8 @@ angular.module('utils', ['ngRoute'])
 
                 return $testDiv.width() - $testDivChild.width();
             },
-            broadcastWhat: function (event) {
-                $rootScope.$broadcast(event);
+            broadcastWhat: function (event, agrs) {
+                $rootScope.$broadcast(event,agrs);
             }
         }
     }])

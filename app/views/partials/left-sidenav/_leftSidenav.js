@@ -17,8 +17,16 @@ angular.module('myApp._leftSidenav', ['ngRoute'])
             });
 
 
+            $scope.$watch(function () {
+                return $mdSidenav('leftSideNav').isOpen();;
+            }, function (value) {
+                Helper.broadcastWhat('handlToggleBodyScrollbar',value);
+            });
+
+
             $scope.$on('callToggleSideNav', function (event, args) {
                 // var scrollbarWidth = Helper.getScrollBarWidth();
+                //Helper.broadcastWhat('handlToggleBodyScrollbar',true);
                 $mdSidenav('leftSideNav')
                     .toggle()
                     .then(function () {
@@ -27,6 +35,7 @@ angular.module('myApp._leftSidenav', ['ngRoute'])
             });
 
             $scope.close = function () {
+                //Helper.broadcastWhat('handlToggleBodyScrollbar',false);
                 $mdSidenav('leftSideNav')
                     .close()
                     .then(function () {

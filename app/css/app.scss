@@ -1,11 +1,49 @@
-$primary-color: #1565C0;
+//$primary-color: #1565C0;
+$primary-color: #5A4B69;
 $primary-color-1: #3D83D2;
 $accent-color: #E24301;
 $text-color: #666;
 
+//#######################################################################
+//MIXIN
+//#######################################################################
+
+@mixin my-transition($prop) {
+  -webkit-transition: $prop .5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  -moz-transition: $prop .5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  -ms-transition: $prop .5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  -o-transition: $prop .5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  transition: $prop .5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+}
+
+@mixin my-boxshadow ($allParam){
+  -webkit-box-shadow: $allParam; -moz-box-shadow: $allParam; box-shadow: $allParam;
+}
+
+//#######################################################################
+//TAGS
+//#######################################################################
 html { height: 100%; overflow-y: auto }
 
-body { overflow-x: hidden; _overflow-y: auto }
+body {
+  padding-top: 32px;
+  @include my-transition(padding-top);
+  &.hide-scroll-bar { overflow-y: hidden; _padding-right: 17px; }
+  &.override-padding-top { padding-top: 0px }
+}
+
+header { }
+
+footer {
+  height: 200px;
+  background-color: #DEDEDE;
+  color: $text-color;
+  padding: 20px 0;
+  .sub-footer {
+    background-color: #C3C3C3;
+    padding: 20px 0;
+  }
+}
 
 .menu {
   list-style: none;
@@ -36,8 +74,20 @@ body { overflow-x: hidden; _overflow-y: auto }
   padding: 0;
 }
 
-md-toolbar.top-bar {
-  background: #2F6FAD;
+.top-menu-wrapper {
+  width: calc(100% - 17px);
+  width: 100%;
+  z-index: 58;
+  top: 0; left: 0;
+  @include my-transition(margin);
+}
+
+.hide-topbar {
+  margin-top: -32px;
+}
+
+.top-bar {
+  background: $primary-color;
   color: #FFF;
   height: 32px;
   min-height: 0;
@@ -47,13 +97,22 @@ md-toolbar.top-bar {
 
 md-toolbar.main-toolbar {
   background-color: #FFF;
-  color: #666;
+  color: $primary-color;
   border-bottom: solid 2px #D2D2D2;
   -webkit-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
   -moz-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
   box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  @include my-transition(all);
   &.fixed {
     position: fixed;
+  }
+  &.transparent{
+    background-color: rgba(255, 255, 255, 0.52);
+    color: $primary-color;
+    border-bottom: solid 2px transparent;
+    box-shadow: none;
+    //@include my-boxshadow(0 3px 6px rgba(115, 115, 115, 0.34));
+
   }
   .md-toolbar-tools {
     padding: 0 !important;
@@ -62,10 +121,12 @@ md-toolbar.main-toolbar {
   .menu-items { }
 }
 
-md-icon.logo-icon { color: $primary-color !important;
+md-icon.logo-icon {
+  color: $primary-color!important;
   margin-right: 5px;
   width: 48px;
-  height: 48px; }
+  height: 48px;
+}
 
 .comp-name { font-weight: 200; font-size: 24px }
 
@@ -76,7 +137,7 @@ md-icon.logo-icon { color: $primary-color !important;
   font-size: 18px;
   font-size: 16px;
   font-weight: 700;
-  color: #A7A7A7 !important;
+  color: $primary-color !important;
   &:hover, &.active {
     color: $accent-color !important; //
   }
@@ -188,8 +249,18 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   }
 }
 
-//.build-contrl
+.bannercontainer {
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
 
+.banner {
+  width: 100%;
+  position: relative;
+}
+
+//.build-contrl
 #eleStep3 {
   md-input-container { margin-top: 10px }
 }
@@ -211,6 +282,12 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   border-radius: 5px;
   background: #D6E1EC;
 }
+
+.fixed {
+  position: fixed;
+}
+
+.tp-rightarrow, .tp-leftarrow, .tp-bullets { z-index: 57 !important; }
 
 @media (max-width: 767px) {
   .menu-items {

@@ -3,8 +3,26 @@ html {
   overflow-y: auto; }
 
 body {
-  overflow-x: hidden;
-  _overflow-y: auto; }
+  padding-top: 32px;
+  -webkit-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  body.hide-scroll-bar {
+    overflow-y: hidden;
+    _padding-right: 17px; }
+  body.override-padding-top {
+    padding-top: 0px; }
+
+footer {
+  height: 200px;
+  background-color: #DEDEDE;
+  color: #666;
+  padding: 20px 0; }
+  footer .sub-footer {
+    background-color: #C3C3C3;
+    padding: 20px 0; }
 
 .menu {
   list-style: none;
@@ -29,8 +47,23 @@ body {
   content: "";
   padding: 0; }
 
-md-toolbar.top-bar {
-  background: #2F6FAD;
+.top-menu-wrapper {
+  width: calc(100% - 17px);
+  width: 100%;
+  z-index: 58;
+  top: 0;
+  left: 0;
+  -webkit-transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
+
+.hide-topbar {
+  margin-top: -32px; }
+
+.top-bar {
+  background: #5A4B69;
   color: #FFF;
   height: 32px;
   min-height: 0; }
@@ -40,20 +73,30 @@ md-toolbar.top-bar {
 
 md-toolbar.main-toolbar {
   background-color: #FFF;
-  color: #666;
+  color: #5A4B69;
   border-bottom: solid 2px #D2D2D2;
   -webkit-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
   -moz-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
-  box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34); }
+  box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  -webkit-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -moz-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -ms-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  -o-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
   md-toolbar.main-toolbar.fixed {
     position: fixed; }
+  md-toolbar.main-toolbar.transparent {
+    background-color: rgba(255, 255, 255, 0.52);
+    color: #5A4B69;
+    border-bottom: solid 2px transparent;
+    box-shadow: none; }
   md-toolbar.main-toolbar .md-toolbar-tools {
     padding: 0 !important; }
   md-toolbar.main-toolbar md-icon {
     color: #666; }
 
 md-icon.logo-icon {
-  color: #1565C0 !important;
+  color: #5A4B69 !important;
   margin-right: 5px;
   width: 48px;
   height: 48px; }
@@ -71,12 +114,12 @@ md-icon.logo-icon {
   font-size: 18px;
   font-size: 16px;
   font-weight: 700;
-  color: #A7A7A7 !important; }
+  color: #5A4B69 !important; }
   .top-menu-item:hover, .top-menu-item.active {
     color: #E24301 !important; }
 
 md-toolbar .btn-toggle-nav md-icon {
-  color: #1565C0 !important; }
+  color: #5A4B69 !important; }
 
 #divBuildBedBg.padding {
   margin-top: 90px; }
@@ -110,11 +153,11 @@ md-toolbar .btn-toggle-nav md-icon {
     padding: 10px 10px;
     text-decoration: none;
     border-bottom: 1px solid #3D83D2;
-    background: #1565C0; }
+    background: #5A4B69; }
     .steper .step-item.selected {
       background: #FFF; }
       .steper .step-item.selected span {
-        color: #1565C0; }
+        color: #5A4B69; }
     .steper .step-item:last-child {
       border: 0; }
     .steper .step-item span {
@@ -141,11 +184,11 @@ md-toolbar .btn-toggle-nav md-icon {
     margin: 5% 20px 5% -10px; }
   .build-control .md-display-1 {
     font-weight: 300;
-    color: #1565C0;
+    color: #5A4B69;
     margin: 15px 0 0 0; }
   .build-control .md-subhead {
     margin: 0;
-    color: #1565C0;
+    color: #5A4B69;
     text-transform: uppercase; }
   .build-control .sub-option {
     margin-bottom: 0;
@@ -167,6 +210,15 @@ md-toolbar .btn-toggle-nav md-icon {
     .build-control .note + .border {
       margin-top: 4px; }
 
+.bannercontainer {
+  width: 100%;
+  position: relative;
+  padding: 0; }
+
+.banner {
+  width: 100%;
+  position: relative; }
+
 #eleStep3 md-input-container {
   margin-top: 10px; }
 
@@ -179,6 +231,12 @@ md-toolbar .btn-toggle-nav md-icon {
   border: 1px solid rgba(68, 138, 218, 0.28);
   border-radius: 5px;
   background: #D6E1EC; }
+
+.fixed {
+  position: fixed; }
+
+.tp-rightarrow, .tp-leftarrow, .tp-bullets {
+  z-index: 57 !important; }
 
 @media (max-width: 767px) {
   .menu-items .top-menu-item {
