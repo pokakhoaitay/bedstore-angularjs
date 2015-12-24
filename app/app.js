@@ -14,10 +14,10 @@ angular.module('myApp', [
     'ngMaterial',
     'ngAnimate'
 ]).
-config(function ($routeProvider,$locationProvider, $mdThemingProvider) {
+    config(function ($routeProvider, $locationProvider, $mdThemingProvider) {
 
-    $routeProvider.otherwise({redirectTo: '/404'});
-    $locationProvider.html5Mode(true);
+        $routeProvider.otherwise({redirectTo: '/404'});
+        $locationProvider.html5Mode(true);
 
         //Custom template: https://material.angularjs.org/latest/Theming/03_configuring_a_theme
         //$mdThemingProvider.definePalette('amazingPaletteName', {
@@ -42,23 +42,53 @@ config(function ($routeProvider,$locationProvider, $mdThemingProvider) {
         //    'contrastLightColors': undefined    // could also specify this if default was 'dark'
         //});
 
-    $mdThemingProvider.theme('default')
-        .primaryPalette('blue')
-        .accentPalette('deep-purple');
-})
-    .controller('AppCtrl', function ($scope, $document) {
-        var appVm=this;
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('deep-purple');
+    })
+    .controller('AppCtrl',
+        function ($scope, $document, $window) {
+            var appVm = this;
+            var lastScrollTop = 0;
+            appVm.isHideBodyScrollbar = false;
+            appVm.currentYOffset=0;
 
-        var find = $document[0].getElementById('divMainContent');
-        angular.element(find).bind('scroll', function () {
-                $scope.$apply(function () {
-                    appVm.isFixed = find.scrollTop >= 90;
+            var find = $document[0];//.getElementById('divMainContent');
+            angular.element($window).bind('scroll', function () {
+                    $scope.$apply(function () {
+                        appVm.isFixed =!isScrollTop($window);//$window.pageYOffset > 0;
+                        appVm.currentYOffset=$window.pageYOffset;
+                        console.log('[DEBUG]: Body scroll->`appVm.isFixed`: ' + appVm.isFixed)
+                        console.log('[DEBUG]: Body scroll->`appVm.isFixed`: ' + appVm.isFixed)
+                    });
+                })
+                .bind('resize', function () {
+                    $scope.$apply();
                 });
-            })
-            .bind('resize', function () {
-                $scope.$apply();
+
+            $scope.$on('handlToggleBodyScrollbar', function (event, agrs) {
+                appVm.isHideBodyScrollbar = agrs;
+                console.log('handlToggleBodyScrollbar fired->`agrs`='+agrs)
+                console.log('handlToggleBodyScrollbar fired->`$scope.isHideBodyScrollbar`='+appVm.isHideBodyScrollbar)
             });
 
 
-    })
+
+
+
+
+            //
+            function isScrollTop(window){
+                var st = window.pageYOffset || document.documentElement.scrollTop;
+                var isTop=false;
+                if (st > lastScrollTop){
+                    isTop=false;
+                } else {
+                    isTop=true;
+                }
+                lastScrollTop = st;
+                console.log('`lastScrollTop: `'+lastScrollTop)
+                return isTop;
+            }
+        })
 ;
