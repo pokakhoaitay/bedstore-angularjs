@@ -18,6 +18,11 @@ angular.module('utils', ['ngRoute'])
             },
             broadcastWhat: function (event, agrs) {
                 $rootScope.$broadcast(event,agrs);
+            },
+            isPageScrollToBottom: function () {
+                var scrollHeight = $(document).height();
+                var scrollPosition = $(window).height() + $(window).scrollTop();
+                return (scrollHeight - scrollPosition) / scrollHeight === 0;
             }
         }
     }])

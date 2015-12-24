@@ -47,7 +47,7 @@ angular.module('myApp', [
             .accentPalette('deep-purple');
     })
     .controller('AppCtrl',
-        function ($scope, $document, $window) {
+        function ($scope, $document, $window,Helper) {
             var appVm = this;
             var lastScrollTop = 0;
             appVm.isHideBodyScrollbar = false;
@@ -58,6 +58,7 @@ angular.module('myApp', [
                     $scope.$apply(function () {
                         appVm.isHideTopbar = !isScrollTop($window);//$window.pageYOffset > 0;
                         appVm.currentYOffset = $window.pageYOffset;
+                        console.log('appVm.isHideTopbar:'+ appVm.isHideTopbar)
                     });
                 })
                 .bind('resize', function () {
@@ -73,13 +74,12 @@ angular.module('myApp', [
             function isScrollTop(window) {
                 var st = window.pageYOffset || document.documentElement.scrollTop;
                 var isTop = false;
-                if (st >= lastScrollTop - 15) {
+                if (st >= lastScrollTop || Helper.isPageScrollToBottom()) {
                     isTop = false;
                 } else {
                     isTop = true;
                 }
                 lastScrollTop = st;
-                console.log('`lastScrollTop: `' + st)
                 return isTop;
             }
         })
