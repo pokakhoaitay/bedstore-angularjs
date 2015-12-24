@@ -7,7 +7,12 @@ angular.module('myApp.buildABed', ['ngRoute'])
             controller: 'BuildABedCtrl'
         })
     }])
-    .controller('BuildABedCtrl', function ($scope) {
+    .controller('BuildABedCtrl', function ($scope,$timeout) {
+        $scope.isOpenDoors = true;
+        $scope.isOpenUnit = false;
+        $scope.isOpenUnit2 = false;
+        $scope.isCheck = false;
+
         $scope.bedData = {};
         $scope.bedData.orientation = 'V';
         $scope.bedData.size = 'Single';
@@ -15,7 +20,7 @@ angular.module('myApp.buildABed', ['ngRoute'])
         $scope.bedData.legHeight = 'Regular';
         $scope.bedData.cabinetGroup = 'Solid';
         $scope.bedData.cabinet = 7;
-        $scope.bedData.isLeftCabinet = true;
+        $scope.bedData.isLeftCabinet = false;
         $scope.bedData.isRightCabinet = false;
         $scope.bedData.leftUpperAccessory = 0;
         $scope.bedData.rightUpperAccessory = 0;
@@ -153,5 +158,34 @@ angular.module('myApp.buildABed', ['ngRoute'])
                 }
             }
         ]
+        $scope.setDelay = function(){
+            var timeout =500;
+            if($scope.bedData.orientation=="H")
+            timeout = 30;
 
+            if(!$scope.isCheck) {
+                $scope.isOpenDoors = false;
+                $scope.isOpenUnit = false;
+                $scope.isOpenUnit2 = true;
+                $timeout(function () {
+                    $scope.isOpenUnit2 = false;
+                    $scope.isOpenUnit = true;
+                    $scope.isOpenDoors = false;
+                }, timeout);
+            }
+            else
+            {
+                $scope.isOpenDoors = false;
+                $scope.isOpenUnit = false;
+                $scope.isOpenUnit2 = true;
+                $timeout(function () {
+                    $scope.isOpenUnit = false;
+                    $scope.isOpenUnit2 = false;
+                    $scope.isOpenDoors = true;
+
+                }, timeout);
+
+            }
+            console.log($scope.bedData.cabinet);
+        };
     })
