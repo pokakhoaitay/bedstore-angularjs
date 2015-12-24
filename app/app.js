@@ -51,15 +51,13 @@ angular.module('myApp', [
             var appVm = this;
             var lastScrollTop = 0;
             appVm.isHideBodyScrollbar = false;
-            appVm.currentYOffset=0;
+            appVm.currentYOffset = 0;
 
             var find = $document[0];//.getElementById('divMainContent');
             angular.element($window).bind('scroll', function () {
                     $scope.$apply(function () {
-                        appVm.isFixed =!isScrollTop($window);//$window.pageYOffset > 0;
-                        appVm.currentYOffset=$window.pageYOffset;
-                        console.log('[DEBUG]: Body scroll->`appVm.isFixed`: ' + appVm.isFixed)
-                        console.log('[DEBUG]: Body scroll->`appVm.isFixed`: ' + appVm.isFixed)
+                        appVm.isHideTopbar = !isScrollTop($window);//$window.pageYOffset > 0;
+                        appVm.currentYOffset = $window.pageYOffset;
                     });
                 })
                 .bind('resize', function () {
@@ -68,26 +66,20 @@ angular.module('myApp', [
 
             $scope.$on('handlToggleBodyScrollbar', function (event, agrs) {
                 appVm.isHideBodyScrollbar = agrs;
-                console.log('handlToggleBodyScrollbar fired->`agrs`='+agrs)
-                console.log('handlToggleBodyScrollbar fired->`$scope.isHideBodyScrollbar`='+appVm.isHideBodyScrollbar)
             });
 
 
-
-
-
-
             //
-            function isScrollTop(window){
+            function isScrollTop(window) {
                 var st = window.pageYOffset || document.documentElement.scrollTop;
-                var isTop=false;
-                if (st > lastScrollTop){
-                    isTop=false;
+                var isTop = false;
+                if (st >= lastScrollTop - 15) {
+                    isTop = false;
                 } else {
-                    isTop=true;
+                    isTop = true;
                 }
                 lastScrollTop = st;
-                console.log('`lastScrollTop: `'+lastScrollTop)
+                console.log('`lastScrollTop: `' + st)
                 return isTop;
             }
         })

@@ -1,5 +1,7 @@
-<div ng-controller="_TopMenuCtrl" class="top-menu-wrapper fixed" ng-class="{'hide-topbar':appVm.isFixed}">
-    <div class="top-bar" _ng-hidex="appVm.isFixed"></div>
+<div ng-controller="_TopMenuCtrl" class="top-menu-wrapper fixed" ng-class="{'hide-topbar':appVm.isHideTopbar}">
+    <div class="top-bar" _ng-hidex="appVm.isFixed">
+
+    </div>
     <md-toolbar class="container main-toolbar" ng-class="{transparent:appVm.currentYOffset==0}">
         <nav layout="column">
             <div layout="row" layout-align="center center">

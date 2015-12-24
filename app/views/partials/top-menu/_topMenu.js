@@ -9,7 +9,7 @@ angular.module('myApp._topMenu', ['ngRoute', 'ngMaterial'])
         function ($scope, $window, $timeout, $mdSidenav, $log, Helper, $document) {
             var vpWidth = 0;
             $scope.isHideTopMenu = false;
-            $scope.isFixed = false;
+            $scope.isHideTopbar = false;
 
             $scope.$watch(function () {//https://docs.angularjs.org/api/ng/type/$rootScope.Scope
                 return window.innerWidth; //Lắng nghe cái gì?
