@@ -46,19 +46,29 @@ angular.module('myApp', [
             .primaryPalette('blue')
             .accentPalette('deep-purple');
     })
+    //.run(function ($templateCache, $route, $http) {
+    //    var url;
+    //    for(var i in $route.routes)
+    //    {
+    //        if (url = $route.routes[i].templateUrl)
+    //        {
+    //            $http.get(url, {cache: $templateCache});
+    //        }
+    //    }
+    //})
     .controller('AppCtrl',
-        function ($scope, $document, $window,Helper) {
+        function ($scope, $document, $window,Helper,$location, $route) {
             var appVm = this;
             var lastScrollTop = 0;
             appVm.isHideBodyScrollbar = false;
             appVm.currentYOffset = 0;
+            appVm.isHomePage=false;
 
             var find = $document[0];//.getElementById('divMainContent');
             angular.element($window).bind('scroll', function () {
                     $scope.$apply(function () {
                         appVm.isHideTopbar = !isScrollTop($window);//$window.pageYOffset > 0;
                         appVm.currentYOffset = $window.pageYOffset;
-                        console.log('appVm.isHideTopbar:'+ appVm.isHideTopbar)
                     });
                 })
                 .bind('resize', function () {
@@ -68,6 +78,17 @@ angular.module('myApp', [
             $scope.$on('handlToggleBodyScrollbar', function (event, agrs) {
                 appVm.isHideBodyScrollbar = agrs;
             });
+
+            $scope.$on('$routeChangeSuccess', function(scope, next, current){
+                var currentControllerName=$route.current.controller;
+                appVm.isHomePage=currentControllerName=='HomeCtrl';
+            });
+
+            $scope.$on('$viewContentLoaded', function(){
+                var currentControllerName=$route.current.controller;
+                appVm.isHomePage=currentControllerName=='HomeCtrl';
+            });
+
 
 
             //

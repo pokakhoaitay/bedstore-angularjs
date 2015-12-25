@@ -1,6 +1,7 @@
 html {
   height: 100%;
-  overflow-y: auto; }
+  overflow-y: auto;
+  overflow-x: hidden !important; }
 
 body {
   padding-top: 32px;
@@ -63,7 +64,7 @@ footer {
   margin-top: -32px; }
 
 .top-bar {
-  background: #5A4B69;
+  background: #514261;
   color: #FFF;
   height: 32px;
   min-height: 0; }
@@ -72,12 +73,12 @@ footer {
   padding: 0 16px; }
 
 md-toolbar.main-toolbar {
-  background-color: #FFF;
-  color: #5A4B69;
-  border-bottom: solid 2px #D2D2D2;
-  -webkit-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
-  -moz-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
-  box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  background-color: #5A4B69;
+  color: #FFF;
+  border-bottom: solid 0px #D2D2D2;
+  -webkit-box-shadow: 0 1px 6px rgba(90, 75, 105, 0.35);
+  -moz-box-shadow: 0 1px 6px rgba(90, 75, 105, 0.35);
+  box-shadow: 0 1px 6px rgba(90, 75, 105, 0.35);
   -webkit-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   -moz-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   -ms-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -88,15 +89,17 @@ md-toolbar.main-toolbar {
   md-toolbar.main-toolbar.transparent {
     background-color: rgba(255, 255, 255, 0.52);
     color: #5A4B69;
-    border-bottom: solid 2px transparent;
+    border-bottom: solid 0px transparent;
     box-shadow: none; }
+    md-toolbar.main-toolbar.transparent .top-menu-item, md-toolbar.main-toolbar.transparent md-icon.logo-icon {
+      color: #5A4B69 !important; }
   md-toolbar.main-toolbar .md-toolbar-tools {
     padding: 0 !important; }
   md-toolbar.main-toolbar md-icon {
     color: #666; }
 
 md-icon.logo-icon {
-  color: #5A4B69 !important;
+  color: #FFF !important;
   margin-right: 5px;
   width: 48px;
   height: 48px; }
@@ -114,15 +117,12 @@ md-icon.logo-icon {
   font-size: 18px;
   font-size: 16px;
   font-weight: 700;
-  color: #5A4B69 !important; }
+  color: #FFF !important; }
   .top-menu-item:hover, .top-menu-item.active {
     color: #E24301 !important; }
 
 md-toolbar .btn-toggle-nav md-icon {
   color: #5A4B69 !important; }
-
-#divBuildBedBg.padding {
-  margin-top: 90px; }
 
 #divMainContent {
   overflow-x: hidden; }
@@ -140,7 +140,7 @@ md-toolbar .btn-toggle-nav md-icon {
   .bed-container.offset-left {
     right: 0px; }
   .bed-container.offset-right {
-    right: 64px; }
+    right: 114px; }
   .bed-container.offset-center {
     right: 264px; }
 
@@ -152,7 +152,7 @@ md-toolbar .btn-toggle-nav md-icon {
     text-transform: uppercase;
     padding: 10px 10px;
     text-decoration: none;
-    border-bottom: 1px solid #3D83D2;
+    border-bottom: 1px solid #514261;
     background: #5A4B69; }
     .steper .step-item.selected {
       background: #FFF; }
@@ -222,6 +222,14 @@ md-toolbar .btn-toggle-nav md-icon {
 #eleStep3 md-input-container {
   margin-top: 10px; }
 
+.view-container {
+  padding-top: 64px; }
+
+.bed-open-close {
+  opacity: 1; }
+  .bed-open-close.ng-hide {
+    opacity: 0; }
+
 .rad-white .md-on {
   background-color: #FFF !important; }
 .rad-white .md-off:not(.md-checked .md-off) {
@@ -244,11 +252,3 @@ md-toolbar .btn-toggle-nav md-icon {
     margin: 0 10px; } }
 
 /*# sourceMappingURL=app.css.map */
-
-/**************************************************************
-open/close unit
-**************************************************************/
-#check-open{
-  margin: 10px 0 0 0;
-  padding: 20px 0 0 0;
-}

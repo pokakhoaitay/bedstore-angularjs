@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/Tonicons-Outline/style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
 
     <!-- REVOLUTION BANNER CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="bower_components/slider-revolution/src/css/settings.css"
@@ -38,9 +38,9 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 <aside ng-include="'views/partials/left-sidenav/_leftSidenav.html'"></aside>
-<div ng-include="'views/partials/top-menu/_topMenu.html'"></div>
+<div ng-include src="'views/partials/top-menu/_topMenu.html'"></div>
 
-<div ng-view></div>
+<div ng-view autoscroll="true"></div>
 <footer layout="column">
     <div layout="row" layout-align="center center">
         <div flex="70" flex-sm="100">

@@ -1,8 +1,10 @@
 //$primary-color: #1565C0;
 $primary-color: #5A4B69;
+$primary-color-0: #514261;
 $primary-color-1: #3D83D2;
 $accent-color: #E24301;
 $text-color: #666;
+$body-padding-top: 66px;
 
 //#######################################################################
 //MIXIN
@@ -16,14 +18,14 @@ $text-color: #666;
   transition: $prop .5s cubic-bezier(0.215, 0.610, 0.355, 1.000);
 }
 
-@mixin my-boxshadow ($allParam){
+@mixin my-boxshadow($allParam) {
   -webkit-box-shadow: $allParam; -moz-box-shadow: $allParam; box-shadow: $allParam;
 }
 
 //#######################################################################
 //TAGS
 //#######################################################################
-html { height: 100%; overflow-y: auto }
+html { height: 100%; overflow-y: auto; overflow-x: hidden !important; }
 
 body {
   padding-top: 32px;
@@ -87,7 +89,7 @@ footer {
 }
 
 .top-bar {
-  background: $primary-color;
+  background: $primary-color-0;
   color: #FFF;
   height: 32px;
   min-height: 0;
@@ -96,23 +98,21 @@ footer {
 .container { padding: 0 16px }
 
 md-toolbar.main-toolbar {
-  background-color: #FFF;
-  color: $primary-color;
-  border-bottom: solid 2px #D2D2D2;
-  -webkit-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
-  -moz-box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
-  box-shadow: 0 3px 6px rgba(182, 182, 182, 0.34);
+  background-color: $primary-color;
+  color: #FFF;
+  border-bottom: solid 0px #D2D2D2;
+  @include my-boxshadow(0 1px 6px rgba(90, 75, 105, 0.35));
   @include my-transition(all);
   &.fixed {
     position: fixed;
   }
-  &.transparent{
+  &.transparent {
     background-color: rgba(255, 255, 255, 0.52);
     color: $primary-color;
-    border-bottom: solid 2px transparent;
+    border-bottom: solid 0px transparent;
     box-shadow: none;
     //@include my-boxshadow(0 3px 6px rgba(115, 115, 115, 0.34));
-
+    .top-menu-item, md-icon.logo-icon { color: $primary-color !important; }
   }
   .md-toolbar-tools {
     padding: 0 !important;
@@ -122,7 +122,7 @@ md-toolbar.main-toolbar {
 }
 
 md-icon.logo-icon {
-  color: $primary-color!important;
+  color: #FFF !important;
   margin-right: 5px;
   width: 48px;
   height: 48px;
@@ -137,7 +137,7 @@ md-icon.logo-icon {
   font-size: 18px;
   font-size: 16px;
   font-weight: 700;
-  color: $primary-color !important;
+  color: #FFF !important;
   &:hover, &.active {
     color: $accent-color !important; //
   }
@@ -146,7 +146,6 @@ md-icon.logo-icon {
 md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 
 #divBuildBedBg {
-  &.padding { margin-top: 90px }
 }
 
 #divMainContent { overflow-x: hidden }
@@ -164,7 +163,7 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
     right: 0px;
   }
   &.offset-right {
-    right: 64px;
+    right: 114px;
   }
   &.offset-center {
     right: 264px;
@@ -179,7 +178,7 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
     text-transform: uppercase;
     padding: 10px 10px;
     text-decoration: none;
-    border-bottom: 1px solid $primary-color-1;
+    border-bottom: 1px solid $primary-color-0;
     background: $primary-color;
     &.selected {
       background: #FFF;
@@ -199,6 +198,8 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 
 //.animate-show-hide { transition: all .7s cubic-bezier(0.000, 1, 0.0, 1.000); }
 //.animate-show-hide { transition: all .3s cubic-bezier(1.000, 0.000, 0.000, 1.000); }
+
+
 
 .build-control {
   margin: 5% 20px 5% 0;
@@ -263,6 +264,14 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 //.build-contrl
 #eleStep3 {
   md-input-container { margin-top: 10px }
+}
+
+.view-container { padding-top: 64px }
+.bed-open-close {
+  opacity: 1;
+  &.ng-hide {
+    opacity: 0;
+  }
 }
 
 //------------------------

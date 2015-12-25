@@ -4,10 +4,11 @@ angular.module('myApp.buildABed', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/build-a-bed', {
             templateUrl: 'views/build-a-bed/buildABed.html',
-            controller: 'BuildABedCtrl'
+            controller: 'BuildABedCtrl',
+            preload:true
         })
     }])
-    .controller('BuildABedCtrl', function ($scope,$timeout) {
+    .controller('BuildABedCtrl', function ($scope, $timeout) {
         $scope.isOpenDoors = true;
         $scope.isOpenUnit = false;
         $scope.isOpenUnit2 = false;
@@ -125,6 +126,9 @@ angular.module('myApp.buildABed', ['ngRoute'])
                 },
                 isSelected: function () {
                     return $scope.currentStep == 1
+                },
+                isHide: function () {
+                    return false;
                 }
             },
             {
@@ -135,16 +139,22 @@ angular.module('myApp.buildABed', ['ngRoute'])
                 },
                 isSelected: function () {
                     return $scope.currentStep == 2
+                },
+                isHide: function () {
+                    return false;
                 }
             },
             {
                 stepNum: 3,
-                description: 'Step 3',
+                description:'Step 3',
                 img: function () {
-                    return $scope.currentStep !== 3 ? 'img/step-3.png' : 'img/step-3-on.png'
+                    return $scope.currentStep !== 3 ?'img/step-3.png': 'img/step-3-on.png'
                 },
                 isSelected: function () {
                     return $scope.currentStep == 3
+                },
+                isHide: function () {
+                    return $scope.bedData.orientation == 'H';
                 }
             },
             {
@@ -155,15 +165,18 @@ angular.module('myApp.buildABed', ['ngRoute'])
                 },
                 isSelected: function () {
                     return $scope.currentStep == 4
+                },
+                isHide: function () {
+                    return false;
                 }
             }
         ]
-        $scope.setDelay = function(){
-            var timeout =500;
-            if($scope.bedData.orientation=="H")
-            timeout = 30;
+        $scope.setDelay = function () {
+            var timeout = 500;
+            if ($scope.bedData.orientation == "H")
+                timeout = 30;
 
-            if(!$scope.isCheck) {
+            if (!$scope.isCheck) {
                 $scope.isOpenDoors = false;
                 $scope.isOpenUnit = false;
                 $scope.isOpenUnit2 = true;
@@ -173,8 +186,7 @@ angular.module('myApp.buildABed', ['ngRoute'])
                     $scope.isOpenDoors = false;
                 }, timeout);
             }
-            else
-            {
+            else {
                 $scope.isOpenDoors = false;
                 $scope.isOpenUnit = false;
                 $scope.isOpenUnit2 = true;
@@ -186,6 +198,5 @@ angular.module('myApp.buildABed', ['ngRoute'])
                 }, timeout);
 
             }
-            console.log($scope.bedData.cabinet);
         };
     })
