@@ -30,7 +30,7 @@ html { height: 100%; overflow-y: auto; overflow-x: hidden !important; }
 body {
   padding-top: 32px;
   @include my-transition(padding-top);
-  &.hide-scroll-bar { overflow-y: hidden; _padding-right: 17px; }
+  &.hide-scroll-bar { overflow-y: hidden; _padding-right: 17px; position: fixed; top: 0; width: 100% }
   &.override-padding-top { padding-top: 0px }
 }
 
@@ -160,20 +160,26 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   div { position: absolute;
     width: 100% }
   &.offset-left {
-    right: 0px;
+    right: -120px;
+    &.offset-right {
+      right: -42px;
+    }
   }
   &.offset-right {
-    right: 114px;
+    right: 0px;
   }
   &.offset-center {
-    right: 264px;
+    right: 50% !important;
+    margin-right: -445px !important;
+    margin-right: -548px !important;
   }
 }
 
 .steper {
   width: 64px;
-  margin: 5% 0px 5% 0;
+  margin: 3% 0px 0% 0;
   border-radius: 3px;
+  z-index: 2;
   .step-item {
     text-transform: uppercase;
     padding: 10px 10px;
@@ -181,7 +187,7 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
     border-bottom: 1px solid $primary-color-0;
     background: $primary-color;
     &.selected {
-      background: #FFF;
+      background-color: rgba(255, 255, 255, 0.16);
       span {
         color: $primary-color;
       }
@@ -199,15 +205,16 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 //.animate-show-hide { transition: all .7s cubic-bezier(0.000, 1, 0.0, 1.000); }
 //.animate-show-hide { transition: all .3s cubic-bezier(1.000, 0.000, 0.000, 1.000); }
 
-
-
 .build-control {
-  margin: 5% 20px 5% 0;
+  margin: 3% 20px 0% 0;
   padding: 0 20px;
-  background-color: #FFF;
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 0px solid $primary-color-0;
   opacity: 1;
   color: $text-color;
-  width: 35%;
+  width: 30%;
+  min-width: 360px;
+  z-index: 3;
   &.ng-hide {
     opacity: 0;
     margin: 5% 20px 5% -10px;
@@ -267,6 +274,7 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
 }
 
 .view-container { padding-top: 64px }
+
 .bed-open-close {
   opacity: 1;
   &.ng-hide {
@@ -304,4 +312,16 @@ md-toolbar .btn-toggle-nav md-icon { color: $primary-color !important; }
   }
 }
 
-
+@media (min-width: 1280px) and (max-width: 1679px) {
+  .bed-container {
+    right: -120px;
+    &.offset-left {
+      right: -176px;
+    }
+    &.offset-left {
+      &.offset-right {
+        right: -118px;
+      }
+    }
+  }
+}

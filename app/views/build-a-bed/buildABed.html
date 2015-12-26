@@ -4,7 +4,7 @@
                  layout="row" layout-fill
         >
             <div layout="row" flex layout-align="center">
-                <div flex flex-gt-lg="70" flex-sm="100" class="container" layout="row">
+                <div id="eleBuildArea" flex="80" flex-gt-lg="80" flex-gt-md="100" class="container" layout="row">
                     <div class="steper" layout="column" layout-align="center center">
                         <a ng-repeat="step in stepDatas" class="step-item" flex layout-align="center center"
                            ng-click="changeStep(step.stepNum)"
@@ -12,12 +12,14 @@
                            href="javascript:void(0)"
                            ng-class="{selected:step.isSelected()}"
                            ng-hide="step.isHide()"
-                           >
+                        >
                             <img ng-src="{{step.img()}}" alt="Step {{step.stepNum}}">
                             <span>{{bedData.orientation=='V'? step.stepNum:(step.stepNum==4?3:step.stepNum)}}</span>
                         </a>
                     </div>
-                    <div class="build-control animate-show-hide md-whiteframe-2dp" ng-show="isShowPanel">
+                    <!--BUILD CONTROL-->
+                    <div class="build-control animate-show-hide" ng-show="isShowPanel">
+                        <!--Step 1-->
                         <section id="eleStep1" ng-show="currentStep==1">
                             <h3 class="md-display-1">STEP 1</h3>
                             <h5 class="md-subhead">Choose your size, frame, and orientation</h5>
@@ -60,7 +62,8 @@
                                     {{item.name}}
                                 </md-radio-button>
                             </md-radio-group>
-                        </section>
+                        </section> <!--End Step 1-->
+                        <!--Step 2-->
                         <section id="eleStep2" ng-show="currentStep==2">
                             <h3 class="md-display-1">STEP 2</h3>
                             <h5 class="md-subhead">Cabinet & panel finish </h5>
@@ -68,8 +71,7 @@
                             <div class="border">
                                 <md-radio-group class="md-primary" layout="row" ng-model="bedData.cabinetGroup">
                                     <md-radio-button ng-repeat="item in cabinetGroups" ng-value="item.value"
-                                                     name="{{item.name}}"
-                                                     flex>
+                                                     name="{{item.name}}">
                                         {{item.name}}
                                     </md-radio-button>
                                 </md-radio-group>
@@ -82,7 +84,9 @@
                                     </md-radio-button>
                                 </md-radio-group>
                             </div>
-                        </section>
+                        </section><!--End Step 2-->
+
+                        <!--Step 3-->
                         <section id="eleStep3" ng-show="currentStep==3">
                             <h3 class="md-display-1">STEP 3</h3>
                             <h5 class="md-subhead">Side cabinets & accessories </h5>
@@ -174,16 +178,15 @@
                                 </div>
                             </div>
 
-                        </section>
-                        <section>
-                            <div id="check-open">
-                                <md-checkbox ng-model="isCheck" ng-click="setDelay()">{{'open/close unit'|uppercase}}
-                                </md-checkbox>
-                            </div>
-                        </section>
-                    </div>
-
-                    <div class="bed-container animate-show-hide offset-left"
+                        </section> <!--End Step 3-->
+                        <!--<section>-->
+                        <!--<div id="check-open">-->
+                        <!--<md-checkbox ng-model="isCheck" ng-click="setDelay()">{{'open/close unit'|uppercase}}-->
+                        <!--</md-checkbox>-->
+                        <!--</div>-->
+                        <!--</section>-->
+                    </div> <!--END BUILD CONTROL-->
+                    <div class="bed-container animate-show-hide"
                          ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet, 'offset-center':!isShowPanel}">
                         <div id="cabinetShadow">
                             <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-nolights.png" alt="">
@@ -228,7 +231,8 @@
                             <img ng-src="img/build-bed/{{bedData.rightLowerFinish}}/V/ntable-right.png">
                         </div>
                         <div id="headboard">
-                            <img ng-if="bedData.cabinet=='V'" ng-src="img/build-bed/{{bedData.cabinet}}/V/headboard.png">
+                            <img ng-if="bedData.cabinet=='V'"
+                                 ng-src="img/build-bed/{{bedData.cabinet}}/V/headboard.png">
                         </div>
                         <div id="cabinetDoors" ng-show="isOpenDoors"><img
                                 ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet-doors.png">

@@ -5,10 +5,9 @@ angular.module('myApp.buildABed', ['ngRoute'])
         $routeProvider.when('/build-a-bed', {
             templateUrl: 'views/build-a-bed/buildABed.html',
             controller: 'BuildABedCtrl',
-            preload:true
         })
     }])
-    .controller('BuildABedCtrl', function ($scope, $timeout) {
+    .controller('BuildABedCtrl', function ($scope, $timeout, $document) {
         $scope.isOpenDoors = true;
         $scope.isOpenUnit = false;
         $scope.isOpenUnit2 = false;
@@ -146,9 +145,9 @@ angular.module('myApp.buildABed', ['ngRoute'])
             },
             {
                 stepNum: 3,
-                description:'Step 3',
+                description: 'Step 3',
                 img: function () {
-                    return $scope.currentStep !== 3 ?'img/step-3.png': 'img/step-3-on.png'
+                    return $scope.currentStep !== 3 ? 'img/step-3.png' : 'img/step-3-on.png'
                 },
                 isSelected: function () {
                     return $scope.currentStep == 3
@@ -199,4 +198,14 @@ angular.module('myApp.buildABed', ['ngRoute'])
 
             }
         };
+
+        $scope.calcRight = function () {
+            var buildControlWidth = $document[0].getElementsByClassName('build-control')[0].clientWidth+64;
+            var docWidth = $document[0].documentElement.clientWidth;
+            var outsideWidth = docWidth-$document[0].getElementById('eleBuildArea').clientWidth;
+            var actual=(docWidth-buildControlWidth);
+            var result =actual-891;
+            console.log(outsideWidth);
+            return buildControlWidth+(outsideWidth);
+        }
     })

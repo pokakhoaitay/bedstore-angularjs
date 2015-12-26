@@ -12,7 +12,10 @@ body {
   transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
   body.hide-scroll-bar {
     overflow-y: hidden;
-    _padding-right: 17px; }
+    _padding-right: 17px;
+    position: fixed;
+    top: 0;
+    width: 100%; }
   body.override-padding-top {
     padding-top: 0px; }
 
@@ -138,16 +141,21 @@ md-toolbar .btn-toggle-nav md-icon {
     position: absolute;
     width: 100%; }
   .bed-container.offset-left {
-    right: 0px; }
+    right: -120px; }
+    .bed-container.offset-left.offset-right {
+      right: -42px; }
   .bed-container.offset-right {
-    right: 114px; }
+    right: 0px; }
   .bed-container.offset-center {
-    right: 264px; }
+    right: 50% !important;
+    margin-right: -445px !important;
+    margin-right: -548px !important; }
 
 .steper {
   width: 64px;
-  margin: 5% 0px 5% 0;
-  border-radius: 3px; }
+  margin: 3% 0px 0% 0;
+  border-radius: 3px;
+  z-index: 2; }
   .steper .step-item {
     text-transform: uppercase;
     padding: 10px 10px;
@@ -155,7 +163,7 @@ md-toolbar .btn-toggle-nav md-icon {
     border-bottom: 1px solid #514261;
     background: #5A4B69; }
     .steper .step-item.selected {
-      background: #FFF; }
+      background-color: rgba(255, 255, 255, 0.16); }
       .steper .step-item.selected span {
         color: #5A4B69; }
     .steper .step-item:last-child {
@@ -173,12 +181,15 @@ md-toolbar .btn-toggle-nav md-icon {
   transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .build-control {
-  margin: 5% 20px 5% 0;
+  margin: 3% 20px 0% 0;
   padding: 0 20px;
-  background-color: #FFF;
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 0px solid #514261;
   opacity: 1;
   color: #666;
-  width: 35%; }
+  width: 30%;
+  min-width: 360px;
+  z-index: 3; }
   .build-control.ng-hide {
     opacity: 0;
     margin: 5% 20px 5% -10px; }
@@ -250,5 +261,12 @@ md-toolbar .btn-toggle-nav md-icon {
   .menu-items .top-menu-item {
     font-size: 13px;
     margin: 0 10px; } }
+@media (min-width: 1280px) and (max-width: 1679px) {
+  .bed-container {
+    right: -120px; }
+    .bed-container.offset-left {
+      right: -176px; }
+    .bed-container.offset-left.offset-right {
+      right: -118px; } }
 
 /*# sourceMappingURL=app.css.map */
