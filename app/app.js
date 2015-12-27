@@ -67,7 +67,7 @@ angular.module('myApp', [
             var find = $document[0];//.getElementById('divMainContent');
             angular.element($window).bind('scroll', function () {
                     $scope.$apply(function () {
-                        appVm.isHideTopbar = !isScrollTop($window);//$window.pageYOffset > 0;
+                       // appVm.isHideTopbar = !isScrollTop($window);//$window.pageYOffset > 0;
                         appVm.currentYOffset = $window.pageYOffset;
                     });
                 })

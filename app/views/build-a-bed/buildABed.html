@@ -4,7 +4,7 @@
                  layout="row" layout-fill
         >
             <div layout="row" flex layout-align="center">
-                <div id="eleBuildArea" flex="80" flex-gt-lg="80" flex-gt-md="100" class="container" layout="row">
+                <div id="eleBuildArea" flex layout="row">
                     <div class="steper" layout="column" layout-align="center center">
                         <a ng-repeat="step in stepDatas" class="step-item" flex layout-align="center center"
                            ng-click="changeStep(step.stepNum)"
@@ -62,7 +62,9 @@
                                     {{item.name}}
                                 </md-radio-button>
                             </md-radio-group>
-                        </section> <!--End Step 1-->
+                        </section>
+                        <!--End Step 1-->
+
                         <!--Step 2-->
                         <section id="eleStep2" ng-show="currentStep==2">
                             <h3 class="md-display-1">STEP 2</h3>
@@ -84,7 +86,8 @@
                                     </md-radio-button>
                                 </md-radio-group>
                             </div>
-                        </section><!--End Step 2-->
+                        </section>
+                        <!--End Step 2-->
 
                         <!--Step 3-->
                         <section id="eleStep3" ng-show="currentStep==3">
@@ -178,14 +181,11 @@
                                 </div>
                             </div>
 
-                        </section> <!--End Step 3-->
-                        <!--<section>-->
-                        <!--<div id="check-open">-->
-                        <!--<md-checkbox ng-model="isCheck" ng-click="setDelay()">{{'open/close unit'|uppercase}}-->
-                        <!--</md-checkbox>-->
-                        <!--</div>-->
-                        <!--</section>-->
-                    </div> <!--END BUILD CONTROL-->
+                        </section>
+                        <!--End Step 3-->
+                    </div>
+                    <!--END BUILD CONTROL-->
+                    <!--BED CONTAINER-->
                     <div class="bed-container animate-show-hide"
                          ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet, 'offset-center':!isShowPanel}">
                         <div id="cabinetShadow">
@@ -251,6 +251,14 @@
                         <div id="bedopen" class="bed-open-close animate-show-hide" ng-show="isOpenUnit"><img
                                 ng-src="img/build-bed/{{bedData.orientation}}/open-nolights.png"></div>
                         <div id="bedFront"></div>
+                    </div>
+                    <!--END BED CONTAINER-->
+
+                    <div id="eleToggleCloseOpenBed">
+                        <md-button class="md-raised" ng-click="setDelay()">
+                            <md-icon class="ton-li-upload-1"></md-icon>
+                            <span>OPEN/CLOSE UNIT</span>
+                        </md-button>
                     </div>
                 </div>
 

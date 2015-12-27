@@ -4,7 +4,7 @@ html {
   overflow-x: hidden !important; }
 
 body {
-  padding-top: 32px;
+  _padding-top: 32px;
   -webkit-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   -moz-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   -ms-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -28,6 +28,9 @@ footer {
     background-color: #C3C3C3;
     padding: 20px 0; }
 
+/*--------------------------------------------------
+* MENU
+*--------------------------------------------------*/
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -63,17 +66,36 @@ footer {
   -o-transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   transition: margin 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
-.hide-topbar {
-  margin-top: -32px; }
-
 .top-bar {
   background: #514261;
   color: #FFF;
   height: 32px;
   min-height: 0; }
-
-.container {
-  padding: 0 16px; }
+  .top-bar .link-bar, .top-bar .icon-bar {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0; }
+    .top-bar .link-bar > li, .top-bar .icon-bar > li {
+      display: inline-block;
+      margin: 0; }
+      .top-bar .link-bar > li + li:before, .top-bar .icon-bar > li + li:before {
+        content: '/ ';
+        color: #867498;
+        padding: 0 5px; }
+      .top-bar .link-bar > li a, .top-bar .icon-bar > li a {
+        color: #BDB5C5;
+        font-size: 12px;
+        text-underline: none;
+        text-decoration: none;
+        line-height: 32px; }
+        .top-bar .link-bar > li a:hover, .top-bar .icon-bar > li a:hover {
+          color: #FFF; }
+  .top-bar .shopping-cart {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 24px;
+    line-height: 36px;
+    margin: 0 20px 0 0; }
 
 md-toolbar.main-toolbar {
   background-color: #5A4B69;
@@ -97,7 +119,9 @@ md-toolbar.main-toolbar {
     md-toolbar.main-toolbar.transparent .top-menu-item, md-toolbar.main-toolbar.transparent md-icon.logo-icon {
       color: #5A4B69 !important; }
   md-toolbar.main-toolbar .md-toolbar-tools {
-    padding: 0 !important; }
+    padding: 27px 0 !important;
+    height: 110px;
+    max-height: none; }
   md-toolbar.main-toolbar md-icon {
     color: #666; }
 
@@ -117,15 +141,14 @@ md-icon.logo-icon {
 .top-menu-item {
   margin: 0 15px;
   text-transform: uppercase;
-  font-size: 18px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #FFF !important; }
+  font-size: 13px;
+  font-weight: 500;
+  color: #B7B0BF !important; }
   .top-menu-item:hover, .top-menu-item.active {
-    color: #E24301 !important; }
+    color: #FFF !important; }
 
 md-toolbar .btn-toggle-nav md-icon {
-  color: #5A4B69 !important; }
+  color: #FFF !important; }
 
 #divMainContent {
   overflow-x: hidden; }
@@ -136,7 +159,7 @@ md-toolbar .btn-toggle-nav md-icon {
   z-index: 1;
   height: 596px;
   right: 0px;
-  top: 174px; }
+  top: 125px; }
   .bed-container div {
     position: absolute;
     width: 100%; }
@@ -153,7 +176,7 @@ md-toolbar .btn-toggle-nav md-icon {
 
 .steper {
   width: 64px;
-  margin: 3% 0px 0% 0;
+  margin: 0% 0px 0% 0;
   border-radius: 3px;
   z-index: 2; }
   .steper .step-item {
@@ -161,7 +184,7 @@ md-toolbar .btn-toggle-nav md-icon {
     padding: 10px 10px;
     text-decoration: none;
     border-bottom: 1px solid #514261;
-    background: #5A4B69; }
+    background: #2D2931; }
     .steper .step-item.selected {
       background-color: rgba(255, 255, 255, 0.16); }
       .steper .step-item.selected span {
@@ -181,7 +204,7 @@ md-toolbar .btn-toggle-nav md-icon {
   transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .build-control {
-  margin: 3% 20px 0% 0;
+  margin: 0% 20px 0% 0;
   padding: 0 20px;
   background-color: rgba(255, 255, 255, 0.16);
   border: 0px solid #514261;
@@ -233,14 +256,23 @@ md-toolbar .btn-toggle-nav md-icon {
 #eleStep3 md-input-container {
   margin-top: 10px; }
 
-.view-container {
-  padding-top: 64px; }
-
 .bed-open-close {
   opacity: 1; }
   .bed-open-close.ng-hide {
     opacity: 0; }
 
+#eleBuildArea {
+  position: relative; }
+
+#eleToggleCloseOpenBed {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 5; }
+
+/*--------------------------------------------------
+* TOOLS
+*--------------------------------------------------*/
 .rad-white .md-on {
   background-color: #FFF !important; }
 .rad-white .md-off:not(.md-checked .md-off) {
@@ -254,6 +286,12 @@ md-toolbar .btn-toggle-nav md-icon {
 .fixed {
   position: fixed; }
 
+.container {
+  padding: 0 16px; }
+
+/*--------------------------------------------------
+* OVERRIDE
+*--------------------------------------------------*/
 .tp-rightarrow, .tp-leftarrow, .tp-bullets {
   z-index: 57 !important; }
 

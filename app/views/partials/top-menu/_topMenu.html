@@ -1,8 +1,27 @@
-<div ng-controller="_TopMenuCtrl" class="top-menu-wrapper fixed" ng-class="{'hide-topbar':appVm.isHideTopbar}">
-    <div class="top-bar" _ng-hidex="appVm.isFixed">
-
+<div ng-controller="_TopMenuCtrl" class="top-menu-wrapper" ng-class="{'hide-topbar':appVm.isHideTopbar}">
+    <div class="top-bar" layout="row" layout-align="center center">
+        <div flex="80" flex-sm="100" layout="row" class="container">
+            <div flex>
+                <ol class="link-bar">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Payment Notes</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ol>
+            </div>
+            <div flex layout-align="end" layout="row">
+                <a href="#" class="shopping-cart">
+                    <span>9</span>
+                    <i class="ti-shopping-cart-full"></i>
+                </a>
+                <ol class="icon-bar">
+                    <li><a href="#"><i class="ti-facebook"></i></a></li>
+                    <li><a href="#"><i class="ti-linkedin"></i></a></li>
+                    <li><a href="#"><i class="ti-twitter"></i></a></li>
+                </ol>
+            </div>
+        </div>
     </div>
-    <md-toolbar class="container main-toolbar" ng-class="{transparent:appVm.currentYOffset==0&&appVm.isHomePage}">
+    <md-toolbar class="container main-toolbar">
         <nav layout="column">
             <div layout="row" layout-align="center center">
                 <div flex flex-sm="100" flex-gt-lg="80">
@@ -28,7 +47,6 @@
             </div>
         </nav>
     </md-toolbar>
-
 
 
 </div>

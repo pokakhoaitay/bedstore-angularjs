@@ -183,6 +183,7 @@ angular.module('myApp.buildABed', ['ngRoute'])
                     $scope.isOpenUnit2 = false;
                     $scope.isOpenUnit = true;
                     $scope.isOpenDoors = false;
+                    $scope.isCheck=!$scope.isCheck;
                 }, timeout);
             }
             else {
@@ -193,7 +194,7 @@ angular.module('myApp.buildABed', ['ngRoute'])
                     $scope.isOpenUnit = false;
                     $scope.isOpenUnit2 = false;
                     $scope.isOpenDoors = true;
-
+                    $scope.isCheck=!$scope.isCheck;
                 }, timeout);
 
             }
