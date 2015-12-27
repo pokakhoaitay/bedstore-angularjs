@@ -11,7 +11,10 @@ angular.module('myApp.buildABed', ['ngRoute'])
         $scope.isOpenDoors = true;
         $scope.isOpenUnit = false;
         $scope.isOpenUnit2 = false;
-        $scope.isCheck = false;
+        $scope.isBedOpening = false;
+        $scope.currentStep = 4;
+        $scope.isShowPanel = true;
+
 
         $scope.bedData = {};
         $scope.bedData.orientation = 'V';
@@ -32,6 +35,10 @@ angular.module('myApp.buildABed', ['ngRoute'])
         $scope.bedData.leftLowerFinish = 9;
         $scope.bedData.rightLowerAccessory = 0;
         $scope.bedData.rightLowerFinish = 9;
+        $scope.bedData.handleType = 'Square';
+        $scope.bedData.handle = 1;
+        $scope.bedData.isMolding = false;
+        $scope.bedData.isLedCabinetLights = false;
 
         $scope.orientations = [
             {name: 'Vertical', value: 'V'},
@@ -107,9 +114,20 @@ angular.module('myApp.buildABed', ['ngRoute'])
             {name: 'Sandbank', value: 12},
             {name: 'Toscana', value: 16},
         ];
-
-        $scope.currentStep = 3;
-        $scope.isShowPanel = true;
+        $scope.handleTypes = [
+            {name: 'Square', value: 'Square'},
+            {name: 'Round', value: 'Round'},
+        ]
+        $scope.handles = [
+            {name: 'Brushed Nickel Bowtie Handle & Square Knob', value: 3, handleType: 'Square'},
+            {name: 'Black Bowtie Handle & Square Knob', value: 4, handleType: 'Square'},
+            {name: 'Brushed Nickel Flat Edge Handle & Square Knob', value: 6, handleType: 'Square'},
+            {name: 'Brushed Nickel Flat Wide Handle & Square Knob', value: 7, handleType: 'Square'},
+            {name: 'Matte Black Flat Wide Handle & Square Knob', value: 8, handleType: 'Square'},
+            {name: 'Brushed Nickel Curved Handle & Round Knob', value: 5, handleType: 'Round'},
+            {name: 'Brushed Nickel Cylinder Handle & Round Knob', value: 1, handleType: 'Round'},
+            {name: 'Oil Rubbed Bronze Cylinder Handle & Round Knob', value: 2, handleType: 'Round'},
+        ]
 
         $scope.changeStep = function (newStep) {
             $scope.isShowPanel = (!$scope.isShowPanel && $scope.currentStep == newStep) || ($scope.currentStep !== newStep);
@@ -170,12 +188,14 @@ angular.module('myApp.buildABed', ['ngRoute'])
                 }
             }
         ]
-        $scope.setDelay = function () {
+        $scope.setDelay = function (isRequestFromLed) {
+            if(isRequestFromLed && $scope.isBedOpening)
+                return;
             var timeout = 500;
             if ($scope.bedData.orientation == "H")
                 timeout = 30;
 
-            if (!$scope.isCheck) {
+            if (!$scope.isBedOpening) {
                 $scope.isOpenDoors = false;
                 $scope.isOpenUnit = false;
                 $scope.isOpenUnit2 = true;
@@ -183,7 +203,7 @@ angular.module('myApp.buildABed', ['ngRoute'])
                     $scope.isOpenUnit2 = false;
                     $scope.isOpenUnit = true;
                     $scope.isOpenDoors = false;
-                    $scope.isCheck=!$scope.isCheck;
+                    $scope.isBedOpening = !$scope.isBedOpening;
                 }, timeout);
             }
             else {
@@ -194,19 +214,19 @@ angular.module('myApp.buildABed', ['ngRoute'])
                     $scope.isOpenUnit = false;
                     $scope.isOpenUnit2 = false;
                     $scope.isOpenDoors = true;
-                    $scope.isCheck=!$scope.isCheck;
+                    $scope.isBedOpening = !$scope.isBedOpening;
                 }, timeout);
 
             }
         };
 
         $scope.calcRight = function () {
-            var buildControlWidth = $document[0].getElementsByClassName('build-control')[0].clientWidth+64;
+            var buildControlWidth = $document[0].getElementsByClassName('build-control')[0].clientWidth + 64;
             var docWidth = $document[0].documentElement.clientWidth;
-            var outsideWidth = docWidth-$document[0].getElementById('eleBuildArea').clientWidth;
-            var actual=(docWidth-buildControlWidth);
-            var result =actual-891;
+            var outsideWidth = docWidth - $document[0].getElementById('eleBuildArea').clientWidth;
+            var actual = (docWidth - buildControlWidth);
+            var result = actual - 891;
             console.log(outsideWidth);
-            return buildControlWidth+(outsideWidth);
+            return buildControlWidth + (outsideWidth);
         }
     })

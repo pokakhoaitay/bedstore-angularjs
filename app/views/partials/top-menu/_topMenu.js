@@ -8,16 +8,6 @@ angular.module('myApp._topMenu', ['ngRoute', 'ngMaterial'])
     .controller('_TopMenuCtrl',
         function ($scope, $window, $timeout, $mdSidenav, $log, Helper, $document) {
             var vpWidth = 0;
-            $scope.isHideTopMenu = false;
-            $scope.isHideTopbar = false;
-
-            $scope.$watch(function () {//https://docs.angularjs.org/api/ng/type/$rootScope.Scope
-                return window.innerWidth; //Lắng nghe cái gì?
-            }, function (value) {//Invoke khi lắng nghe cái gì ở trên change
-                vpWidth = value;
-                $scope.isHideTopMenu = value < 640;
-
-            });
 
             $scope.toggleSideNav = function () {
                 Helper.broadcastWhat('callToggleSideNav');

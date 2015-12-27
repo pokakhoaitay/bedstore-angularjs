@@ -71,9 +71,6 @@ angular.module('myApp', [
                         appVm.currentYOffset = $window.pageYOffset;
                     });
                 })
-                .bind('resize', function () {
-                    $scope.$apply();
-                });
 
             $scope.$on('handlToggleBodyScrollbar', function (event, agrs) {
                 appVm.isHideBodyScrollbar = agrs;

@@ -5,7 +5,7 @@
         >
             <div layout="row" flex layout-align="center">
                 <div id="eleBuildArea" flex layout="row">
-                    <div class="steper" layout="column" layout-align="center center">
+                    <div class="steper" layout="column" layout-align="center center" hide-md hide-sm show-gt-md>
                         <a ng-repeat="step in stepDatas" class="step-item" flex layout-align="center center"
                            ng-click="changeStep(step.stepNum)"
                            layout="column"
@@ -18,7 +18,7 @@
                         </a>
                     </div>
                     <!--BUILD CONTROL-->
-                    <div class="build-control animate-show-hide" ng-show="isShowPanel">
+                    <div class="build-control animate-show-hide" ng-show="isShowPanel" hide-md hide-sm show-gt-md>
                         <!--Step 1-->
                         <section id="eleStep1" ng-show="currentStep==1">
                             <h3 class="md-display-1">STEP 1</h3>
@@ -183,18 +183,66 @@
 
                         </section>
                         <!--End Step 3-->
+
+                        <!--Step 4-->
+                        <section id="eleStep4" ng-show="currentStep==4">
+                            <h3 class="md-display-1">STEP 4</h3>
+                            <h5 class="md-subhead">Handles, molding & lighting</h5>
+                            <div layout="column" flex>
+                                <h4 class="sub-option">HANDLES </h4>
+                                <div class="note">Note: size changes not shown in preview, but reflected in dimensions
+                                    below
+                                </div>
+                                <md-radio-group class="md-primary border" layout="row"
+                                                layout-align="space-around center" ng-model="bedData.handleType">
+                                    <md-radio-button ng-repeat="item in handleTypes" ng-value="item.value"
+                                                     name="{{item.name}}"
+                                                     flex style="text-align: center">
+                                        {{item.name}}
+                                    </md-radio-button>
+                                </md-radio-group>
+                                <md-radio-group class="md-primary" layout="column" ng-model="bedData.handle">
+                                    <ol style="list-style: none; margin: 10px 0 0 0; padding: 0 0 0 10px">
+                                        <li ng-repeat="item in handles | filter:bedData.handleType">
+                                            <md-radio-button ng-value="item.value" name="{{item.name}}"
+                                                             style="margin: 0">
+                                                {{item.name}}
+                                            </md-radio-button>
+                                        </li>
+                                    </ol>
+
+                                </md-radio-group>
+                                <br/>
+                                <md-checkbox ng-model="bedData.isMolding">MOLDING</md-checkbox>
+                                <md-checkbox ng-model="bedData.isLedCabinetLights" ng-click="setDelay(true)">LED CABINET
+                                    LIGHTS
+                                </md-checkbox>
+                                <h3 class="you-done">You’re done. It looks great!</h3>
+                                <div layout="row" layout-align="center">
+                                    <md-button class="md-accent md-raised add-to-cart">
+                                        <md-icon class="ti-shopping-cart-full"></md-icon>
+                                        ADD TO CART
+                                    </md-button>
+                                </div>
+                            </div>
+                        </section>
+                        <!--End Step 4-->
                     </div>
                     <!--END BUILD CONTROL-->
                     <!--BED CONTAINER-->
                     <div class="bed-container animate-show-hide"
                          ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet, 'offset-center':!isShowPanel}">
                         <div id="cabinetShadow">
-                            <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-nolights.png" alt="">
+                            <img ng-if="bedData.orientation=='V'"
+                                 ng-src="img/build-bed/{{bedData.orientation}}/cabinetShadow-{{bedData.isLedCabinetLights?'lights':'noLights'}}.png"
+                                 alt="">
                         </div>
                         <div id="mainCabinet">
                             <img ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet.png" alt="">
                         </div>
-                        <div id="potlights"></div>
+                        <div id="potlights" ng-show="bedData.isLedCabinetLights">
+                            <img ng-if="bedData.orientation=='V'" src="img/build-bed/V/potlights.png">
+                        </div>
                         <div id="cabinetShadow-left" ng-style="bedData.isLeftCabinet&&{'left':' -112px'}">
                             <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-left.png">
                         </div>
@@ -237,15 +285,18 @@
                         <div id="cabinetDoors" ng-show="isOpenDoors"><img
                                 ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet-doors.png">
                         </div>
-                        <!--<div id="moulding" style="display: none;">
-                            <img ng-src="img/build-bed/2/{{bedData.orientation}}/moulding.png">
+                        <div id="moulding" ng-show="bedData.isMolding && bedData.orientation=='V'">
+                            <img ng-if="bedData.orientation=='V'"
+                                 ng-src="img/build-bed/{{bedData.cabinet}}/V/moulding.png">
                         </div>
                         <div id="moulding-left" style="display: none;">
-                            <img ng-src="img/build-bed/2/{{bedData.orientation}}/moulding-left.png">
+                            <img ng-if="bedData.orientation=='V'"
+                                 ng-src="img/build-bed/2/{{bedData.orientation}}/moulding-left.png">
                         </div>
                         <div id="moulding-right" style="display: none;">
-                            <img ng-src="img/build-bed/2/{{bedData.orientation}}/moulding-right.png">
-                        </div>-->
+                            <img ng-if="bedData.orientation=='V'"
+                                 ng-src="img/build-bed/2/{{bedData.orientation}}/moulding-right.png">
+                        </div>
                         <div id="bedopen2" class="bed-open-close animate-show-hide" ng-show="isOpenUnit2"><img
                                 ng-src="img/build-bed/{{bedData.cabinet}}/V/open2.png"></div>
                         <div id="bedopen" class="bed-open-close animate-show-hide" ng-show="isOpenUnit"><img

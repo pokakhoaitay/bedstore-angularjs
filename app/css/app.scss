@@ -182,18 +182,18 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   position: absolute;
   z-index: 1;
   height: 596px;
-  right: 0px;
+  right: 120px;
   top: 125px;
   div { position: absolute;
     width: 100% }
   &.offset-left {
-    right: -120px;
+    right: 65px;
     &.offset-right {
-      right: -42px;
+      right: 140px;
     }
   }
   &.offset-right {
-    right: 0px;
+    right: 120px;
   }
   &.offset-center {
     right: 50% !important;
@@ -272,7 +272,6 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
     md-radio-button {
       margin: 0; padding: 0;
     }
-
   }
   md-radio-button {
     color: $text-color;
@@ -280,6 +279,15 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   .note { font-size: 12px; font-style: italic;
     & + .border {
       margin-top: 4px;
+    }
+  }
+
+  .md-button.add-to-cart{
+    width: 170px;
+    font-size: 16px!important;
+    padding:5px 0;
+    i{
+      vertical-align: middle;
     }
   }
 }
@@ -316,6 +324,10 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   bottom: 0;
   right: 0;
   z-index: 5;
+}
+.you-done{
+  color: $primary-color;
+  text-align: center;
 }
 
 /*--------------------------------------------------
@@ -356,14 +368,37 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 
 @media (min-width: 1280px) and (max-width: 1679px) {
   .bed-container {
-    right: -120px;
+    right: -48px;
     &.offset-left {
-      right: -176px;
+      right: -110px;
     }
     &.offset-left {
       &.offset-right {
-        right: -118px;
+        right: -36px;
       }
     }
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1279px) {
+  .bed-container {
+    right: -48px;
+    &.offset-left {
+      right: -110px;
+    }
+    &.offset-left {
+      &.offset-right {
+        right: -36px;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1199px) {
+  .build-control, .steper{display: none}
+  .bed-container{
+    right: 50% !important;
+    margin-right: -445px !important;
   }
 }
