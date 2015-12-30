@@ -44,7 +44,7 @@ angular.module('myApp', [
 
         $mdThemingProvider.theme('default')
             .primaryPalette('blue')
-            .accentPalette('deep-purple');
+            .accentPalette('deep-orange');
     })
     //.run(function ($templateCache, $route, $http) {
     //    var url;

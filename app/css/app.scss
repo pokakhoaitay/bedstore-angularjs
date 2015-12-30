@@ -92,7 +92,7 @@ footer {
   color: #FFF;
   height: 32px;
   min-height: 0;
-  .link-bar,.icon-bar {
+  .link-bar, .icon-bar {
     list-style-position: inside;
     margin: 0;
     padding: 0;
@@ -110,11 +110,11 @@ footer {
         text-underline: none;
         text-decoration: none;
         line-height: 32px;
-        &:hover{ color: #FFF;}
+        &:hover { color: #FFF; }
       }
     }
   }
-  .shopping-cart{
+  .shopping-cart {
     text-decoration: none;
     color: #FFF;
     font-size: 24px;
@@ -213,18 +213,98 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
     text-decoration: none;
     border-bottom: 1px solid $primary-color-0;
     background: #2D2931;
+    color: #FFF;
     &.selected {
       background-color: rgba(255, 255, 255, 0.16);
-      span {
-        color: $primary-color;
-      }
+      color: $primary-color;
     }
     &:last-child { border: 0; }
     span {
-      font-size: 50px; font-weight: 300; color: #FFF; display: block; text-align: center;
-      line-height: 1; margin-top: 7px;
+      font-size: 50px;
+      font-weight: 300;
+      color: inherit;
+      display: block;
+      text-align: center;
+      line-height: 1;
+      margin-top: 7px;
     }
   }
+}
+
+.steper-sm {
+  $normal-bg: #5A4B69;
+  $select-bg: #C4C5C7;
+  height: 64px;
+  width: 100%;
+  > .step-item {
+    text-transform: uppercase;
+    padding: 7px 10px 7px 40px;
+    text-decoration: none;
+    background: $normal-bg;
+    position: relative;
+    color: #FFF;
+    overflow: hidden;
+    img { height: 32px }
+    span {
+      font-size: 32px;
+      font-weight: 300;
+      color: inherit;
+      text-align: center;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &:before {
+      content: '';
+      display: block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: 0px;
+      width: 0px;
+      border-top: 30px solid transparent;
+      border-left: 30px solid $normal-bg;
+      border-bottom: 30px solid transparent;
+    }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      height: 0px;
+      width: 0px;
+      border-top: 30px solid $normal-bg;
+      border-left: 30px solid transparent;
+      border-bottom: 30px solid $normal-bg;
+    }
+    &.selected {
+      background: $select-bg;
+      color: #2D2931;
+      &:after {
+        border-top: 30px solid $select-bg;
+        border-left: 30px solid $normal-bg;
+        border-bottom: 30px solid $select-bg;
+      }
+      &:before {
+        border-top: 30px solid $normal-bg;
+        border-left: 30px solid $select-bg;
+        border-bottom: 30px solid $normal-bg;
+      }
+    }
+    .buty {
+      display: block;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      height: 0px;
+      width: 0px;
+      border-top: 30px solid transparent;
+      border-left: 30px solid #5A4B69;
+      border-bottom: 30px solid transparent;
+    }
+  }
+
 }
 
 .animate-show-hide { transition: all .5s cubic-bezier(0.215, 0.610, 0.355, 1.000); }
@@ -232,7 +312,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 //.animate-show-hide { transition: all .7s cubic-bezier(0.000, 1, 0.0, 1.000); }
 //.animate-show-hide { transition: all .3s cubic-bezier(1.000, 0.000, 0.000, 1.000); }
 
-.build-control {
+.build-control, .build-control-sm {
   margin: 0% 20px 0% 0;
   padding: 0 20px;
   background-color: rgba(255, 255, 255, 0.16);
@@ -282,13 +362,24 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
     }
   }
 
-  .md-button.add-to-cart{
+  .md-button.add-to-cart {
     width: 170px;
-    font-size: 16px!important;
-    padding:5px 0;
-    i{
+    font-size: 16px !important;
+    padding: 5px 0;
+    i {
       vertical-align: middle;
     }
+  }
+}
+
+.build-control-sm {
+  margin-bottom: 20px;
+  width: 100%;
+  background: #C7C7C7;
+  padding: 20px 16px;
+  .border{
+    background-color: #BBB;
+    border-color: #BBB;
   }
 }
 
@@ -325,7 +416,8 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   right: 0;
   z-index: 5;
 }
-.you-done{
+
+.you-done {
   color: $primary-color;
   text-align: center;
 }
@@ -394,11 +486,15 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   }
 }
 
+@media (min-width: 1200px) {
+  .steper-sm,.build-control-sm { display: none }
+}
 
 @media (max-width: 1199px) {
-  .build-control, .steper{display: none}
-  .bed-container{
+  .build-control, .steper { display: none }
+  .bed-container {
     right: 50% !important;
     margin-right: -445px !important;
   }
+  .steper-sm,.build-control-sm { display: flex }
 }

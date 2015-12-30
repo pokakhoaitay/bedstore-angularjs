@@ -1,8 +1,21 @@
 <div layout="column" layout-align="center center" class="view-container">
     <div layout="column" layout-fill>
-        <md-card id="divBuildBedBg" style="background: url('img/bg-small.jpg') no-repeat center center; height: 670px"
-                 layout="row" layout-fill
-        >
+        <div class="steper-sm" layout="row" layout-align="space-between center" layout-fill>
+            <a ng-repeat="step in stepDatas" class="step-item" flex
+               ng-click="changeStep(step.stepNum)"
+               href="javascript:void(0)"
+               ng-class="{selected:step.isSelected()}"
+               ng-hide="step.isHide()"
+            >
+                <img ng-src="{{step.img()}}" alt="Step {{step.stepNum}}">
+                <span>{{bedData.orientation=='V'? step.stepNum:(step.stepNum==4?3:step.stepNum)}}</span>
+                <!--<i class="buty">&nbsp;</i>-->
+            </a>
+        </div>
+        <div class="build-control-sm" layout="column" ng-include="'steps.tpl.html'"></div>
+        <md-card id="divBuildBedBg"
+                 style="background: url('img/bg-small.jpg') no-repeat center center; height: 670px; border-radius: 0"
+                 layout="row" layout-fill>
             <div layout="row" flex layout-align="center">
                 <div id="eleBuildArea" flex layout="row">
                     <div class="steper" layout="column" layout-align="center center" hide-md hide-sm show-gt-md>
@@ -18,215 +31,9 @@
                         </a>
                     </div>
                     <!--BUILD CONTROL-->
-                    <div class="build-control animate-show-hide" ng-show="isShowPanel" hide-md hide-sm show-gt-md>
-                        <!--Step 1-->
-                        <section id="eleStep1" ng-show="currentStep==1">
-                            <h3 class="md-display-1">STEP 1</h3>
-                            <h5 class="md-subhead">Choose your size, frame, and orientation</h5>
-                            <h4 class="sub-option">ORIENTATION</h4>
-                            <md-radio-group class="md-primary border" layout="row" ng-model="bedData.orientation">
-                                <md-radio-button ng-repeat="item in orientations" ng-value="item.value"
-                                                 name="{{item.name}}"
-                                                 flex>
-                                    {{item.name}}
-                                </md-radio-button>
-                            </md-radio-group>
-                            <h4 class="sub-option">MURPHY BED SIZE</h4>
-                            <div class="note">Note: size changes not shown in preview, but reflected in dimensions
-                                below
-                            </div>
-                            <div class="border">
-                                <md-radio-group class="md-primary" layout="row" ng-model="bedData.size">
-                                    <md-radio-button ng-repeat="item in sizes" ng-value="item.value"
-                                                     name="{{item.name}}"
-                                                     flex>
-                                        {{item.name}}
-                                    </md-radio-button>
-                                </md-radio-group>
-                            </div>
+                    <div class="build-control animate-show-hide" ng-show="isShowPanel" hide-md hide-sm show-gt-md
+                         ng-include="'steps.tpl.html'">
 
-
-                            <h4 class="sub-option">MURPHY BED FRAME </h4>
-                            <md-radio-group class="md-primary border" layout="row" ng-model="bedData.frame">
-                                <md-radio-button ng-repeat="item in frames" ng-value="item.value" name="{{item.name}}"
-                                                 flex>
-                                    {{item.name}}
-                                </md-radio-button>
-                            </md-radio-group>
-
-                            <h4 class="sub-option">LEG HEIGHT </h4>
-                            <md-radio-group class="md-primary border" layout="row" ng-model="bedData.legHeight">
-                                <md-radio-button ng-repeat="item in legHeights" ng-value="item.value"
-                                                 name="{{item.name}}"
-                                                 flex>
-                                    {{item.name}}
-                                </md-radio-button>
-                            </md-radio-group>
-                        </section>
-                        <!--End Step 1-->
-
-                        <!--Step 2-->
-                        <section id="eleStep2" ng-show="currentStep==2">
-                            <h3 class="md-display-1">STEP 2</h3>
-                            <h5 class="md-subhead">Cabinet & panel finish </h5>
-                            <h4 class="sub-option">CABINET FINISH</h4>
-                            <div class="border">
-                                <md-radio-group class="md-primary" layout="row" ng-model="bedData.cabinetGroup">
-                                    <md-radio-button ng-repeat="item in cabinetGroups" ng-value="item.value"
-                                                     name="{{item.name}}">
-                                        {{item.name}}
-                                    </md-radio-button>
-                                </md-radio-group>
-                                <md-radio-group class="md-primary sub-rad-group" layout="column"
-                                                ng-model="bedData.cabinet">
-                                    <md-radio-button ng-repeat="item in cabinets | filter:bedData.cabinetGroup"
-                                                     ng-value="item.value" name="{{item.name}}"
-                                                     flex>
-                                        {{item.name}}
-                                    </md-radio-button>
-                                </md-radio-group>
-                            </div>
-                        </section>
-                        <!--End Step 2-->
-
-                        <!--Step 3-->
-                        <section id="eleStep3" ng-show="currentStep==3">
-                            <h3 class="md-display-1">STEP 3</h3>
-                            <h5 class="md-subhead">Side cabinets & accessories </h5>
-                            <div layout="row" flex>
-                                <div layout="column" flex>
-                                    <md-checkbox ng-model="bedData.isLeftCabinet">{{'Left cabinet'|uppercase}}
-                                    </md-checkbox>
-                                    <md-input-container>
-                                        <label>UPPER ACCESSORY</label>
-                                        <md-select ng-model="bedData.leftUpperAccessory">
-                                            <md-option ng-repeat="item in upperAccessories" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-                                    <md-input-container>
-                                        <label>UPPER FINISH</label>
-                                        <md-select ng-model="bedData.leftUpperFinish">
-                                            <md-option ng-repeat="item in upperFinishes" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-                                    <md-checkbox ng-model="bedData.isLeftNightTable">{{'Night Table'|uppercase}}
-                                    </md-checkbox>
-
-                                    <md-input-container>
-                                        <label>LOWER ACCESSORY</label>
-                                        <md-select ng-model="bedData.leftLowerAccessory">
-                                            <md-option ng-repeat="item in lowerAccessories" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-                                    <md-input-container>
-                                        <label>LOWER FINISH</label>
-                                        <md-select ng-model="bedData.leftLowerFinish">
-                                            <md-option ng-repeat="item in lowerFinishes" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-
-                                </div>
-                                <div style="width: 20px"></div>
-                                <div layout="column" flex _style="border-left: 1px solid #ffff00;">
-                                    <md-checkbox ng-model="bedData.isRightCabinet">{{'Right cabinet'|uppercase}}
-                                    </md-checkbox>
-                                    <md-input-container>
-                                        <label>UPPER ACCESSORY</label>
-                                        <md-select ng-model="bedData.rightUpperAccessory">
-                                            <md-option ng-repeat="item in upperAccessories" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-                                    <md-input-container>
-                                        <label>UPPER FINISH</label>
-                                        <md-select ng-model="bedData.rightUpperFinish">
-                                            <md-option ng-repeat="item in upperFinishes" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-                                    <md-checkbox ng-model="bedData.isRightNightTable">{{'Night Table'|uppercase}}
-                                    </md-checkbox>
-
-                                    <md-input-container>
-                                        <label>LOWER ACCESSORY</label>
-                                        <md-select ng-model="bedData.rightLowerAccessory">
-                                            <md-option ng-repeat="item in lowerAccessories" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-                                    <md-input-container>
-                                        <label>LOWER FINISH</label>
-                                        <md-select ng-model="bedData.rightLowerFinish">
-                                            <md-option ng-repeat="item in lowerFinishes" ng-value="item.value">
-                                                {{item.name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-                                </div>
-                            </div>
-
-                        </section>
-                        <!--End Step 3-->
-
-                        <!--Step 4-->
-                        <section id="eleStep4" ng-show="currentStep==4">
-                            <h3 class="md-display-1">STEP 4</h3>
-                            <h5 class="md-subhead">Handles, molding & lighting</h5>
-                            <div layout="column" flex>
-                                <h4 class="sub-option">HANDLES </h4>
-                                <div class="note">Note: size changes not shown in preview, but reflected in dimensions
-                                    below
-                                </div>
-                                <md-radio-group class="md-primary border" layout="row"
-                                                layout-align="space-around center" ng-model="bedData.handleType">
-                                    <md-radio-button ng-repeat="item in handleTypes" ng-value="item.value"
-                                                     name="{{item.name}}"
-                                                     flex style="text-align: center">
-                                        {{item.name}}
-                                    </md-radio-button>
-                                </md-radio-group>
-                                <md-radio-group class="md-primary" layout="column" ng-model="bedData.handle">
-                                    <ol style="list-style: none; margin: 10px 0 0 0; padding: 0 0 0 10px">
-                                        <li ng-repeat="item in handles | filter:bedData.handleType">
-                                            <md-radio-button ng-value="item.value" name="{{item.name}}"
-                                                             style="margin: 0">
-                                                {{item.name}}
-                                            </md-radio-button>
-                                        </li>
-                                    </ol>
-
-                                </md-radio-group>
-                                <br/>
-                                <md-checkbox ng-model="bedData.isMolding">MOLDING</md-checkbox>
-                                <md-checkbox ng-model="bedData.isLedCabinetLights" ng-click="setDelay(true)">LED CABINET
-                                    LIGHTS
-                                </md-checkbox>
-                                <h3 class="you-done">You’re done. It looks great!</h3>
-                                <div layout="row" layout-align="center">
-                                    <md-button class="md-accent md-raised add-to-cart">
-                                        <md-icon class="ti-shopping-cart-full"></md-icon>
-                                        ADD TO CART
-                                    </md-button>
-                                </div>
-                            </div>
-                        </section>
-                        <!--End Step 4-->
                     </div>
                     <!--END BUILD CONTROL-->
                     <!--BED CONTAINER-->
@@ -324,3 +131,214 @@
 
 
 </div>
+<script type="text/ng-template" id="steps.tpl.html">
+    <!--Step 1-->
+    <section id="eleStep1" ng-show="currentStep==1">
+        <h3 class="md-display-1">STEP 1</h3>
+        <h5 class="md-subhead">Choose your size, frame, and orientation</h5>
+        <h4 class="sub-option">ORIENTATION</h4>
+        <md-radio-group class="border" layout="row" ng-model="bedData.orientation"
+                        layout-align="space-between center">
+            <md-radio-button ng-repeat="item in orientations" ng-value="item.value"
+                             name="{{item.name}}"
+                             flex>
+                {{item.name}}
+            </md-radio-button>
+        </md-radio-group>
+        <h4 class="sub-option">MURPHY BED SIZE</h4>
+        <div class="note">Note: size changes not shown in preview, but reflected in dimensions
+            below
+        </div>
+        <div class="border">
+            <md-radio-group layout="row" ng-model="bedData.size">
+                <md-radio-button ng-repeat="item in sizes" ng-value="item.value"
+                                 name="{{item.name}}"
+                                 flex>
+                    {{item.name}}
+                </md-radio-button>
+            </md-radio-group>
+        </div>
+
+
+        <h4 class="sub-option">MURPHY BED FRAME </h4>
+        <md-radio-group class="border" layout="row" ng-model="bedData.frame">
+            <md-radio-button ng-repeat="item in frames" ng-value="item.value" name="{{item.name}}"
+                             flex>
+                {{item.name}}
+            </md-radio-button>
+        </md-radio-group>
+
+        <h4 class="sub-option">LEG HEIGHT </h4>
+        <md-radio-group class="border" layout="row" ng-model="bedData.legHeight">
+            <md-radio-button ng-repeat="item in legHeights" ng-value="item.value"
+                             name="{{item.name}}"
+                             flex>
+                {{item.name}}
+            </md-radio-button>
+        </md-radio-group>
+    </section>
+    <!--End Step 1-->
+
+    <!--Step 2-->
+    <section id="eleStep2" ng-show="currentStep==2">
+        <h3 class="md-display-1">STEP 2</h3>
+        <h5 class="md-subhead">Cabinet & panel finish </h5>
+        <h4 class="sub-option">CABINET FINISH</h4>
+        <div class="border">
+            <md-radio-group class="md-primary" layout="row" ng-model="bedData.cabinetGroup">
+                <md-radio-button ng-repeat="item in cabinetGroups" ng-value="item.value"
+                                 name="{{item.name}}">
+                    {{item.name}}
+                </md-radio-button>
+            </md-radio-group>
+            <md-radio-group class="sub-rad-group" layout="column"
+                            ng-model="bedData.cabinet">
+                <md-radio-button ng-repeat="item in cabinets | filter:bedData.cabinetGroup"
+                                 ng-value="item.value" name="{{item.name}}"
+                                 flex>
+                    {{item.name}}
+                </md-radio-button>
+            </md-radio-group>
+        </div>
+    </section>
+    <!--End Step 2-->
+
+    <!--Step 3-->
+    <section id="eleStep3" ng-show="currentStep==3">
+        <h3 class="md-display-1">STEP 3</h3>
+        <h5 class="md-subhead">Side cabinets & accessories </h5>
+        <div layout="row" flex>
+            <div layout="column" flex>
+                <md-checkbox ng-model="bedData.isLeftCabinet">{{'Left cabinet'|uppercase}}
+                </md-checkbox>
+                <md-input-container>
+                    <label>UPPER ACCESSORY</label>
+                    <md-select ng-model="bedData.leftUpperAccessory">
+                        <md-option ng-repeat="item in upperAccessories" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>UPPER FINISH</label>
+                    <md-select ng-model="bedData.leftUpperFinish">
+                        <md-option ng-repeat="item in upperFinishes" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-checkbox ng-model="bedData.isLeftNightTable">{{'Night Table'|uppercase}}
+                </md-checkbox>
+
+                <md-input-container>
+                    <label>LOWER ACCESSORY</label>
+                    <md-select ng-model="bedData.leftLowerAccessory">
+                        <md-option ng-repeat="item in lowerAccessories" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>LOWER FINISH</label>
+                    <md-select ng-model="bedData.leftLowerFinish">
+                        <md-option ng-repeat="item in lowerFinishes" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+
+            </div>
+            <div style="width: 20px"></div>
+            <div layout="column" flex _style="border-left: 1px solid #ffff00;">
+                <md-checkbox ng-model="bedData.isRightCabinet">{{'Right cabinet'|uppercase}}
+                </md-checkbox>
+                <md-input-container>
+                    <label>UPPER ACCESSORY</label>
+                    <md-select ng-model="bedData.rightUpperAccessory">
+                        <md-option ng-repeat="item in upperAccessories" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+                <md-input-container>
+                    <label>UPPER FINISH</label>
+                    <md-select ng-model="bedData.rightUpperFinish">
+                        <md-option ng-repeat="item in upperFinishes" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-checkbox ng-model="bedData.isRightNightTable">{{'Night Table'|uppercase}}
+                </md-checkbox>
+
+                <md-input-container>
+                    <label>LOWER ACCESSORY</label>
+                    <md-select ng-model="bedData.rightLowerAccessory">
+                        <md-option ng-repeat="item in lowerAccessories" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>LOWER FINISH</label>
+                    <md-select ng-model="bedData.rightLowerFinish">
+                        <md-option ng-repeat="item in lowerFinishes" ng-value="item.value">
+                            {{item.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+        </div>
+
+    </section>
+    <!--End Step 3-->
+
+    <!--Step 4-->
+    <section id="eleStep4" ng-show="currentStep==4">
+        <h3 class="md-display-1">STEP 4</h3>
+        <h5 class="md-subhead">Handles, molding & lighting</h5>
+        <div layout="column" flex>
+            <h4 class="sub-option">HANDLES </h4>
+            <div class="note">Note: size changes not shown in preview, but reflected in dimensions
+                below
+            </div>
+            <md-radio-group class="border" layout="row"
+                            layout-align="space-around center" ng-model="bedData.handleType">
+                <md-radio-button ng-repeat="item in handleTypes" ng-value="item.value"
+                                 name="{{item.name}}"
+                                 flex style="text-align: center">
+                    {{item.name}}
+                </md-radio-button>
+            </md-radio-group>
+            <md-radio-group class="md-primary" layout="column" ng-model="bedData.handle">
+                <ol style="list-style: none; margin: 10px 0 0 0; padding: 0 0 0 10px">
+                    <li ng-repeat="item in handles | filter:bedData.handleType">
+                        <md-radio-button ng-value="item.value" name="{{item.name}}"
+                                         style="margin: 0">
+                            {{item.name}}
+                        </md-radio-button>
+                    </li>
+                </ol>
+
+            </md-radio-group>
+            <br/>
+            <md-checkbox ng-model="bedData.isMolding">MOLDING</md-checkbox>
+            <md-checkbox ng-model="bedData.isLedCabinetLights" ng-click="setDelay(true)">LED CABINET
+                LIGHTS
+            </md-checkbox>
+            <h3 class="you-done">You’re done. It looks great!</h3>
+            <div layout="row" layout-align="center">
+                <md-button class="md-accent md-raised add-to-cart">
+                    <md-icon class="ti-shopping-cart-full"></md-icon>
+                    ADD TO CART
+                </md-button>
+            </div>
+        </div>
+    </section>
+    <!--End Step 4-->
+</script>

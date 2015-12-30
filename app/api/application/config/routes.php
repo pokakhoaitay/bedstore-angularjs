@@ -53,5 +53,5 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['bed-data/get-all']='BedDataCtrl/getAll';
-$route['bed-data/get/(:num)']='BedDataCtrl/get/$1';
+$route['bed-data/get-beds']='BedDataCtrl/get_beds';
+$route['bed-data/get-bed/(:num)']='BedDataCtrl/get_bed/$1';

@@ -26,12 +26,12 @@ class Bed_Data extends  CI_Model{
     var $leftLowerAccessory = 0;
     var $leftLowerFinish = 0;
 
-    public function getAll(){
+    public function get_beds(){
         $query = $this->db->get("Bed_Data")->result();
         return $query;
     }
 
-    public function get($id){
+    public function get_bed($id){
         $query = $this->db->where('Id',$id);
         return $query->get('Bed_Data')->row();
     }
