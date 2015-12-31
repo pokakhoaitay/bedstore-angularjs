@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="js/vendor/outline-icons/Tonicons-Outline/style.css">
-    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
 
     <!-- REVOLUTION BANNER CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="bower_components/slider-revolution/src/css/settings.css"
@@ -41,43 +41,7 @@
 <div ng-include src="'views/partials/top-menu/_topMenu.html'"></div>
 
 <div ng-view autoscroll="true"></div>
-<footer layout="column">
-    <div layout="row" layout-align="center center">
-        <div flex="70" flex-sm="100">
-            <div layout="row">
-                <div _layout="column" flex>
-                    <h>HOME</h>
-                    <ul>
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                        <li><a href="#">Link 3</a></li>
-                    </ul>
-                </div>
-                <div _layout="column" flex>
-                    <h>SHOW</h>
-                    <ul>
-                        <li><a href="#">Link 1</a></li>
-                        <li><a href="#">Link 2</a></li>
-                        <li><a href="#">Link 3</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="sub-footer" layout="row"  layout-align="center center" ng-cloak>
-        <div flex="70" flex-sm="100" layout="row">
-            <div flex>
-                &copy; BED STORE 2015
-            </div>
-            <div flex>
-                Designed by MyCompany.com
-            </div>
-        </div>
-
-    </div>
-</footer>
-
+<div ng-include src="'views/partials/footer/_footer.html'"></div>
 
 
 

@@ -1,3 +1,10 @@
+footer .f-hotline md-icon, footer .f-address md-icon, footer .f-menu > a md-icon {
+  height: inherit;
+  width: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0 10px 0 0; }
+
 html {
   height: 100%;
   overflow-y: auto;
@@ -18,15 +25,6 @@ body {
     width: 100%; }
   body.override-padding-top {
     padding-top: 0px; }
-
-footer {
-  height: 200px;
-  background-color: #DEDEDE;
-  color: #666;
-  padding: 20px 0; }
-  footer .sub-footer {
-    background-color: #C3C3C3;
-    padding: 20px 0; }
 
 /*--------------------------------------------------
 * MENU
@@ -74,7 +72,7 @@ footer {
   .top-bar .link-bar, .top-bar .icon-bar {
     list-style-position: inside;
     margin: 0;
-    padding: 0; }
+    padding: 1px 0 0 0; }
     .top-bar .link-bar > li, .top-bar .icon-bar > li {
       display: inline-block;
       margin: 0; }
@@ -124,12 +122,11 @@ md-toolbar.main-toolbar {
     max-height: none; }
   md-toolbar.main-toolbar md-icon {
     color: #666; }
-
-md-icon.logo-icon {
-  color: #FFF !important;
-  margin-right: 5px;
-  width: 48px;
-  height: 48px; }
+  md-toolbar.main-toolbar md-icon.logo-icon {
+    color: #FFF !important;
+    margin-right: 5px;
+    width: 48px;
+    height: 48px; }
 
 .comp-name {
   font-weight: 200;
@@ -352,6 +349,74 @@ md-toolbar .btn-toggle-nav md-icon {
 .you-done {
   color: #5A4B69;
   text-align: center; }
+
+/*--------------------------------------------------
+ * FOOTER
+ *--------------------------------------------------*/
+footer {
+  background-color: #29213C;
+  color: #8D859E; }
+  footer > div:first-child {
+    padding: 60px 0 20px 0; }
+  footer .sub-footer {
+    background-color: #181129;
+    padding: 15px 0;
+    font-size: 12px; }
+    footer .sub-footer .right a {
+      font-weight: bold;
+      color: #FFF; }
+  footer a {
+    text-decoration: none;
+    color: inherit; }
+    footer a.comp-name {
+      color: #5E5379;
+      font-size: 24px;
+      margin-bottom: 20px;
+      display: block; }
+      footer a.comp-name md-icon {
+        color: #5E5379 !important;
+        width: 48px;
+        height: 48px; }
+  footer .f-title {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: 300;
+    _color: #FFF; }
+  footer .f-hotline {
+    font-weight: 700;
+    color: #D7D1E4;
+    font-size: 32px;
+    letter-spacing: 5px; }
+    footer .f-hotline > * {
+      vertical-align: middle;
+      display: inline-block; }
+  footer .f-address {
+    color: #D7D1E4; }
+  footer .f-menu > a {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin: 3px 0;
+    -webkit-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    -moz-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    -ms-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    -o-transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: all 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    footer .f-menu > a:hover {
+      color: #FFF; }
+    footer .f-menu > a md-icon {
+      font-size: 16px; }
+    footer .f-menu > a span {
+      vertical-align: middle; }
+  footer .f-col-title {
+    text-transform: uppercase;
+    color: #FFF;
+    margin: 14px 0;
+    padding: 0 0 3px 0;
+    position: relative;
+    border-bottom: 1px solid #615877; }
 
 /*--------------------------------------------------
 * TOOLS

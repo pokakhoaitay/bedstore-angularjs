@@ -22,6 +22,14 @@ $body-padding-top: 66px;
   -webkit-box-shadow: $allParam; -moz-box-shadow: $allParam; box-shadow: $allParam;
 }
 
+%mdicon-inherit {
+  height: inherit;
+  width: inherit;
+  font-size: inherit;
+  color: inherit;
+  margin: 0 10px 0 0;
+}
+
 //#######################################################################
 //TAGS
 //#######################################################################
@@ -35,17 +43,6 @@ body {
 }
 
 header { }
-
-footer {
-  height: 200px;
-  background-color: #DEDEDE;
-  color: $text-color;
-  padding: 20px 0;
-  .sub-footer {
-    background-color: #C3C3C3;
-    padding: 20px 0;
-  }
-}
 
 /*--------------------------------------------------
 * MENU
@@ -95,7 +92,7 @@ footer {
   .link-bar, .icon-bar {
     list-style-position: inside;
     margin: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     > li {
       display: inline-block;
       margin: 0;
@@ -147,13 +144,12 @@ md-toolbar.main-toolbar {
   }
   md-icon { color: #666; }
   .menu-items { }
-}
-
-md-icon.logo-icon {
-  color: #FFF !important;
-  margin-right: 5px;
-  width: 48px;
-  height: 48px;
+  md-icon.logo-icon {
+    color: #FFF !important;
+    margin-right: 5px;
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .comp-name { font-weight: 200; font-size: 24px }
@@ -377,7 +373,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   width: 100%;
   background: #C7C7C7;
   padding: 20px 16px;
-  .border{
+  .border {
     background-color: #BBB;
     border-color: #BBB;
   }
@@ -420,6 +416,91 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 .you-done {
   color: $primary-color;
   text-align: center;
+}
+
+/*--------------------------------------------------
+ * FOOTER
+ *--------------------------------------------------*/
+footer {
+  background-color: #29213C;
+  color: #8D859E;
+  > div:first-child { padding: 60px 0 20px 0}
+  .sub-footer {
+    background-color: #181129;
+    padding: 15px 0;
+    font-size: 12px;
+    .right {
+      a {
+        font-weight: bold;
+        color: #FFF;
+      }
+    }
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+    &.comp-name {
+      color: #5E5379;
+      font-size: 24px;
+      margin-bottom: 20px;
+      display: block;
+      md-icon {
+        color: #5E5379 !important;
+        width: 48px;
+        height: 48px;
+      }
+    }
+  }
+  .f-title {
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: 300;
+    _color: #FFF;
+  }
+  .f-hotline {
+    font-weight: 700;
+    color: #D7D1E4;
+    font-size: 32px;
+    letter-spacing: 5px;
+    > * { vertical-align: middle; display: inline-block }
+
+    md-icon {
+      @extend %mdicon-inherit;
+    }
+    span {
+    }
+  }
+  .f-address {
+    color: #D7D1E4;
+    md-icon {
+      @extend %mdicon-inherit;
+    }
+  }
+  .f-menu > a {
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin: 3px 0;
+    @include my-transition(all);
+    &:hover {
+      color: #FFF;
+    }
+    md-icon {
+      @extend %mdicon-inherit;
+      font-size: 16px;
+    }
+    span { vertical-align: middle }
+  }
+  .f-col-title {
+    text-transform: uppercase;
+    color: #FFF;
+    margin: 14px 0;
+    padding: 0 0 3px 0;
+    position: relative;
+    border-bottom: 1px solid #615877;
+  }
 }
 
 /*--------------------------------------------------
@@ -487,7 +568,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 }
 
 @media (min-width: 1200px) {
-  .steper-sm,.build-control-sm { display: none }
+  .steper-sm, .build-control-sm { display: none }
 }
 
 @media (max-width: 1199px) {
@@ -496,5 +577,5 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
     right: 50% !important;
     margin-right: -445px !important;
   }
-  .steper-sm,.build-control-sm { display: flex }
+  .steper-sm, .build-control-sm { display: flex }
 }
