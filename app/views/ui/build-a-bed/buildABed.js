@@ -3,7 +3,7 @@
 angular.module('myApp.buildABed', ['ngRoute'])
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/build-a-bed', {
-            templateUrl: 'views/build-a-bed/buildABed.html',
+            templateUrl: 'views/ui/build-a-bed/buildABed.html',
             controller: 'BuildABedCtrl',
         })
     }])

@@ -4,8 +4,8 @@ angular.module('myApp.home', ['ngRoute'])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider
-            .when('/', {templateUrl: 'views/home/home.html', controller: 'HomeCtrl'})
-            .when('/home', {templateUrl: 'views/home/home.html', controller: 'HomeCtrl'});
+            .when('/', {templateUrl: 'views/ui/home/home.html', controller: 'HomeCtrl'})
+            .when('/home', {templateUrl: 'views/ui/home/home.html', controller: 'HomeCtrl'});
     }])
 
     .controller('HomeCtrl', function (Helper) {
