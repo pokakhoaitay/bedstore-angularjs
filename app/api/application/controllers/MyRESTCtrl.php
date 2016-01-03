@@ -9,12 +9,14 @@
 abstract class MyRESRCtrl extends CI_Controller
 {
     protected $method;
+    protected $requestDomain;
 
     function __construct()
     {
         parent::__construct();
         $this->load->database();
         $this->method = $_SERVER['REQUEST_METHOD'];
+        $this->requestDomain = $_SERVER['REMOTE_ADDR'];
     }
 
 }

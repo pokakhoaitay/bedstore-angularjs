@@ -19,7 +19,7 @@ class BedDataCtrl extends MyRESRCtrl
     {
         try {
             $query = $this->bedData->get_beds();
-            echo json_encode(new JsonResponse(200,$query));
+            echo json_encode(new JsonResponse(200,$query,$this->requestDomain));
         } catch (Exception $error) {
             echo json_encode(new JsonResponse(500));
         }

@@ -56,49 +56,5 @@ angular.module('myApp', [
     //        }
     //    }
     //})
-    .controller('AppCtrl',
-        function ($scope, $document, $window,Helper,$location, $route) {
-            var appVm = this;
-            var lastScrollTop = 0;
-            appVm.isHideBodyScrollbar = false;
-            appVm.currentYOffset = 0;
-            appVm.isHomePage=false;
 
-            var find = $document[0];//.getElementById('divMainContent');
-            angular.element($window).bind('scroll', function () {
-                    $scope.$apply(function () {
-                       // appVm.isHideTopbar = !isScrollTop($window);//$window.pageYOffset > 0;
-                        appVm.currentYOffset = $window.pageYOffset;
-                    });
-                })
-
-            $scope.$on('handlToggleBodyScrollbar', function (event, agrs) {
-                appVm.isHideBodyScrollbar = agrs;
-            });
-
-            $scope.$on('$routeChangeSuccess', function(scope, next, current){
-                var currentControllerName=$route.current.controller;
-                appVm.isHomePage=currentControllerName=='HomeCtrl';
-            });
-
-            $scope.$on('$viewContentLoaded', function(){
-                var currentControllerName=$route.current.controller;
-                appVm.isHomePage=currentControllerName=='HomeCtrl';
-            });
-
-
-
-            //
-            function isScrollTop(window) {
-                var st = window.pageYOffset || document.documentElement.scrollTop;
-                var isTop = false;
-                if (st >= lastScrollTop || Helper.isPageScrollToBottom()) {
-                    isTop = false;
-                } else {
-                    isTop = true;
-                }
-                lastScrollTop = st;
-                return isTop;
-            }
-        })
 ;
