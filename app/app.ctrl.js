@@ -1,7 +1,8 @@
 angular.module('myApp')
-
     .controller('AppCtrl',
-        function ($scope, $document, $window, Helper, $location, $route,$mdSidenav) {
+        function ($scope, $document, $window, Helper, $location, $mdSidenav) {
+
+
             var appVm = this;
             var lastScrollTop = 0;
             appVm.isHideBodyScrollbar = false;
@@ -18,28 +19,28 @@ angular.module('myApp')
                 appVm.isHideBodyScrollbar = agrs;
             });
 
-            $scope.$on('$routeChangeSuccess', function (scope, next, current) {
-                var currentControllerName = $route.current.controller;
-                appVm.isHomePage = currentControllerName == 'HomeCtrl';
-            });
-
-            $scope.$on('$viewContentLoaded', function () {
-                var currentControllerName = $route.current.controller;
-                appVm.isHomePage = currentControllerName == 'HomeCtrl';
-            });
+            //$scope.$on('$routeChangeSuccess', function (scope, next, current) {
+            //    var currentControllerName = $route.current.controller;
+            //    appVm.isHomePage = currentControllerName == 'HomeCtrl';
+            //});
+            //
+            //$scope.$on('$viewContentLoaded', function () {
+            //    var currentControllerName = $route.current.controller;
+            //    appVm.isHomePage = currentControllerName == 'HomeCtrl';
+            //});
 
             //region # SIDEBAR #
             $scope.$watch(function () {
-                return $mdSidenav('leftSideNav').isOpen();
+                return $document.find('#leftSideNav').length > 0 && $mdSidenav('leftSideNav').isOpen();
             }, function (value) {
                 appVm.isHideBodyScrollbar = value;
             });
 
-            $scope.openAside= function () {
+            $scope.openAside = function () {
                 $mdSidenav('leftSideNav').open();
             }
 
-            $scope.closeAside= function () {
+            $scope.closeAside = function () {
                 $mdSidenav('leftSideNav').close();
             }
             //endregion END SIDEBAR

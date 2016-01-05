@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('myApp.buildABed', ['ngRoute'])
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/build-a-bed', {
-            templateUrl: 'views/ui/build-a-bed/buildABed.html',
-            controller: 'BuildABedCtrl',
-        })
-    }])
+angular.module('myApp.buildABed', ['ui.router'])
+    .config(function ($stateProvider) {
+        //$stateProvider
+        //    .state('buidBed', {
+        //        url: '/build-a-bed',
+        //        templateUrl: 'views/ui/build-a-bed/buildABed.html',
+        //        controller: 'BuildABedCtrl',
+        //    })
+    })
     .controller('BuildABedCtrl', function ($scope, $timeout, $document) {
         $scope.isOpenDoors = true;
         $scope.isOpenUnit = false;
@@ -189,7 +191,7 @@ angular.module('myApp.buildABed', ['ngRoute'])
             }
         ]
         $scope.setDelay = function (isRequestFromLed) {
-            if(isRequestFromLed && $scope.isBedOpening)
+            if (isRequestFromLed && $scope.isBedOpening)
                 return;
             var timeout = 500;
             if ($scope.bedData.orientation == "H")

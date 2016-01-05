@@ -34,5 +34,5 @@
 
       # If the requested resource doesn't exist, use index.html
       #RewriteRule ^ index.html
-
+Options -Indexes
 </IfModule>

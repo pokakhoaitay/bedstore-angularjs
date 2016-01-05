@@ -1,9 +1,6 @@
-/**
- * Created by Poka on 12/17/2015.
- */
-'use stricts';
+'use strict';
 
-angular.module('myApp._leftSidenav', ['ngRoute'])
+angular.module('myApp._leftSidenav', ['ui.router'])
 
     .controller('_LeftSidenavCtrl',
         function ($scope, $log, Helper, $document, $mdSidenav, $window, $timeout) {

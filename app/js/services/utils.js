@@ -1,9 +1,5 @@
-/**
- * Created by Poka on 12/17/2015.
- */
-
-angular.module('utils', ['ngRoute'])
-    .factory('Helper', ['$rootScope',function ($rootScope) {
+angular.module('utils',[ 'ui.router'])
+    .factory('Helper', function ($rootScope) {
         return {
             getScrollBarWidth: function () {
                 var html = '<div style="position: absolute; top: -9999px; left: 0; overflow: scroll;">' +
@@ -17,7 +13,7 @@ angular.module('utils', ['ngRoute'])
                 return $testDiv.width() - $testDivChild.width();
             },
             broadcastWhat: function (event, agrs) {
-                $rootScope.$broadcast(event,agrs);
+                $rootScope.$broadcast(event, agrs);
             },
             isPageScrollToBottom: function () {
                 var scrollHeight = $(document).height();
@@ -25,4 +21,4 @@ angular.module('utils', ['ngRoute'])
                 return (scrollHeight - scrollPosition) / scrollHeight === 0;
             }
         }
-    }])
+    })

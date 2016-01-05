@@ -27,16 +27,16 @@
                 <div flex flex-sm="100" flex-gt-lg="80">
                     <div class="md-toolbar-tools">
 
-                        <a href="/" class="comp-name">
+                        <a ui-sref="app.index" class="comp-name">
                             <md-icon md-svg-src="img/logo.svg" class="logo-icon"></md-icon>
                             <span>BED STORE</span></a>
                         <span flex></span>
                         <div hide-sm class="menu-items">
-                            <a href="/" class="top-menu-item">Home</a>
-                            <a href="home" class="top-menu-item">Shop</a>
-                            <a href="/build-a-bed" class="top-menu-item">Build a Bed</a>
-                            <a href="home" class="top-menu-item">About</a>
-                            <a href="home" class="top-menu-item">Contact</a>
+                            <a ui-sref="index" class="top-menu-item">Home</a>
+                            <a ui-sref="index" class="top-menu-item">Shop</a>
+                            <a ui-sref="buildBed" class="top-menu-item">Build a Bed</a>
+                            <a ui-sref="index" class="top-menu-item">About</a>
+                            <a ui-sref="index" class="top-menu-item">Contact</a>
                         </div>
                         <md-button class="md-icon-button btn-toggle-nav" hide-gt-sm aria-label="Toggle Nav"
                                    ng-click="openAside()">

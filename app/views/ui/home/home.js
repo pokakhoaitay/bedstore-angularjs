@@ -1,19 +1,18 @@
 'use strict';
 
-angular.module('myApp.home', ['ngRoute'])
+angular.module('myApp.home', ['ui.router'])
 
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
-            .when('/', {templateUrl: 'views/ui/home/home.html', controller: 'HomeCtrl'})
-            .when('/home', {templateUrl: 'views/ui/home/home.html', controller: 'HomeCtrl'});
-    }])
+    .config(function ($stateProvider) {
+        //$stateProvider
+        //    .state('', {
+        //        url: "/",
+        //        templateUrl: "views/ui/home/home.html",
+        //        controller: 'HomeCtrl'
+        //    });
+    })
 
     .controller('HomeCtrl', function (Helper) {
-        Helper.broadcastWhat('handlChangeIsHomePage',true);
-
-
-
-
+        Helper.broadcastWhat('handlChangeIsHomePage', true);
 
 
         $(document).ready(function () {

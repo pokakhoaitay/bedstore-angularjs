@@ -31,7 +31,8 @@
     <link rel="stylesheet" href="css/app.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-cloak layout="column" ng-controller="AppCtrl as appVm" ng-class="{'hide-scroll-bar':appVm.isHideBodyScrollbar,'override-padding-top':appVm.isHideTopbar}">
+<body ng-cloak layout="column" ng-controller="AppCtrl as appVm"
+      ng-class="{'hide-scroll-bar':appVm.isHideBodyScrollbar,'override-padding-top':appVm.isHideTopbar}">
 
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
@@ -39,17 +40,16 @@
 <![endif]-->
 <aside ng-include="'views/partials/left-sidenav/_leftSidenav.html'"></aside>
 <div ng-include src="'views/partials/top-menu/_topMenu.html'"></div>
-
-<div ng-view autoscroll="true"></div>
-<div ng-include src="'views/partials/footer/_footer.html'"></div>
-
+<div ui-view></div>
+<div ui-view="footer@"></div>
 
 
 <!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
 -->
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-route/angular-route.js"></script>
+<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="bower_components/angular-animate/angular-animate.min.js"></script>
 <script src="bower_components/angular-aria/angular-aria.min.js"></script>
 <script src="bower_components/angular-messages/angular-messages.min.js"></script>

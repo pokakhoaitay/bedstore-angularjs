@@ -1,9 +1,6 @@
-/**
- * Created by Poka on 12/14/2015.
- */
 'use strict';
 
-angular.module('myApp._topMenu', ['ngRoute', 'ngMaterial'])
+angular.module('myApp._topMenu', ['ui.router', 'ngMaterial'])
 
     .controller('_TopMenuCtrl',
         function ($scope, $window, $timeout, $mdSidenav, $log, Helper, $document) {
