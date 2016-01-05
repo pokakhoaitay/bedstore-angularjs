@@ -16,31 +16,19 @@ angular.module('myApp', [
 ]).
     config(function ($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise("/404");
+        $urlRouterProvider.otherwise("/");
         //$uiViewScrollProvider.useAnchorScroll();
 
         $stateProvider
-            .state('index', {
-                url: '/',
+            .state('root', {
+                abstract: true,
+                url: '',
                 views: {
-                    '': {
-                        templateUrl: "views/ui/home/home.html",
-                        controller: 'HomeCtrl',
+                    'footer': {
+                        templateUrl: 'views/partials/footer/_footer.html'
                     },
-                    'footer@': {templateUrl: 'views/partials/footer/_footer.html'},
                 }
-            })
-            .state('buildBed', {
-                url: '/build-a-bed',
-                views: {
-                    '': {
-                        templateUrl: "views/ui/build-a-bed/buildABed.html",
-                        controller: 'BuildABedCtrl',
-                    },
-                    'footer@': {templateUrl: 'views/partials/footer/_footer.html'}
-                },
-
-            })
+            });
         ;
 
 

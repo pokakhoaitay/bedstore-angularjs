@@ -3,12 +3,17 @@
 angular.module('myApp.home', ['ui.router'])
 
     .config(function ($stateProvider) {
-        //$stateProvider
-        //    .state('', {
-        //        url: "/",
-        //        templateUrl: "views/ui/home/home.html",
-        //        controller: 'HomeCtrl'
-        //    });
+        $stateProvider
+        .state('root.home', {
+            url: '/',
+            views:{
+                '@':{
+                    templateUrl: "views/ui/home/home.html",
+                    controller: 'HomeCtrl',
+                }
+            }
+
+        })
     })
 
     .controller('HomeCtrl', function (Helper) {
