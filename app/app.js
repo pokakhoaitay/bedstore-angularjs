@@ -4,6 +4,7 @@ angular.module('myApp', [
     'myApp.home',
     'myApp.about',
     'myApp.buildABed',
+    'myApp.contact',
     'myApp._topMenu',
     'myApp._leftSidenav',
 

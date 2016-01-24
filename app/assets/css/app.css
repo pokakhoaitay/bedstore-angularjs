@@ -417,6 +417,12 @@ footer {
     padding: 0 0 3px 0;
     position: relative;
     border-bottom: 1px solid #615877; }
+  footer .footer-col {
+    padding: 0 16px; }
+  footer .footer-col.first {
+    padding-left: 0; }
+  footer .footer-col.last {
+    padding-right: 0; }
 
 /*--------------------------------------------------
 * TOOLS
