@@ -7,7 +7,6 @@ angular.module('myApp', [
     'myApp._topMenu',
     'myApp._leftSidenav',
 
-    'myApp.version',
     'utils',
     'ngMaterial',
     'ngAnimate',

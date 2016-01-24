@@ -228,8 +228,8 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 }
 
 .steper-sm {
-  $normal-bg: #5A4B69;
-  $select-bg: #C4C5C7;
+  $normal-bg: #FFF;
+  $select-bg: #77A4FF;
   height: 64px;
   width: 100%;
   > .step-item {
@@ -238,7 +238,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
     text-decoration: none;
     background: $normal-bg;
     position: relative;
-    color: #FFF;
+    color: $select-bg;
     overflow: hidden;
     img { height: 32px }
     span {
@@ -259,7 +259,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
       height: 0px;
       width: 0px;
       border-top: 30px solid transparent;
-      border-left: 30px solid $normal-bg;
+      border-left: 15px solid $normal-bg;
       border-bottom: 30px solid transparent;
     }
     &:after {
@@ -271,20 +271,20 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
       height: 0px;
       width: 0px;
       border-top: 30px solid $normal-bg;
-      border-left: 30px solid transparent;
+      border-left: 0px solid transparent;
       border-bottom: 30px solid $normal-bg;
     }
     &.selected {
       background: $select-bg;
-      color: #2D2931;
+      color: #0045D2;
       &:after {
         border-top: 30px solid $select-bg;
-        border-left: 30px solid $normal-bg;
+        border-left: 8px solid $normal-bg;
         border-bottom: 30px solid $select-bg;
       }
       &:before {
         border-top: 30px solid $normal-bg;
-        border-left: 30px solid $select-bg;
+        border-left: 8px solid $select-bg;
         border-bottom: 30px solid $normal-bg;
       }
     }

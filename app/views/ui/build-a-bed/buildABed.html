@@ -14,7 +14,7 @@
         </div>
         <div class="build-control-sm" layout="column" ng-include="'steps.tpl.html'"></div>
         <md-card id="divBuildBedBg"
-                 style="background: url('img/bg-small.jpg') no-repeat center center; height: 670px; border-radius: 0"
+                 style="background: url('assets/img/bg-small.jpg') no-repeat center center; height: 670px; border-radius: 0; overflow: hidden"
                  layout="row" layout-fill>
             <div layout="row" flex layout-align="center">
                 <div id="eleBuildArea" flex layout="row">
@@ -41,73 +41,73 @@
                          ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet, 'offset-center':!isShowPanel}">
                         <div id="cabinetShadow">
                             <img ng-if="bedData.orientation=='V'"
-                                 ng-src="img/build-bed/{{bedData.orientation}}/cabinetShadow-{{bedData.isLedCabinetLights?'lights':'noLights'}}.png"
+                                 ng-src="assets/img/build-bed/{{bedData.orientation}}/cabinetShadow-{{bedData.isLedCabinetLights?'lights':'noLights'}}.png"
                                  alt="">
                         </div>
                         <div id="mainCabinet">
-                            <img ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet.png" alt="">
+                            <img ng-src="assets/img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet.png" alt="">
                         </div>
                         <div id="potlights" ng-show="bedData.isLedCabinetLights">
-                            <img ng-if="bedData.orientation=='V'" src="img/build-bed/V/potlights.png">
+                            <img ng-if="bedData.orientation=='V'" src="assets/img/build-bed/V/potlights.png">
                         </div>
                         <div id="cabinetShadow-left" ng-style="bedData.isLeftCabinet&&{'left':' -112px'}">
-                            <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-left.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.orientation}}/cabinetShadow-left.png">
                         </div>
                         <div id="cabinetShadow-right"
                              ng-style="bedData.isRightCabinet && bedData.orientation=='V' &&{'right':' -112px'}">
-                            <img src="img/build-bed/{{bedData.orientation}}/cabinetShadow-right.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.orientation}}/cabinetShadow-right.png">
                         </div>
                         <div id="sideCabinet-left" ng-show="bedData.isLeftCabinet && bedData.orientation=='V'">
-                            <img ng-src="img/build-bed/{{bedData.cabinet}}/V/sideCabinet-left.png"
+                            <img ng-src="assets/img/build-bed/{{bedData.cabinet}}/V/sideCabinet-left.png"
                                  alt="Left Cabinet">
                         </div>
                         <div id="sideCabinet-right" ng-show="bedData.isRightCabinet && bedData.orientation=='V'">
-                            <img ng-src="img/build-bed/{{bedData.cabinet}}/V/sideCabinet-right.png"
+                            <img ng-src="assets/img/build-bed/{{bedData.cabinet}}/V/sideCabinet-right.png"
                                  alt="Right Cabinet">
                         </div>
                         <div id="accessory-upper-left" ng-show="bedData.leftUpperAccessory!=0 && bedData.isLeftCabinet">
-                            <img ng-src="img/build-bed/{{bedData.leftUpperFinish}}/V/{{bedData.leftUpperAccessory>0?bedData.leftUpperAccessory:1}}-left.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.leftUpperFinish}}/V/{{bedData.leftUpperAccessory>0?bedData.leftUpperAccessory:1}}-left.png">
                         </div>
                         <div id="accessory-lower-left" ng-show="bedData.leftLowerAccessory!=0 && bedData.isLeftCabinet">
-                            <img src="img/build-bed/{{bedData.leftLowerFinish}}/V/{{bedData.leftLowerAccessory>0?bedData.leftLowerAccessory:1}}-left.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.leftLowerFinish}}/V/{{bedData.leftLowerAccessory>0?bedData.leftLowerAccessory:1}}-left.png">
                         </div>
                         <div id="ntable-left" ng-show="bedData.isLeftNightTable && bedData.isLeftCabinet">
-                            <img ng-src="img/build-bed/{{bedData.leftLowerFinish}}/V/ntable-left.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.leftLowerFinish}}/V/ntable-left.png">
                         </div>
                         <div id="accessory-upper-right"
                              ng-show="bedData.rightUpperAccessory!=0 && bedData.isRightCabinet">
-                            <img ng-src="img/build-bed/{{bedData.rightUpperFinish}}/V/{{bedData.rightUpperAccessory>0?bedData.rightUpperAccessory:1}}-right.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.rightUpperFinish}}/V/{{bedData.rightUpperAccessory>0?bedData.rightUpperAccessory:1}}-right.png">
                         </div>
                         <div id="accessory-lower-right"
                              ng-show="bedData.rightLowerAccessory!=0 && bedData.isRightCabinet">
-                            <img ng-src="img/build-bed/{{bedData.rightLowerFinish}}/V/{{bedData.rightLowerAccessory>0?bedData.rightLowerAccessory:1}}-right.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.rightLowerFinish}}/V/{{bedData.rightLowerAccessory>0?bedData.rightLowerAccessory:1}}-right.png">
                         </div>
                         <div id="ntable-right" ng-show="bedData.isRightNightTable && bedData.isRightCabinet">
-                            <img ng-src="img/build-bed/{{bedData.rightLowerFinish}}/V/ntable-right.png">
+                            <img ng-src="assets/img/build-bed/{{bedData.rightLowerFinish}}/V/ntable-right.png">
                         </div>
                         <div id="headboard">
                             <img ng-if="bedData.cabinet=='V'"
-                                 ng-src="img/build-bed/{{bedData.cabinet}}/V/headboard.png">
+                                 ng-src="assets/img/build-bed/{{bedData.cabinet}}/V/headboard.png">
                         </div>
                         <div id="cabinetDoors" ng-show="isOpenDoors"><img
-                                ng-src="img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet-doors.png">
+                                ng-src="assets/img/build-bed/{{bedData.cabinet}}/{{bedData.orientation}}/cabinet-doors.png">
                         </div>
                         <div id="moulding" ng-show="bedData.isMolding && bedData.orientation=='V'">
                             <img ng-if="bedData.orientation=='V'"
-                                 ng-src="img/build-bed/{{bedData.cabinet}}/V/moulding.png">
+                                 ng-src="assets/img/build-bed/{{bedData.cabinet}}/V/moulding.png">
                         </div>
                         <div id="moulding-left" style="display: none;">
                             <img ng-if="bedData.orientation=='V'"
-                                 ng-src="img/build-bed/2/{{bedData.orientation}}/moulding-left.png">
+                                 ng-src="assets/img/build-bed/2/{{bedData.orientation}}/moulding-left.png">
                         </div>
                         <div id="moulding-right" style="display: none;">
                             <img ng-if="bedData.orientation=='V'"
-                                 ng-src="img/build-bed/2/{{bedData.orientation}}/moulding-right.png">
+                                 ng-src="assets/img/build-bed/2/{{bedData.orientation}}/moulding-right.png">
                         </div>
                         <div id="bedopen2" class="bed-open-close animate-show-hide" ng-show="isOpenUnit2"><img
-                                ng-src="img/build-bed/{{bedData.cabinet}}/V/open2.png"></div>
+                                ng-src="assets/img/build-bed/{{bedData.cabinet}}/V/open2.png"></div>
                         <div id="bedopen" class="bed-open-close animate-show-hide" ng-show="isOpenUnit"><img
-                                ng-src="img/build-bed/{{bedData.orientation}}/open-nolights.png"></div>
+                                ng-src="assets/img/build-bed/{{bedData.orientation}}/open-nolights.png"></div>
                         <div id="bedFront"></div>
                     </div>
                     <!--END BED CONTAINER-->
