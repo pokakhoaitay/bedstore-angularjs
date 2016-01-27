@@ -1,3 +1,5 @@
+@import "tools";
+
 //$primary-color: #1565C0;
 $primary-color: #5A4B69;
 $primary-color-0: #514261;
@@ -40,9 +42,12 @@ body {
   @include my-transition(padding-top);
   &.hide-scroll-bar { overflow-y: hidden; _padding-right: 17px; position: fixed; top: 0; width: 100% }
   &.override-padding-top { padding-top: 0px }
+  color: $text-color;
 }
 
 header { }
+
+form{width: 100%}
 
 /*--------------------------------------------------
 * MENU
@@ -418,13 +423,26 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   text-align: center;
 }
 
+.page-title {
+  font-weight: 300;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1;
+  font-size: 24px;
+  color: $primary-color;
+  span, .icon, .svg-icon {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 /*--------------------------------------------------
  * FOOTER
  *--------------------------------------------------*/
 footer {
   background-color: #29213C;
   color: #8D859E;
-  > div:first-child { padding: 60px 0 20px 0}
+  > div:first-child { padding: 60px 0 20px 0 }
   .sub-footer {
     background-color: #181129;
     padding: 15px 0;
@@ -502,10 +520,52 @@ footer {
     border-bottom: 1px solid #615877;
   }
 
-  .footer-col{padding: 0 16px}
-  .footer-col.first{padding-left: 0}
-  .footer-col.last{padding-right: 0}
+  .footer-col { padding: 0 16px }
+  .footer-col.first { padding-left: 0 }
+  .footer-col.last { padding-right: 0 }
 
+}
+
+/*--------------------------------------------------
+ * CONTACT PAGE
+ *--------------------------------------------------*/
+#eleContactContainer {
+  .please-contact-us {
+    font-weight: 500;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    span {
+      color: $accent-color;
+    }
+  }
+
+  .col {
+    .title {
+      text-transform: uppercase;
+      color: #B9B9B9
+    }
+  }
+}
+
+md-input-container {
+  .svg-icon {
+    width: 24px !important; height: 24px !important;
+  }
+}
+
+/*--------------------------------------------------
+ * ICONS
+ *--------------------------------------------------*/
+.svg-icon {
+  color: $accent-color;
+  fill: $primary-color;
+  &.text-color {
+    fill: $text-color;
+  }
+  &.flat {
+    color: $text-color;
+  }
 }
 
 /*--------------------------------------------------
@@ -532,6 +592,8 @@ footer {
 }
 
 .container { padding: 0 16px }
+
+
 
 /*--------------------------------------------------
 * OVERRIDE

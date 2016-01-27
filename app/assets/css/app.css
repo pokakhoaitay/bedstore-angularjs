@@ -1,3 +1,47 @@
+.tool-vertical * {
+  display: inline-block;
+  vertical-align: middle; }
+
+.tool-margin-tb-5 {
+  margin-top: 5px;
+  margin-bottom: 5px; }
+
+.tool-margin-tb-10 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.tool-margin-tb-15 {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.tool-margin-tb-20 {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.tool-margin-b-5 {
+  margin-bottom: 5px; }
+
+.tool-margin-b-10 {
+  margin-bottom: 10px; }
+
+.tool-margin-b-15 {
+  margin-bottom: 15px; }
+
+.tool-margin-b-20 {
+  margin-bottom: 20px; }
+
+.tool-text-center {
+  text-align: center; }
+
+/*--------------------------------------------------
+ * OVERRIDE ANGULAR MATERIAL
+ *--------------------------------------------------*/
+md-input-container.md-input-has-messages {
+  padding-bottom: 26px; }
+
+md-input-container.md-icon-float [ng-message] {
+  padding-left: 36px; }
+
 footer .f-hotline md-icon, footer .f-address md-icon, footer .f-menu > a md-icon {
   height: inherit;
   width: inherit;
@@ -16,7 +60,8 @@ body {
   -moz-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   -ms-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
   -o-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); }
+  transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  color: #666; }
   body.hide-scroll-bar {
     overflow-y: hidden;
     _padding-right: 17px;
@@ -25,6 +70,9 @@ body {
     width: 100%; }
   body.override-padding-top {
     padding-top: 0px; }
+
+form {
+  width: 100%; }
 
 /*--------------------------------------------------
 * MENU
@@ -350,6 +398,17 @@ md-toolbar .btn-toggle-nav md-icon {
   color: #5A4B69;
   text-align: center; }
 
+.page-title {
+  font-weight: 300;
+  text-transform: uppercase;
+  display: block;
+  line-height: 1;
+  font-size: 24px;
+  color: #5A4B69; }
+  .page-title span, .page-title .icon, .page-title .svg-icon {
+    display: inline-block;
+    vertical-align: middle; }
+
 /*--------------------------------------------------
  * FOOTER
  *--------------------------------------------------*/
@@ -423,6 +482,35 @@ footer {
     padding-left: 0; }
   footer .footer-col.last {
     padding-right: 0; }
+
+/*--------------------------------------------------
+ * CONTACT PAGE
+ *--------------------------------------------------*/
+#eleContactContainer .please-contact-us {
+  font-weight: 500;
+  font-size: 28px;
+  text-align: center;
+  text-transform: uppercase; }
+  #eleContactContainer .please-contact-us span {
+    color: #E24301; }
+#eleContactContainer .col .title {
+  text-transform: uppercase;
+  color: #B9B9B9; }
+
+md-input-container .svg-icon {
+  width: 24px !important;
+  height: 24px !important; }
+
+/*--------------------------------------------------
+ * ICONS
+ *--------------------------------------------------*/
+.svg-icon {
+  color: #E24301;
+  fill: #5A4B69; }
+  .svg-icon.text-color {
+    fill: #666; }
+  .svg-icon.flat {
+    color: #666; }
 
 /*--------------------------------------------------
 * TOOLS

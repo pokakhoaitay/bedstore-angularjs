@@ -9,6 +9,7 @@ angular.module('myApp', [
     'myApp._leftSidenav',
 
     'utils',
+    'ngMessages',
     'ngMaterial',
     'ngAnimate',
     'ui.router'

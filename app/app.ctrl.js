@@ -8,6 +8,7 @@ angular.module('myApp')
             appVm.isHideBodyScrollbar = false;
             appVm.currentYOffset = 0;
             appVm.isHomePage = false;
+            appVm.svgFile = '/assets/svgs/svgs.svg';
 
             angular.element($window).bind('scroll', function () {
                 $scope.$apply(function () {
