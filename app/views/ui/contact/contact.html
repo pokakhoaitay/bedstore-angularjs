@@ -3,7 +3,7 @@
         <div flex-gt-lg="80" flex-lg="100" class="container" style="margin: 60px 0" id="eleContactContainer">
             <h3 class="page-title">
                 <svg class="svg-icon s48 contact">
-                    <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-notebook"
+                    <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-face-smile"
                          preserveAspectRatio="xMidYMid meet"></use>
                 </svg>
                 <span>Contact</span>
@@ -13,8 +13,8 @@
             <p class="tool-text-center">We understand that sometimes you need help with things that might not come
                 naturally to you,
                 which is why we offer quick and helpful support. Let’s Get in Touch!</p>
-            <div layout="row">
-                <div layout="column" flex-gt-lg="40" layout-align="center">
+            <div layout="row" layout-md="column" layout-sm="column">
+                <div layout="column" flex-gt-lg="40" flex-sm="100" flex-md="100" layout-align="center">
                     <div flex class="col">
                         <h4 class="title">VISIT US SHOWROOM</h4>
                         <div class="tool-vertical tool-margin-b-10">
@@ -33,7 +33,7 @@
                             <svg class="svg-icon s16 email">
                                 <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-email"></use>
                             </svg>
-                            <b>Email: </b><span>&nbsp;contact@bedstore.com</span>
+                            <b>Email: </b>&nbsp;<a href="mailto:contact@bedstore.com" class="tool-no-decoration tool-flat">contact@bedstore.com</a>
                         </div>
                     </div>
                     <div flex class="col">
@@ -58,8 +58,14 @@
                         </div>
                     </div>
                 </div>
-                <div layout="row" flex-gt-lg="60">
-                    <form name="contactForm" novalidate>
+
+                <div flex="5" hide-xs hide-sm hide-md>
+                    <!-- Spacer //-->
+                </div>
+
+
+                <div layout="row" flex-gt-lg="55" flex-md="100" flex-md="55" flex-gt-md="55">
+                    <form id="frmContact" name="contactForm" novalidate>
                         <div flex class="col">
                             <h4 class="title">Leave a message</h4>
                             <div>
@@ -107,12 +113,12 @@
                                     <div ng-messages="contactForm.message.$error"
                                          ng-show="contactForm.message.$submitted||contactForm.message.$touched">
                                         <div ng-message="required">The message is required</div>
-                                        <div ng-message="minlength">Please enter more informations from you</div>
+                                        <div ng-message="minlength">Say more informations to us!</div>
                                     </div>
                                 </md-input-container>
 
                             </div>
-                            <div>
+                            <div class="button-bar form-has-icon">
                                 <md-button class="md-raised md-primary" ng-click="postContact(contact)"
                                 ng-disabled="!canPost()">Send</md-button>
                             </div>

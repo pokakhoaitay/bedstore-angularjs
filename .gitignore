@@ -3,5 +3,9 @@ logs/*
 node_modules/
 bower_components/
 tmp
+/app/assets/css/app.css
+/app/assets/css/app.css.map
 .DS_Store
+/app/assets/svgs/svg-icon-default.theme.css.map
+/app/assets/svgs/svg-icon-default.theme.css
 .idea
