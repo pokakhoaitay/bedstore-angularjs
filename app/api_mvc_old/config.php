@@ -10,4 +10,4 @@ Config::write('db.user', 'root');
 Config::write('db.password', '@mysql$');
 
 // Project Config
-Config::write('path', 'http://localhost/slimMVC');
+Config::write('path', 'http://localhost:9999/');

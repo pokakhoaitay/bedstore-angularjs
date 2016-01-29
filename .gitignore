@@ -2,6 +2,8 @@ logs/*
 !.gitkeep
 node_modules/
 bower_components/
+/app/api_mvc_old
+/app/api_old
 
 tmp
 /app/assets/css/app.css
