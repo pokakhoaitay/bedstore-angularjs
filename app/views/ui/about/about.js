@@ -11,6 +11,7 @@ angular.module('myApp.about', ['ui.router'])
         //    });
     })
 
-    .controller('AboutCtrl', [function () {
+    .controller('AboutCtrl', function () {
 
-    }]);
+
+    });

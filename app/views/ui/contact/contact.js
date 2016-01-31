@@ -6,8 +6,8 @@ angular.module('myApp.contact', ['ui.router'])
         $stateProvider
             .state('root.contact', {
                 url: '/contact',
-                views:{
-                    '@':{
+                views: {
+                    '@': {
                         templateUrl: "views/ui/contact/contact.html",
                         controller: 'ContactCtrl',
                     }
@@ -16,13 +16,14 @@ angular.module('myApp.contact', ['ui.router'])
             })
     })
 
-    .controller('ContactCtrl', function (Helper, $scope) {
-        $scope.contact={};
-        $scope.postContact= function (contact) {
+    .controller('ContactCtrl', function (Helper, $scope, ContactService) {
+        $scope.contact = {};
+        $scope.postContact = function (contact) {
             console.log(contact)
         }
-        $scope.canPost= function () {
+        $scope.canPost = function () {
             return $scope.contactForm.$dirty &&
                 $scope.contactForm.$valid;
         }
+        ContactService.say();
     });

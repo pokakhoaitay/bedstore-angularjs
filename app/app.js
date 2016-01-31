@@ -8,14 +8,15 @@ angular.module('myApp', [
     'myApp._topMenu',
     'myApp._leftSidenav',
 
-    'utils',
+    'module.utils',
+    'module.services',
+    'module.common',
     'ngMessages',
     'ngMaterial',
     'ngAnimate',
     'ui.router'
 
-]).
-    config(function ($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider) {
+]).config(function ($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, $httpProvider) {
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise("/");
         //$uiViewScrollProvider.useAnchorScroll();
@@ -36,14 +37,22 @@ angular.module('myApp', [
         $mdThemingProvider.theme('default')
             .primaryPalette('blue')
             .accentPalette('deep-orange');
+
+        $httpProvider.interceptors.push('ApiHttpIntercepter');
     })
-    .run(function ($rootScope, $location, $stateParams, $anchorScroll) {
+    .run(function ($rootScope, $location, $stateParams, $anchorScroll, $http) {
         $rootScope.$on('$stateChangeSuccess', function (event, toState) {
             if ($stateParams.scrollTo) {
                 $location.hash($stateParams.scrollTo);
                 $anchorScroll();
             }
         });
+        $http.get('/api/bootstrap')
+            .then(function (data) {
+                console.log(data.headers('X-Token'));
+            }, function () {
+
+            });
     })
 
 ;
