@@ -50,8 +50,8 @@ a.tool-flat {
 md-input-container.md-input-has-messages {
   padding-bottom: 26px; }
 
-md-input-container.md-icon-float [ng-message] {
-  padding-left: 36px; }
+md-input-container textarea.md-input {
+  height: auto; }
 
 footer .f-hotline md-icon, footer .f-address md-icon, footer .f-menu > a md-icon {
   height: inherit;

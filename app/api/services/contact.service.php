@@ -19,7 +19,16 @@ class ContactService{
     }
 
     public function getContact(){
-        $this->db->connect();
-        return $this->db->query();
+
+    }
+
+    public function createContact($name, $email, $messages){
+        $result=$this->db->query(sprintf('INSERT INTO  contact (name, email, messages) VALUES ("%s","%s","%s")', $name, $email, $messages));
+        if(!$result)
+        {
+            $error= $this->db->error();
+            //TODO: Log errors
+        }
+        return $result;
     }
 }

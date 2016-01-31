@@ -34,7 +34,11 @@ a.tool-flat{ color: inherit;}
 md-input-container.md-input-has-messages{
   padding-bottom: 26px;
 }
-md-input-container.md-icon-float [ng-message]{
-  padding-left: 36px;
+
+md-input-container textarea.md-input{ height:auto;}
+
+input:-webkit-autofill {
+  //-webkit-box-shadow: 0 0 0px 1000px white inset!important;
+  //background-color:#FFF!important;
 }
 

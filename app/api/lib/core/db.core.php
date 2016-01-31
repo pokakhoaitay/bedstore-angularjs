@@ -12,6 +12,10 @@ use mysqli;
 
 require_once __DIR__.'/../config/database.config.php';
 
+/**
+ * Referrence to this: https://www.binpress.com/tutorial/using-php-with-mysql-the-right-way/17
+ * @package lib\core
+ */
 
 class Db
 {
@@ -30,12 +34,31 @@ class Db
         //If connection was not success, handle the error
         if (!self::$connection) {
             // Handle error - notify administrator, log to a file, show an error screen, etc.
+
             return false;
         }
         return self::$connection;
     }
 
-    public function query()
+    /**
+     * Execute sql
+     * @param $query: The sql query string
+     */
+    public function query($query)
     {
+        $this->connect();
+        $result=self::$connection->query($query);
+        return $result;
+    }
+
+    /**
+     * Fetch the last error from the database
+     *
+     * @return string Database error message
+     */
+
+    public function error() {
+        $connection = $this -> connect();
+        return $connection -> error;
     }
 }

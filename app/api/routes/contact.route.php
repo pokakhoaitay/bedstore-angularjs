@@ -8,11 +8,11 @@
 require_once __DIR__ . '/../lib/core/db.core.php';
 require_once __DIR__ . '/../services/contact.service.php';
 
-$app->get('/', function ($request, $response) {
+$app->get('/create-contact', function ($request, $response) {
     $contact = new ContactService();
 
     $response = $response->withStatus(200)->withJson([
-        'say' => $contact->getContact(),
+        'say' => $contact->createContact('Nguyen Hong Tron','poka@live.com','Hello'),
     ]);
 
     return $response;
