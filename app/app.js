@@ -48,8 +48,8 @@ angular.module('myApp', [
             }
         });
         $http.get('/api/bootstrap')
-            .then(function (data) {
-                console.log(data.headers('X-Token'));
+            .then(function (response) {
+              //  console.log(response.data);
             }, function () {
 
             });
