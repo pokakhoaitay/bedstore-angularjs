@@ -9,5 +9,12 @@
 namespace lib\config;
 class ApiConfig
 {
-    const API_KEY = '123ABC';
+    const API_SECRET_KEY = 'ng-webs_2016';
+    const HASH_RAW ='I Love Angular';
+
+    const TOKEN_NAME_WEB='BSTokenWeb';
+    const TOKEN_HEADER_NAME_WEB='X-BSTokenWeb';
+
+    const TOKET_NAME_ADMIN='BSTokenAdmin';
+    const TOKEN_HEADER_NAME_ADMIN='X-BSTokenAdmin';
 }

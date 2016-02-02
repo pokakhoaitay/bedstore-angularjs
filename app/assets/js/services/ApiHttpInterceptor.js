@@ -6,9 +6,6 @@
 //http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/
 angular.module('module.common',[ 'ui.router'])
 .factory('ApiHttpIntercepter', function ($q,$injector) {
-
-
-
     return {
         // optional method
         'request': function(config) {
@@ -40,12 +37,12 @@ angular.module('module.common',[ 'ui.router'])
             var $http = $injector.get('$http');
             var deferred = $q.defer();
 
-            SessionService.renewCookie();
+            //SessionService.initSession();
 
             // do something on error
-            if (canRecover(rejection)) {
-                return responseOrNewPromise
-            }
+            //if (canRecover(rejection)) {
+            //    return responseOrNewPromise
+            //}
             return $q.reject(rejection);
         }
     };

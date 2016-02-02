@@ -10,6 +10,7 @@ require 'vendor/autoload.php';
 require 'lib/config/slim.config.php';
 
 require_once 'lib/core/db.core.php';
+require_once 'services/guard.service.php';
 
 
 /**
@@ -20,7 +21,35 @@ require_once 'lib/core/db.core.php';
  * your Slim application now by passing an associative array
  * of setting names and values into the application constructor.
  */
-$app = new Slim\App($configuration);
+
+/**-------------------
+ * HANDLE ERROR
+ *-------------------*/
+$c = new Slim\Container($configuration);
+$c['errorHandler'] = function ($c) {
+    return function ($request, $response, $exception) use ($c) {
+        return $c['response']->withStatus(500)
+            ->withHeader('Content-Type', 'text/html')
+            ->write('Something went wrong!');
+    };
+};
+
+register_shutdown_function('fatal_handler');
+
+function fatal_handler()
+{
+    if (!is_null(error_get_last())) {
+        header("HTTP/1.1 500 Internal Server Error");
+    }
+}
+
+$app = new Slim\App($c);
+
+/**-------------------
+ * MIDLE WARE
+ *-------------------*/
+require 'midlewares/guard.php';
+
 
 /**
  * Step 3: Define the Slim application routes

@@ -10,10 +10,9 @@ myApp
 
         return {
             initApp: function (options) {
-                $httpProvider.defaults.xsrfHeaderName = 'X-BED-TOKEN';
-                $httpProvider.defaults.xsrfCookieName = 'BED-TOKEN';
+                $httpProvider.defaults.xsrfHeaderName = 'X-BSTokenWeb';
+                $httpProvider.defaults.xsrfCookieName = 'BSTokenWeb';//TODO: For Admin CMS we going to use BSTokenAdmin
                 $httpProvider.interceptors.push('ApiHttpIntercepter');
-                console.log(options.setting1);
             },
             $get: function () {
                 return {}
@@ -57,7 +56,7 @@ myApp
             }
         });
 
-        SessionService.renewCookie();
+        SessionService.initSession();
     })
 
 ;

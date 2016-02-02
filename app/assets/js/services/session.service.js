@@ -4,8 +4,8 @@
 appService
     .factory('SessionService', function ($http) {
         var service = {};
-        service.renewCookie = function () {
-            $http.get('/api/renew-cookie')
+        service.initSession = function () {
+            $http.get('/api/init-session')
                 .then(function (response) {
                 }, function (response) {
 

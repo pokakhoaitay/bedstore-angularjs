@@ -16,6 +16,7 @@ angular.module('myApp.contact', ['ui.router'])
             })
     })
 
-    .controller('ContactCtrl', function (Helper, $scope) {
+    .controller('ContactCtrl', function (Helper, $scope, ContactService) {
         $scope.contact = {};
+        ContactService.test();
     });

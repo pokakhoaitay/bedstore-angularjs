@@ -9,6 +9,6 @@ namespace lib\config;
 
 $configuration = [
     'settings' => [
-        'displayErrorDetails' => true,
+        'displayErrorDetails' => false,
     ],
 ];

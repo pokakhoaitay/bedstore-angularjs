@@ -5,8 +5,9 @@
  * Date: 1/31/2016
  * Time: 9:11 AM
  */
+use lib\config\ApiConfig;
 
-$app->get('/renew-cookie', function($request, $response){
-    setcookie('BED-TOKEN', 'bedstore.com.cookie', time() + (86400 * 30), "/"); // 86400 = 1 day
-    //throw new Exception('Expired!');
+$app->get('/init-session', function ($request, $response) {
+    $guard = new GuardSevice();
+    $guard->InitSession();
 });
