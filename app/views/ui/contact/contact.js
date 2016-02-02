@@ -18,5 +18,5 @@ angular.module('myApp.contact', ['ui.router'])
 
     .controller('ContactCtrl', function (Helper, $scope, ContactService) {
         $scope.contact = {};
-        ContactService.testHeader();
+        ContactService.renewCookie();
     });

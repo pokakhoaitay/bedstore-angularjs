@@ -1,7 +1,6 @@
 angular.module('myApp')
     .controller('AppCtrl',
-        function ($scope, $document, $window, Helper, $location, $mdSidenav) {
-
+        function ($scope, $document, $window, Helper, $location, $mdSidenav,Bootstrap) {
 
             var appVm = this;
             var lastScrollTop = 0;

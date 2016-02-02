@@ -2,7 +2,7 @@
  * Created by Poka on 1/31/2016.
  */
 
-ngService.factory('TestService', function () {
+appService.factory('TestService', function () {
     var test = {};
     test.say= function () {
         alert('I am Test');
