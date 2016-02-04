@@ -7,6 +7,7 @@ appService
         service.initSession = function () {
             $http.get('/api/init-session')
                 .then(function (response) {
+                    //console.log('Renew session success');
                 }, function (response) {
 
                 });

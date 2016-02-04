@@ -10,4 +10,5 @@ use lib\config\ApiConfig;
 $app->get('/init-session', function ($request, $response) {
     $guard = new GuardSevice();
     $guard->InitSession();
+    unset($guard);
 });

@@ -12,6 +12,6 @@ use lib\config\ApiConfig;
 
 $app->get('/contact/test-header', function ($request, $response) {
     $contact = new ContactService();
-
+    $sessionVal=$_SESSION[ApiConfig::TOKEN_NAME_WEB];
     return $response;
 });

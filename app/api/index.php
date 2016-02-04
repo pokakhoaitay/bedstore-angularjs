@@ -7,10 +7,12 @@
  * PSR-4 autoloader.
  */
 require 'vendor/autoload.php';
-require 'lib/config/slim.config.php';
+require 'lib/config/app.config.php';
 
 require_once 'lib/core/db.core.php';
+require_once 'lib/core/app.core.php';
 require_once 'services/guard.service.php';
+require_once 'midlewares/appguard.middleware.php';
 
 
 /**
@@ -25,31 +27,36 @@ require_once 'services/guard.service.php';
 /**-------------------
  * HANDLE ERROR
  *-------------------*/
-$c = new Slim\Container($configuration);
-$c['errorHandler'] = function ($c) {
-    return function ($request, $response, $exception) use ($c) {
-        return $c['response']->withStatus(500)
-            ->withHeader('Content-Type', 'text/html')
-            ->write('Something went wrong!');
-    };
-};
+$c = new Slim\Container(\lib\config\AppConfig::SLIM_CONFIGS);
+//$c['errorHandler'] = function ($c) {
+//    return function ($request, $response, $exception) use ($c) {
+//        return $c['response']->withStatus(500)
+//            ->withHeader('Content-Type', 'text/html')
+//            ->write('Something went wrong!');
+//    };
+//};
+
 
 register_shutdown_function('fatal_handler');
 
 function fatal_handler()
 {
-    if (!is_null(error_get_last())) {
+    $lastError=error_get_last();
+    if (!is_null($lastError)) {
         header("HTTP/1.1 500 Internal Server Error");
     }
 }
 
 $app = new Slim\App($c);
 
-/**-------------------
- * MIDLE WARE
- *-------------------*/
-require 'midlewares/guard.php';
+$c['xcore\AppCore']=function ($container){
+    return new xcore\AppCore($container);
+};
 
+$app->add(new AppGuardMiddleware($c->get('xcore\AppCore')));
+session_start();
+
+//$container = $app->getContainer();
 
 /**
  * Step 3: Define the Slim application routes
