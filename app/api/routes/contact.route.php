@@ -11,7 +11,7 @@ require_once __DIR__ . '/../lib/config/api.config.php';
 use lib\config\ApiConfig;
 
 $app->get('/contact/test-header', function ($request, $response) {
-    $contact = new ContactService();
-    $sessionVal=$_SESSION[ApiConfig::TOKEN_NAME_WEB];
+   // $contact = new ContactService();
+   // $sessionVal=$_SESSION[ApiConfig::TOKEN_NAME_WEB];
     return $response;
 });

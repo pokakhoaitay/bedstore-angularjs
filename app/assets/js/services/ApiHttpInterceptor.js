@@ -14,21 +14,30 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
                 if (config.url.indexOf('api/init-session') >= 0)
                     return config;
                 // do something on success
-                var deferred = $q.defer();
+
                 var $http = $injector.get('$http');
                 var $cookies = $injector.get('$cookies');
                 var tokenName = $http.defaults.xsrfCookieName;
                 var cook = $cookies.get(tokenName);
 
                 if (!$cookies.get(tokenName)) {
-                    $http.get('api/init-session')
+                    var deferred = $q.defer();
+                    var lastUrl=config.url;
+                    $http.get(GetApiUrl('init-session'))
                         .then(function (response) {
                             console.log('Renew session On request success');
+                            $http.get(lastUrl)
+                                .then(function (response) {
+                                    deferred.resolve(config);
+                                },function (response) {
+                                    deferred.resolve(config);
+                                });
                         }, function (response) {
-
+                            console.log('Renew session On request failed');
                         });
+                    return deferred.promise;
                 }
-                return deferred.promise;
+                return config;
             },
 
             // optional method
@@ -50,37 +59,8 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
 
             // optional method
             'responseError': function (rejection) {
-                if (rejection.config.url.indexOf('api/') < 0)
-                    return $q.reject(rejection);
-                if (rejection.config.config.url.indexOf('api/init-session') >= 0)
-                    return $q.reject(rejection);
-                var deferred = $q.defer();
-                var $http = $injector.get('$http');
-                var $cookies = $injector.get('$cookies');
-                var tokenName = $http.defaults.xsrfCookieName;
-                var cook = $cookies.get(tokenName);
 
-                if (!$cookies.get(tokenName)) {
-                    $http.get('api/init-session')
-                        .then(function (response) {
-                            console.log('Renew session On response success');
-                        }, function (response) {
 
-                        });
-                }
-                //var SessionService = $injector.get('SessionService');
-                //var $http = $injector.get('$http');
-                //var $cookies = $injector.get('$cookies');
-                //var deferred = $q.defer();
-                //var tokenName = $http.defaults.xsrfCookieName;
-                //
-                //if (!$cookies.get(tokenName)) {
-                //    return function () {
-                //        SessionService.initSession();
-                //    }
-                //}
-
-                console.log(rejection);
                 // do something on error
                 //if (canRecover(rejection)) {
                 //    return responseOrNewPromise

@@ -36,13 +36,16 @@ class AppGuardMiddleware
                     $response = $this->DenyAccess($request, $response);
                 } else {
                     $response = $next($request, $response);
-//                    $cookVal=$_COOKIE[ApiConfig::TOKEN_NAME_WEB];
-//                    $sessionVal=$_SESSION[ApiConfig::TOKEN_NAME_WEB];
-//                    if($cookVal==$sessionVal)
-//                    //The next route will be executed
-//                    $response = $next($request, $response);
-//                    else
-//                        $response = $this->DenyAccess($request, $response);
+                    $cookVal = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME_WEB)[0];// $_COOKIE[ApiConfig::TOKEN_NAME_WEB];
+                    $sessionVal = $_SESSION[ApiConfig::TOKEN_NAME_WEB];
+                    if ($cookVal === $sessionVal)
+                    {
+                        $response = $next($request, $response);
+                    }
+                    else
+                    {
+                        $response = $this->DenyAccess($request, $response);
+                    }
                 }
         }
 

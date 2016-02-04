@@ -6,7 +6,7 @@ appService
         var contact = {};
 
         contact.test = function () {
-            $http.get('http://dev.bedstore.com:9999/api/contact/test-header')
+            $http.get(GetApiUrl('contact/test-header'))
                 .then(function (response) {
                     console.log(response);
                 }, function (response) {

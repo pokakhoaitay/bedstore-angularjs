@@ -18,3 +18,12 @@ var myApp=angular.module('myApp', [
     'ui.router'
 
 ]);
+
+var appConfig={
+    apiRoute:'http://dev.bedstore.com:9999/api/',
+    lastUrl:''
+}
+
+function GetApiUrl(path){
+    return appConfig.apiRoute+path;
+}
