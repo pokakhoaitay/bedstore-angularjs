@@ -22,14 +22,14 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
 
                 if (!$cookies.get(tokenName)) {
                     var deferred = $q.defer();
-                    var lastUrl=config.url;
+                    var lastUrl = config.url;
                     $http.get(GetApiUrl('init-session'))
                         .then(function (response) {
                             console.log('Renew session On request success');
                             $http.get(lastUrl)
                                 .then(function (response) {
                                     deferred.resolve(config);
-                                },function (response) {
+                                }, function (response) {
                                     deferred.resolve(config);
                                 });
                         }, function (response) {

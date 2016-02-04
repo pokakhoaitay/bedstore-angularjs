@@ -7,7 +7,6 @@
  */
 use lib\config\ApiConfig;
 
-//TODO: Consider move this function to a separate function (aka: xsMw, authMw), then $app->add(xsMw), $app->add(authMw)...
 class AppGuardMiddleware
 {
     protected $appCore;
@@ -36,14 +35,11 @@ class AppGuardMiddleware
                     $response = $this->DenyAccess($request, $response);
                 } else {
                     $response = $next($request, $response);
-                    $cookVal = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME_WEB)[0];// $_COOKIE[ApiConfig::TOKEN_NAME_WEB];
+                    $cookVal = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME_WEB)[0];
                     $sessionVal = $_SESSION[ApiConfig::TOKEN_NAME_WEB];
-                    if ($cookVal === $sessionVal)
-                    {
+                    if ($cookVal === $sessionVal) {
                         $response = $next($request, $response);
-                    }
-                    else
-                    {
+                    } else {
                         $response = $this->DenyAccess($request, $response);
                     }
                 }
