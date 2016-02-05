@@ -8,11 +8,44 @@
  */
 require 'vendor/autoload.php';
 require 'lib/config/app.config.php';
+require_once 'lib/config/api.config.php';
 
 require_once 'lib/core/db.core.php';
 require_once 'lib/core/app.core.php';
 require_once 'services/guard.service.php';
 require_once 'midlewares/appguard.middleware.php';
+
+
+
+
+session_start();
+$time = $_SERVER['REQUEST_TIME'];
+/**
+ * for a 30 minute timeout, specified in seconds
+ */
+$timeout_duration = 5;
+
+/**
+ * Here we look for the user’s LAST_ACTIVITY timestamp. If
+ * it’s set and indicates our $timeout_duration has passed,
+ * blow away any previous $_SESSION data and start a new one.
+ */
+if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+    session_unset();
+    session_destroy();
+    session_start();
+
+    $gs=new GuardSevice();
+    $gs->InitSession();
+}
+
+/**
+ * Finally, update LAST_ACTIVITY so that our timeout
+ * is based on it and not the user’s login time.
+ */
+$_SESSION['LAST_ACTIVITY'] = $time;
+
+
 
 
 /**
@@ -37,24 +70,24 @@ $c = new Slim\Container(\lib\config\AppConfig::SLIM_CONFIGS);
 //};
 
 
-register_shutdown_function('fatal_handler');
-
-function fatal_handler()
-{
-    $lastError=error_get_last();
-    if (!is_null($lastError)) {
-        header("HTTP/1.1 500 Internal Server Error");
-    }
-}
+//register_shutdown_function('fatal_handler');
+//
+//function fatal_handler()
+//{
+//    $lastError = error_get_last();
+//    if (!is_null($lastError)) {
+//        header("HTTP/1.1 500 Internal Server Error");
+//    }
+//}
 
 $app = new Slim\App($c);
 
-$c['xcore\AppCore']=function ($container){
-    return new xcore\AppCore($container);
-};
+//$c['xcore\AppCore'] = function ($container) {
+//    return new AppCore($container);
+//};
 
-$app->add(new AppGuardMiddleware($c->get('xcore\AppCore')));
-session_start();
+$app->add(new AppGuardMiddleware());
+
 
 //$container = $app->getContainer();
 

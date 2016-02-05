@@ -10,8 +10,8 @@ myApp
 
         return {
             initApp: function (options) {
-                $httpProvider.defaults.xsrfHeaderName = 'X-BSTokenWeb';
-                $httpProvider.defaults.xsrfCookieName = 'BSTokenWeb';//TODO: For Admin CMS we going to use BSTokenAdmin
+                $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
+                $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
                 $httpProvider.interceptors.push('ApiHttpIntercepter');
             },
             $get: function () {
@@ -48,7 +48,9 @@ myApp
         });
     })
 
-    .run(function ($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService) {
+    .run(function ($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService, $cookies) {
+
+        //Keep page scroll to top when refresh (F5) the page
         $rootScope.$on('$stateChangeSuccess', function (event, toState) {
             if ($stateParams.scrollTo) {
                 $location.hash($stateParams.scrollTo);
@@ -56,7 +58,18 @@ myApp
             }
         });
 
-        SessionService.initSession();
+        //Extend (like extension method in c#) methods should define here
+        angular.extend($cookies, {
+            checkCookieExpired: function () {
+                return !$cookies.get(appConfig.xsrfCookieName);
+            }
+        });
+
+        if ($cookies.checkCookieExpired()) {
+            //Init session
+           // SessionService.initSession();
+        }
+
     })
 
 ;

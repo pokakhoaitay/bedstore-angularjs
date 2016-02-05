@@ -13,14 +13,12 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
                     return config;
                 if (config.url.indexOf('api/init-session') >= 0)
                     return config;
-                // do something on success
 
+                // do something on success
                 var $http = $injector.get('$http');
                 var $cookies = $injector.get('$cookies');
-                var tokenName = $http.defaults.xsrfCookieName;
-                var cook = $cookies.get(tokenName);
 
-                if (!$cookies.get(tokenName)) {
+                if ($cookies.checkCookieExpired()) {
                     var deferred = $q.defer();
                     var lastUrl = config.url;
                     $http.get(GetApiUrl('init-session'))

@@ -15,13 +15,16 @@ var myApp=angular.module('myApp', [
     'ngMessages',
     'ngMaterial',
     'ngAnimate',
-    'ui.router'
+    'ui.router',
+    'ngCookies',
 
 ]);
 
 var appConfig={
     apiRoute:'http://dev.bedstore.com:9999/api/',
     lastUrl:'',
+    xsrfHeaderName:'X-BSTokenWeb',
+    xsrfCookieName:'BSTokenWeb',
 }
 
 function GetApiUrl(path){

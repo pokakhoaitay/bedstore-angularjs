@@ -1,4 +1,4 @@
-angular.module('myApp')
+myApp
     .controller('AppCtrl',
         function ($scope, $document, $window, Helper, $location, $mdSidenav,Bootstrap) {
 
@@ -44,5 +44,6 @@ angular.module('myApp')
                 $mdSidenav('leftSideNav').close();
             }
             //endregion END SIDEBAR
+
 
         });

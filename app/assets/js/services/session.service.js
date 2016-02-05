@@ -2,7 +2,7 @@
  * Created by Poka on 1/31/2016.
  */
 appService
-    .factory('SessionService', function ($http) {
+    .factory('SessionService', function ($http, $cookies) {
         var service = {};
         service.initSession = function () {
             $http.get('/api/init-session')

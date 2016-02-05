@@ -6,14 +6,15 @@
  * Time: 9:29 PM
  */
 use lib\config\ApiConfig;
+use lib\core;
 
 class AppGuardMiddleware
 {
-    protected $appCore;
+    //protected $appCore;
 
-    function __construct(xcore\AppCore $appCore)
+    function __construct()
     {
-        $this->appCore = $appCore;
+        //$this->appCore = $appCore;
     }
 
     /**
@@ -27,22 +28,28 @@ class AppGuardMiddleware
         //The code for the function like 'BeforeExecute' in .NET MVC here
         //..
 
-        if ($this->appCore->AllowRoutePass())
+        if (AppCore::CheckIgnoreRoute($request->getUri()->getPath())) {
             $response = $next($request, $response);
-        else {
-            if ($request->getUri()->getPath() != 'init-session')
-                if (!isset($_COOKIE[ApiConfig::TOKEN_NAME_WEB])) {
-                    $response = $this->DenyAccess($request, $response);
-                } else {
-                    $response = $next($request, $response);
-                    $cookVal = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME_WEB)[0];
-                    $sessionVal = $_SESSION[ApiConfig::TOKEN_NAME_WEB];
-                    if ($cookVal === $sessionVal) {
+        } else {
+            if (!isset($_COOKIE[ApiConfig::TOKEN_NAME_WEB])) {
+                $response = $this->DenyAccess($request, $response);
+            } else {
+                $headerTooken = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME_WEB);
+                if (isset($headerTooken)
+                    && !empty($headerTooken[0])
+                    && isset($_SESSION[ApiConfig::TOKEN_NAME_WEB])
+                ) {
+                    $sessionToken = $_SESSION[ApiConfig::TOKEN_NAME_WEB];
+                    if ($headerTooken[0] == $sessionToken) {
                         $response = $next($request, $response);
                     } else {
                         $response = $this->DenyAccess($request, $response);
                     }
+                } else {
+                    $response = $this->DenyAccess($request, $response);
                 }
+            }
+
         }
 
 

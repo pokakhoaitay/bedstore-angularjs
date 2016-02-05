@@ -15,7 +15,7 @@ class AppConfig
     ];
 
     const IGNORE_ROUTES = array(
-        'GET/init-session'
+        'init-session'
     );
 }
 
