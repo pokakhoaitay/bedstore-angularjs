@@ -51,6 +51,9 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
             // optional method
             'response': function (response) {
 
+                if(response.data.Reload===1){
+                    window.location.reload();
+                }
                 // do something on success
                 return response;
             },
@@ -58,7 +61,7 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
             // optional method
             'responseError': function (rejection) {
 
-
+                console.log(rejection);
                 // do something on error
                 //if (canRecover(rejection)) {
                 //    return responseOrNewPromise

@@ -64,7 +64,6 @@ myApp
                 return !$cookies.get(appConfig.xsrfCookieName);
             }
         });
-
         if ($cookies.checkCookieExpired()) {
             //Init session
            // SessionService.initSession();

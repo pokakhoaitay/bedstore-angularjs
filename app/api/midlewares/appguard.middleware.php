@@ -25,6 +25,12 @@ class AppGuardMiddleware
      */
     public function __invoke($request, $response, $next)
     {
+        if (!isset($_SESSION[ApiConfig::TOKEN_NAME_WEB]) && $request->getUri()->getPath()!='init-session') {
+            $gs=new GuardSevice();
+            $gs->InitSession();
+            $response = $response->withJson(['Reload'=>1]);
+            return $response;
+        }
         //The code for the function like 'BeforeExecute' in .NET MVC here
         //..
 

@@ -23,7 +23,7 @@ $time = $_SERVER['REQUEST_TIME'];
 /**
  * for a 30 minute timeout, specified in seconds
  */
-$timeout_duration = 5;
+$timeout_duration = 10;
 
 /**
  * Here we look for the user’s LAST_ACTIVITY timestamp. If
@@ -35,8 +35,9 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > 
     session_destroy();
     session_start();
 
-    $gs=new GuardSevice();
-    $gs->InitSession();
+//    $gs=new GuardSevice();
+//    $gs->InitSession();
+//    header("HTTP/1.1 401 Internal Server Error");
 }
 
 /**
