@@ -65,7 +65,7 @@ myApp
                 return !$cookies.get(appConfig.xsrfCookieName);
             }
         });
-
+        SessionService.initSession();
     })
 
 ;

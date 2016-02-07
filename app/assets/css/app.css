@@ -349,7 +349,8 @@ md-toolbar .btn-toggle-nav md-icon {
     font-size: 14px;
     color: #969696; }
     .build-control .sub-option + .border, .build-control-sm .sub-option + .border {
-      margin-top: 4px; }
+      margin-top: 4px;
+      padding: 7px 20px; }
   .build-control .sub-rad-group, .build-control-sm .sub-rad-group {
     margin: 0 0 15px 40px;
     font-size: 13px; }
@@ -362,7 +363,8 @@ md-toolbar .btn-toggle-nav md-icon {
     font-size: 12px;
     font-style: italic; }
     .build-control .note + .border, .build-control-sm .note + .border {
-      margin-top: 4px; }
+      margin-top: 4px;
+      padding: 7px 20px; }
   .build-control .md-button.add-to-cart, .build-control-sm .md-button.add-to-cart {
     width: 170px;
     font-size: 16px !important;

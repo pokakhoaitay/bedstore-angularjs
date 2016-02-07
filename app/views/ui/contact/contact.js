@@ -17,16 +17,19 @@ angular.module('myApp.contact', ['ui.router'])
     })
 
     .controller('ContactCtrl', function (Helper, $scope, ContactService) {
-        $scope.contact = {};
+        $scope.contact = {name: null, email: null, messages: null};
+        $scope.contactOriginal = angular.copy($scope.contact);
         $scope.canPost = function () {
             return $scope.contactForm.$dirty &&
                 $scope.contactForm.$valid;
         }
-        $scope.createContact= function (contact) {
+        $scope.createContact = function (contact) {
             ContactService.createContact(contact, function () {
+                $scope.contact =angular.copy($scope.contactOriginal);
                 $scope.contactForm.$setPristine();
-                $scope.contact={};
-                alert('Thank you!');
+                $scope.contactForm.$setUntouched();
+                alert('Thank you!');//TODO: implement angular material modal
+
             });
 
         }

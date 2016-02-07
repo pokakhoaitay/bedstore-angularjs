@@ -345,6 +345,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
     color: #969696;
     & + .border {
       margin-top: 4px;
+      padding: 7px 20px;
     }
   }
   .sub-rad-group {
@@ -360,6 +361,7 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
   .note { font-size: 12px; font-style: italic;
     & + .border {
       margin-top: 4px;
+      padding: 7px 20px;
     }
   }
 
