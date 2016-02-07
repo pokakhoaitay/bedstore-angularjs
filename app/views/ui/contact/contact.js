@@ -18,5 +18,16 @@ angular.module('myApp.contact', ['ui.router'])
 
     .controller('ContactCtrl', function (Helper, $scope, ContactService) {
         $scope.contact = {};
-        ContactService.test();
+        $scope.canPost = function () {
+            return $scope.contactForm.$dirty &&
+                $scope.contactForm.$valid;
+        }
+        $scope.createContact= function (contact) {
+            ContactService.createContact(contact, function () {
+                $scope.contactForm.$setPristine();
+                $scope.contact={};
+                alert('Thank you!');
+            });
+
+        }
     });

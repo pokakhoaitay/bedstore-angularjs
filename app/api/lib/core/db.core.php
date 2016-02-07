@@ -37,6 +37,8 @@ class Db
 
             return false;
         }
+        self::$connection->autocommit(false);
+
         return self::$connection;
     }
 
@@ -49,6 +51,13 @@ class Db
         $this->connect();
         $result=self::$connection->query($query);
         return $result;
+    }
+
+    public function rollback(){
+        self::$connection->rollback();
+    }
+    public function commit(){
+        self::$connection->commit();
     }
 
     /**

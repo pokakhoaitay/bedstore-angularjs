@@ -14,6 +14,7 @@ require_once 'lib/core/db.core.php';
 require_once 'lib/core/app.core.php';
 require_once 'services/guard.service.php';
 require_once 'midlewares/appguard.middleware.php';
+require_once 'lib/core/app.utils.php';
 
 
 

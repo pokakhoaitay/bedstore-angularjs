@@ -10,8 +10,12 @@ require_once __DIR__ . '/../services/contact.service.php';
 require_once __DIR__ . '/../lib/config/api.config.php';
 use lib\config\ApiConfig;
 
-$app->get('/contact/test-header', function ($request, $response) {
-   // $contact = new ContactService();
-   // $sessionVal=$_SESSION[ApiConfig::TOKEN_NAME_WEB];
-    return $response;
+$app->post('/contact/create-contact', function ($request, $response, $submitData) {
+    $contact = new ContactService();
+    $data = $request->getParams();
+    $contact->createContact($data['name'], $data['email'], $data['messages']);
+    if (!$contact)
+        return $response->withJson(['data' => false]);
+    else
+        return $response->withJson(['data' => true]);
 });

@@ -12,6 +12,7 @@ myApp
             initApp: function (options) {
                 $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
                 $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
+                $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
                 $httpProvider.interceptors.push('ApiHttpIntercepter');
             },
             $get: function () {
@@ -64,10 +65,6 @@ myApp
                 return !$cookies.get(appConfig.xsrfCookieName);
             }
         });
-        if ($cookies.checkCookieExpired()) {
-            //Init session
-           // SessionService.initSession();
-        }
 
     })
 

@@ -28,7 +28,9 @@ class ContactService{
         {
             $error= $this->db->error();
             //TODO: Log errors
+            $this->db->rollback();
         }
+        $this->db->commit();
         return $result;
     }
 }

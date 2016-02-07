@@ -5,10 +5,13 @@ appService
     .factory('ContactService', function ($http) {
         var contact = {};
 
-        contact.test = function () {
-            $http.get(GetApiUrl('contact/test-header'))
+        contact.createContact = function (submitData, callback) {
+            var data = $.param(submitData)
+            $http.post(GetApiUrl('contact/create-contact'), data)
                 .then(function (response) {
-                    console.log(response);
+                    if(response.data){
+                        callback();
+                    }
                 }, function (response) {
                     console.log(response);
                 });
