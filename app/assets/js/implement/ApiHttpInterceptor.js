@@ -52,6 +52,7 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
             'response': function (response) {
 
                 if(response.data.Reload===1){
+                    alert('Your session was expired. The web page will be reload now!')
                     window.location.reload();
                 }
                 // do something on success
