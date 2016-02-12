@@ -8,7 +8,10 @@
 use lib\config\ApiConfig;
 
 $app->get('/init-session', function ($request, $response) {
-    $guard = new GuardSevice();
-    $guard->InitSession();
-    unset($guard);
+    if(!isset($_COOKIE[ApiConfig::TOKEN_NAME_WEB])){
+        $guard = new GuardSevice();
+        $guard->InitSession();
+        unset($guard);
+    }
+
 });

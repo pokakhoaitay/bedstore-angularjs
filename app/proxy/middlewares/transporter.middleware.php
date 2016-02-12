@@ -13,6 +13,9 @@ use \lib\config\AppConfig;
 
 
 $app->add(function ($request, $response, $next) {
+    if (AppCore::CheckIgnoreRoute($request->getUri()->getPath())){
+        return $response= $next($request, $response);
+    }
     $method = $request->getMethod();
     $contentRaw = $request->getParams();//For POST anf PUT method
     $content = http_build_query($contentRaw);
