@@ -4,14 +4,14 @@
 
 //TODO: refer to the following link to implement session recovery
 //http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/
-angular.module('module.common', ['ui.router', 'ngCookies'])
-    .factory('ApiHttpIntercepter', function ($q, $injector) {
+angular.module('module.common', ['ui.router', 'ngCookies','angular-md5'])
+    .factory('ApiHttpIntercepter', function ($q, $injector,md5) {
         return {
             // optional method
             'request': function (config) {
-                if (config.url.indexOf('api/') < 0)
+                if (config.url.indexOf('proxy/') < 0)
                     return config;
-                if (config.url.indexOf('api/init-session') >= 0)
+                if (config.url.indexOf('proxy/init-session') >= 0)
                     return config;
 
                 // do something on success

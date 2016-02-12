@@ -9,9 +9,7 @@ appService
             var data = $.param(submitData)
             $http.post(GetApiUrl('contact/create-contact'), data)
                 .then(function (response) {
-                    if(response.data){
-                        callback();
-                    }
+                    callback(response);
                 }, function (response) {
                     console.log(response);
                 });

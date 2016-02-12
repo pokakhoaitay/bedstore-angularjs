@@ -14,3 +14,4 @@ tmp
 /app/assets/svgs/svg-icon-default.theme.css
 .idea
 /nbproject/private/
+__build__

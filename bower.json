@@ -16,6 +16,7 @@
     "svg4everybody": "~2.0.0",
     "angular": "~1.4.9",
     "angular-material": "^1.0.4",
-    "angular-cookies": "^1.4.9"
+    "angular-cookies": "^1.4.9",
+    "angular-md5": "^0.1.10"
   }
 }
