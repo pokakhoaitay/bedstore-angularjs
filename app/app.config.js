@@ -34,6 +34,14 @@ myApp
                     'footer': {
                         templateUrl: 'views/partials/footer/_footer.html'
                     },
+                    'sidebar': {
+                        templateUrl: 'views/partials/sidebar/_sidebar.html',
+                        controller: '_SidebarCtrl',
+                    },
+                    'topmenu': {
+                        templateUrl: 'views/partials/top-menu/_topMenu.html',
+                        controller: '_TopMenuCtrl',
+                    },
                 }
             });
         ;

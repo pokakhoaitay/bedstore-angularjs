@@ -2,7 +2,7 @@
 
 angular.module('myApp._leftSidenav', ['ui.router'])
 
-    .controller('_LeftSidenavCtrl',
+    .controller('_SidebarCtrl',
         function ($scope, $log, Helper, $document, $mdSidenav, $window, $timeout) {
             var body = angular.element($document[0].querySelector('body'));
             $scope.$watch(function () {//https://docs.angularjs.org/api/ng/type/$rootScope.Scope
