@@ -13,6 +13,9 @@ var changed = require('gulp-changed');
 var cache = require('gulp-cached');
 var rimraf = require('gulp-rimraf');
 var rename = require("gulp-rename");
+var cssnano = require('gulp-cssnano');
+var ngAnnotate = require('gulp-ng-annotate');
+var gulpFilter = require('gulp-filter');
 
 
 var basePaths = {
@@ -25,8 +28,8 @@ var basePaths = {
 var paths = {
     jsUsed: [
         //'./app/assets/js/vendor/modernizr-2.8.3.min.js',
+        './app/bower_components/angular/angular.js',
         './app/assets/js/vendor/jquery-1.11.3.min.js',
-        './app/bower_components/angular/angular.min.js',
         './app/bower_components/angular-cookies/angular-cookies.min.js',
         './app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
         './app/bower_components/angular-animate/angular-animate.min.js',
@@ -36,17 +39,17 @@ var paths = {
         './app/bower_components/angular-md5/angular-md5.min.js',
         './app/bower_components/svg4everybody/dist/svg4everybody.min.js',
     ],
-    jsSpecial: [
+    libsCopyAll: [
         './app/bower_components/slider-revolution/src/**/*.*',
         '!./app/bower_components/slider-revolution/src/js/jquery.themepunch.plugins.js',
         '!./app/bower_components/slider-revolution/src/js/jquery.themepunch.revolution.js',
     ],
     jsMineUsed: [
-        './app/assets/js/plugins.js',
-        './app/assets/js/main.js',
-        './app.js',
-        './app.config.js',
-        './app.ctrl.js',
+        //'./app/assets/js/plugins.js',
+        //'./app/assets/js/main.js',
+        './app/app.js',
+        './app/app.config.js',
+        './app/app.ctrl.js',
         './app/assets/js/my-utils/utils.js',
         './app/assets/js/implement/ApiHttpInterceptor.js',
         './app/assets/js/services/app.service.js',
@@ -56,13 +59,24 @@ var paths = {
         './app/views/ui/home/home.js',
         './app/views/ui/about/about.js',
         './app/views/partials/top-menu/_topMenu.js',
-        './app/views/partials/left-sidenav/_leftSidenav.js',
+        './app/views/partials/sidebar/_sidebar.js',
         './app/views/ui/build-a-bed/buildABed.js',
         './app/views/ui/contact/contact.js',
     ],
-    cssUsed: [],
+    cssUsed: [
+        './app/assets/css/normalize.css',
+        './app/bower_components/angular-material/angular-material.min.css',
+        './app/assets/svgs/svg-icon-default.theme.css',
+        './app/assets/css/main.css',
+        './app/assets/css/app.css',
+    ],
+    cssKeepStruct: [
+        './app/assets/js/vendor/**/*.css',
+        './app/assets/js/vendor/slider-revolution/src/css/*.css',
+        '!./app/assets/js/vendor/**/demo.css',
+    ],
     htmlIndex: [
-        './app/index.min.html'
+        './app/index.prod.html'
     ]
 }
 
@@ -70,7 +84,7 @@ var paths = {
  * CLEAN
  *--------------------------------------------------*/
 gulp.task('clean', function () {
-    return gulp.src([basePaths.dest, '!' + basePaths.dest + 'assets/js/vendor/app.vendor.min.js', '!' + basePaths.dest + 'assets/js/app.main.min.js'], {read: false})
+    return gulp.src([basePaths.dest], {read: false})
         .pipe(rimraf({force: false}));
 });
 
@@ -85,18 +99,21 @@ gulp.task('js.vendor', ['clean'], function () {
 
 gulp.task('js.main', ['clean'], function () {
     return gulp.src(paths.jsMineUsed)
-        .pipe(cache('js.main'))
+        //.pipe(cache('js.main'))
         .pipe(concat('app.main.min.js'))
+        .pipe(ngAnnotate())
         .pipe(uglify())
-        //.pipe(changed(basePaths.dest))
         .pipe(gulp.dest(basePaths.dest + 'assets/js/'))
         ;
 });
 
 //Dành cho các thư viện mà gồm cả css, images, ...
 gulp.task('js.spec', ['clean'], function () {
-    return gulp.src(paths.jsSpecial, {base: basePaths.bowerSrc})
-        //.pipe(changed(basePaths.dest))
+    var cssFilter = gulpFilter('**/*.css', {restore: true});
+    return gulp.src(paths.libsCopyAll, {base: basePaths.bowerSrc})
+        .pipe(cssFilter)
+        .pipe(cssnano())
+        .pipe(cssFilter.restore)
         .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor'))
         ;
 });
@@ -105,6 +122,24 @@ gulp.task('index', function () {
     return gulp.src(paths.htmlIndex, {base: basePaths.src})
         .pipe(rename('index.html'))
         .pipe(gulp.dest(basePaths.dest))
+        ;
+});
+
+gulp.task('css.bundle', ['clean'], function () {
+    gulp.src(['./app/bower_components/slider-revolution/src/css/settings.css'], {base: basePaths.bowerSrc})
+        .pipe(cssnano())
+        .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'));
+    gulp.src(paths.cssUsed)
+        .pipe(concat('css.bundle.css'))
+        .pipe(cssnano())
+        .pipe(gulp.dest(basePaths.dest + 'assets/css/'))
+    ;
+});
+
+gulp.task('css.keepStruct', ['clean'], function () {
+    return gulp.src(paths.cssKeepStruct, {base: paths.src})
+        .pipe(cssnano())
+        .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'))
         ;
 });
 
@@ -127,20 +162,70 @@ gulp.task('copy', ['clean'], function () {
             '!./app/views/**/*.js',
             '!./app/*.js',
             '!./app/*.html',
-            //'!./app/assets/**/*.css',
+            '!./app/assets/**/*.css',
             //'!./app/assets/**/*.js',
             '!./app/assets/**/*.scss',
             '!./app/assets/**/*.map',
         ], {base: basePaths.src})
         .pipe(gulp.dest(basePaths.dest));
+    htmlTemplate();
+});
+
+gulp.task('proxy', ['clean'], function () {
+    return gulp.src([
+            './app/proxy/**/*.*',
+            './app/proxy/*.*',
+            './app/proxy/.htaccess',
+        ], {base: basePaths.src})
+        .pipe(cache('proxy'))
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 
-gulp.task('default', ['clean', 'js.vendor', 'js.main', 'js.spec', 'copy', 'htmlTemplate']);
+gulp.task('font-img', ['clean'], function () {
+    gulp.src(paths.htmlIndex, {base: basePaths.src})
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest(basePaths.dest));
+    gulp.src([
+            './app/assets/**/fonts/*.*',
+            './app/assets/**/img/*.*',
+            './app/assets/**/imgs/*.*',
+            './app/assets/**/images/*.*',
+            './app/assets/**/*.png',
+            './app/assets/**/*.jpg',
+            './app/assets/**/*.jpeg',
+            './app/assets/**/*.gif',
+
+            './app/assets/js/vendor/*.js',
+
+            './app/assets/svgs/*.*',
+            '!./app/assets/svgs/*.scss',
+
+            '!./app/assets/**/*.map',
+            '!./app/**/*.map',
+
+            './app/*.png',
+            './app/*.jpg',
+            './app/*.jpeg',
+            './app/*.gif',
+            './app/*.ico',
+            './app/.htaccess',
+        ], {base: basePaths.src})
+        .pipe(gulp.dest(basePaths.dest))
+    ;
+    htmlTemplate();
+});
+
+gulp.task('css', ['clean', 'css.bundle', 'css.keepStruct']);
+gulp.task('default', ['clean', 'font-img', 'js.vendor', 'js.main', 'js.spec', 'css', 'proxy']);
 
 
 gulp.task('htmlTemplate', function () {
-    return gulp.src([
+    htmlTemplate();
+});
+
+var htmlTemplate = function () {
+    gulp.src([
             './app/views/**/*.html',
         ])
         .pipe(templateCache({
@@ -151,6 +236,6 @@ gulp.task('htmlTemplate', function () {
             }
         }))
         .pipe(gulp.dest(basePaths.dest + 'assets/js/'));
-});
+}
 
 

@@ -1,4 +1,3 @@
-'use strict';
 
 angular.module('myApp.contact', ['ui.router'])
 

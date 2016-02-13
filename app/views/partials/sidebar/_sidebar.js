@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp._leftSidenav', ['ui.router'])
+angular.module('myApp._sidebar', ['ui.router'])
 
     .controller('_SidebarCtrl',
         function ($scope, $log, Helper, $document, $mdSidenav, $window, $timeout) {

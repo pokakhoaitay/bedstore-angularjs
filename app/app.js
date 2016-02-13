@@ -6,7 +6,7 @@ var myApp = angular.module('myApp', [
     'myApp.buildABed',
     'myApp.contact',
     'myApp._topMenu',
-    'myApp._leftSidenav',
+    'myApp._sidebar',
 
 
     'module.utils',
@@ -17,6 +17,7 @@ var myApp = angular.module('myApp', [
     'ngAnimate',
     'ui.router',
     'ngCookies',
+    'templates',
 
 ]);
 

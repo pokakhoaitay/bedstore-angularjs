@@ -1,4 +1,3 @@
-'use strict';
 
 angular.module('myApp.buildABed', ['ui.router'])
     .config(function ($stateProvider) {
