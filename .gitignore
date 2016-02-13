@@ -17,4 +17,5 @@ tmp
 /nbproject/private/
 __build__
 /.build
+/.prod
 /.dist
