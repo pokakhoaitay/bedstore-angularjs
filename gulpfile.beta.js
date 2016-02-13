@@ -12,8 +12,7 @@ var templateCache = require('gulp-angular-templatecache');
 
 var basePaths = {
     src: './app/',
-    destBuild: './.build/',
-    destProd: './.prod/',
+    dest: './.build/',
     bowerSrc: 'app/bower_components/'
 };
 
@@ -27,7 +26,7 @@ var paths = {
  * CLEAN
  *--------------------------------------------------*/
 gulp.task('clean', function () {
-    return del([basePaths.destBuild]);
+    return del([basePaths.dest]);
 });
 
 
@@ -40,7 +39,7 @@ gulp.task('default', ['clean', 'bower.js', 'bower.css', 'proxy'], function () {
             '!./app/assets/**/*.scss',
             '!./app/assets/**/*.map',
         ], {base: basePaths.src})
-        .pipe(gulp.dest(basePaths.destBuild));
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('bower.js', ['bower.vendor.all'], function () {
@@ -53,7 +52,7 @@ gulp.task('bower.js', ['bower.vendor.all'], function () {
             //'!./app/bower_components/**/*.min.js',
             '!./app/bower_components/**/*index.js',
         ], {base: basePaths.src})
-        .pipe(gulp.dest(basePaths.destBuild));
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('bower.css', function () {
@@ -65,14 +64,14 @@ gulp.task('bower.css', function () {
             '!./app/bower_components/**/examples/**',
             '!./app/bower_components/**/*index.css',
         ], {base: basePaths.src})
-        .pipe(gulp.dest(basePaths.destBuild));
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('bower.vendor.all', function () {
     return gulp.src([
             './app/bower_components/slider-revolution/src/**/*.*'
         ], {base: basePaths.src})
-        .pipe(gulp.dest(basePaths.destBuild));
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('proxy', function () {
@@ -81,7 +80,7 @@ gulp.task('proxy', function () {
             './app/proxy/*.*',
             './app/proxy/.htaccess',
         ], {base: basePaths.src})
-        .pipe(gulp.dest(basePaths.destBuild));
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('htmlTemplate', function () {
@@ -95,7 +94,7 @@ gulp.task('htmlTemplate', function () {
                 return 'views/' + filename;
             }
         }))
-        .pipe(gulp.dest(basePaths.destBuild));
+        .pipe(gulp.dest(basePaths.dest));
 });
 
 
