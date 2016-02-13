@@ -13,7 +13,7 @@ var changed = require('gulp-changed');
 var cache = require('gulp-cached');
 var rimraf = require('gulp-rimraf');
 var rename = require("gulp-rename");
-var cssnano = require('gulp-cssnano');
+var cssnano = require('gulp-minify-css');//require('gulp-cssnano');
 var ngAnnotate = require('gulp-ng-annotate');
 var gulpFilter = require('gulp-filter');
 
@@ -28,8 +28,8 @@ var basePaths = {
 var paths = {
     jsUsed: [
         //'./app/assets/js/vendor/modernizr-2.8.3.min.js',
-        './app/bower_components/angular/angular.js',
-        './app/assets/js/vendor/jquery-1.11.3.min.js',
+        //'./app/bower_components/angular/angular.min.js',
+        //'./app/assets/js/vendor/jquery-1.11.3.min.js',
         './app/bower_components/angular-cookies/angular-cookies.min.js',
         './app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
         './app/bower_components/angular-animate/angular-animate.min.js',
@@ -130,8 +130,8 @@ gulp.task('css.bundle', ['clean'], function () {
         .pipe(cssnano())
         .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'));
     gulp.src(paths.cssUsed)
-        .pipe(concat('css.bundle.css'))
         .pipe(cssnano())
+        .pipe(concat('css.bundle.css'))
         .pipe(gulp.dest(basePaths.dest + 'assets/css/'))
     ;
 });
@@ -229,7 +229,7 @@ var htmlTemplate = function () {
             './app/views/**/*.html',
         ])
         .pipe(templateCache({
-            standalone: true,
+            standalone: false,
             base: function (file) {
                 var filename = /[^/]*$/.exec(file.relative)[0];
                 return 'views/' + filename;

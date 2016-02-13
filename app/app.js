@@ -20,7 +20,7 @@ var myApp = angular.module('myApp', [
     'templates',
 
 ]);
-
+angular.module('templates',[]);
 var appConfig = {
     apiRoute: 'http://dev.bedstore.com:9999/proxy/',
     lastUrl: '',
