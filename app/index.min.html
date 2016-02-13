@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bed Store</title>
+    <base href="/">
+    <link rel='shortcut icon' type='image/x-svg' href='img/logo.svg'/>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link href="assets/js/vendor/google-material-icons/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="assets/js/vendor/outline-icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="assets/js/vendor/outline-icons/Tonicons-Outline/style.css">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
+
+    <!-- REVOLUTION BANNER CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="bower_components/slider-revolution/src/css/settings.css"
+          media="screen"/>
+
+    <link rel="stylesheet" href="assets/svgs/svg-icon-default.theme.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+
+</head>
+<body ng-cloak layout="column" ng-controller="AppCtrl as appVm"
+      ng-class="{'hide-scroll-bar':appVm.isHideBodyScrollbar,'override-padding-top':appVm.isHideTopbar}">
+
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<aside ui-view="sidebar"></aside>
+<div ui-view="topmenu"></div>
+<div ui-view></div>
+<div ui-view="footer"></div>
+
+<!-- In production use:
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+-->
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+<!--<script src="bower_components/angular-route/angular-route.js"></script>-->
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+<script src="bower_components/angular-material/angular-material.min.js"></script>
+
+<script src="assets/js/vendor/jquery-1.11.3.min.js"></script>
+<!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>-->
+
+<!-- jQuery REVOLUTION Slider  -->
+<script type="text/javascript"
+        src="bower_components/slider-revolution/src/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" src="bower_components/slider-revolution/src/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-md5/angular-md5.min.js"></script>
+
+<script src="assets/js/plugins.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="app.js"></script>
+<script src="app.config.js"></script>
+<script src="app.ctrl.js"></script>
+
+
+<script src="assets/js/my-utils/utils.js"></script>
+<script src="assets/js/implement/ApiHttpInterceptor.js"></script>
+<script src="assets/js/services/app.service.js"></script>
+<script src="assets/js/services/session.service.js"></script>
+<script src="assets/js/services/contact.service.js"></script>
+<script src="assets/js/services/test.service.js"></script>
+
+
+<script src="views/ui/home/home.js"></script>
+<script src="views/ui/about/about.js"></script>
+<script src="views/partials/top-menu/_topMenu.js"></script>
+<script src="views/partials/sidebar/_sidebar.js"></script>
+<script src="views/ui/build-a-bed/buildABed.js"></script>
+<script src="views/ui/contact/contact.js"></script>
+
+<!--SVG Sprites support cross platform-->
+<!--To support Internet Explorer 6-8, include the legacy script instead.-->
+<script src="bower_components/svg4everybody/dist/svg4everybody.min.js"></script>
+
+
+<script>
+    //    $('document').ready(function(){
+    //
+    //        // Calling LayerSlider on your selected element after the document loaded
+    //        $('#layerslider').layerSlider();
+    //    });
+</script>
+</body>
+</html>
