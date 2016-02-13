@@ -1,5 +1,5 @@
 // Declare app level module which depends on views, and components
-var myApp=angular.module('myApp', [
+var myApp = angular.module('myApp', [
     //'ngRoute',
     'myApp.home',
     'myApp.about',
@@ -20,13 +20,13 @@ var myApp=angular.module('myApp', [
 
 ]);
 
-var appConfig={
-    apiRoute:'http://dev.bedstore.com:9999/proxy/',
-    lastUrl:'',
-    xsrfHeaderName:'X-BSTokenWeb',
-    xsrfCookieName:'BSTokenWeb',
+var appConfig = {
+    apiRoute: 'http://dev.bedstore.com:9999/proxy/',
+    lastUrl: '',
+    xsrfHeaderName: 'X-BSTokenWeb',
+    xsrfCookieName: 'BSTokenWeb',
 }
 
-function GetApiUrl(path){
-    return appConfig.apiRoute+path;
+function GetApiUrl(path) {
+    return appConfig.apiRoute + path;
 }

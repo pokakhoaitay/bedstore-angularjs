@@ -11,8 +11,10 @@ tmp
 .DS_Store
 /app/bower_components
 /app/assets/svgs/svg-icon-default.theme.css.map
+/app/proxy/vendor
 /app/assets/svgs/svg-icon-default.theme.css
 .idea
 /nbproject/private/
 __build__
-vendor
+/.build
+/.dist
