@@ -4,8 +4,8 @@
 
 //TODO: refer to the following link to implement session recovery
 //http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/
-angular.module('module.common', ['ui.router', 'ngCookies','angular-md5'])
-    .factory('ApiHttpIntercepter', function ($q, $injector,md5) {
+angular.module('module.common', ['ui.router', 'ngCookies', 'angular-md5'])
+    .factory('ApiHttpIntercepter', function ($q, $injector, md5) {
         return {
             // optional method
             'request': function (config) {
@@ -51,7 +51,7 @@ angular.module('module.common', ['ui.router', 'ngCookies','angular-md5'])
             // optional method
             'response': function (response) {
 
-                if(response.data.Reload===1){
+                if (response.data.Reload === 1) {
                     alert('Your session was expired. The web page will be reload now!')
                     window.location.reload();
                 }

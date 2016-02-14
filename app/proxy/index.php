@@ -17,7 +17,7 @@ $time = $_SERVER['REQUEST_TIME'];
 /**
  * for a 30 minute timeout, specified in seconds
  */
-$timeout_duration = 1800;
+$timeout_duration = \lib\config\AppConfig::SESSION_TIMEOUT;
 
 /**
  * Here we look for the user’s LAST_ACTIVITY timestamp. If
