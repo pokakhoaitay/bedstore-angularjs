@@ -230,6 +230,7 @@ var htmlTemplate = function () {
         ])
         .pipe(templateCache({
             standalone: false,
+            filename:'templates.min.js',
             base: function (file) {
                 var filename = /[^/]*$/.exec(file.relative)[0];
                 return 'views/' + filename;
