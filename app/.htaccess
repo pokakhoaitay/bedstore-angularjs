@@ -34,7 +34,11 @@
 
       # If the requested resource doesn't exist, use index.html
       #RewriteRule . /index.php [QSA,L]
+
 Options -Indexes
+      ErrorDocument 404 http://www.domain.com/your-custom-404.php
+      ErrorDocument 403 http://www.domain.com/your-custom-404.php
+
 </IfModule>
 
 

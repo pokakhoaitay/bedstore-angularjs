@@ -32,7 +32,9 @@ myApp
     //})
     .config(function ($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider) {
         $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise("/");
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            $injector.get('$state').go('404');
+        });
         //$uiViewScrollProvider.useAnchorScroll();
 
         $stateProvider
@@ -52,7 +54,10 @@ myApp
                         controller: '_TopMenuCtrl',
                     },
                 }
-            });
+            })
+            .state('404', {
+                templateUrl: 'views/pages/404.html'
+            })
         ;
 
 
