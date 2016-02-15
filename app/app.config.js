@@ -20,7 +20,16 @@ myApp
             }
         }
     })
-
+    //.factory('$exceptionHandler',function($injector){
+    //
+    //    return function(exception,cause){
+    //        console.log(exception.message,cause)
+    //        var $rootScoope= $injector.get('$rootScope');
+    //        $rootScoope.errors=$rootScoope.errors||[]
+    //        $rootScoope.errors.push(exception.message);
+    //        console.log( $rootScoope.errors)
+    //    }
+    //})
     .config(function ($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider) {
         $locationProvider.html5Mode(true);
         $urlRouterProvider.otherwise("/");

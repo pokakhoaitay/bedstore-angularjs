@@ -5,10 +5,9 @@
  * Date: 1/30/2016
  * Time: 6:32 AM
  */
-require_once __DIR__ . '/../lib/core/db.core.php';
+require_once __DIR__ . '/../lib/core/DB.php';
 require_once __DIR__ . '/../services/contact.service.php';
-require_once __DIR__ . '/../lib/config/api.config.php';
-use lib\config\ApiConfig;
+require_once __DIR__ . '/../lib/config/ApiConfig.php';
 
 $app->post('/contact/create-contact', function ($request, $response, $submitData) {
     $contact = new ContactService();
@@ -25,7 +24,8 @@ $app->post('/contact/create-contact', function ($request, $response, $submitData
 });
 
 $app->get('/contact/test', function($req,$res,$args){
-    $res=$res->withJson(['data'=>'ok men']);
+    //$res=$res->withJson(['data'=>'ok men']);
+    throw new Exception('Error roi ba oi!!!');
     return $res;
 });
 

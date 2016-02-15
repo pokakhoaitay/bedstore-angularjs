@@ -5,8 +5,6 @@
  * Date: 2/2/2016
  * Time: 9:29 PM
  */
-use lib\config\ApiConfig;
-use lib\core;
 
 
 $app->add(function ($request, $response, $next) {

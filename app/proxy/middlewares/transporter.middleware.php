@@ -6,15 +6,10 @@
  * Time: 8:34 AM
  */
 
-use \lib\config\AppConfig;
-
-
-//use GuzzleHttp\Psr7\Request;
-
 
 $app->add(function ($request, $response, $next) {
-    if (AppCore::CheckIgnoreRoute($request->getUri()->getPath())){
-        return $response= $next($request, $response);
+    if (AppCore::CheckIgnoreRoute($request->getUri()->getPath())) {
+        return $response = $next($request, $response);
     }
     $method = $request->getMethod();
     $contentRaw = $request->getParams();//For POST anf PUT method
@@ -30,18 +25,31 @@ $app->add(function ($request, $response, $next) {
         . $uri;
 
     $auth = Utils::calculateHMAC($signature, AppConfig::API_SECRET_KEY);
-    // $response = $next($request, $response);
 
 
-    $client = new GuzzleHttp\Client();
-    $response = $client->request($method, $path, [
-        'base_uri' => AppConfig::API_ROOT,
-        'headers' => [
-            'auth' => [AppConfig::API_PUBLIC_KEY, $auth, 'BED_WEB'],
-            'X-Date' => $date,
-            'Content-Type' => $contentType,
-        ],
-        'form_params' => $contentRaw
-    ]);
+    //try {
+        $postdata = $content;
+        $opts = array('http' =>
+            array(
+                'method' => $method,
+                'header' => [
+                    'Content-type: ' . $contentType,
+                    'X-Auth: BED_WEB ' . AppConfig::API_PUBLIC_KEY . ':' . $auth,
+                    'X-Date: ' . $date],
+                'content' => $postdata
+            )
+        );
+
+        $context = stream_context_create($opts);
+        $xdata = file_get_contents(AppConfig::API_ROOT . $path, false, $context);
+        if ($xdata) {
+            $response = $response->write($xdata);
+        }
+
+//    } catch (Exception $e) {
+//        throw $e;
+//
+//    }
     return $response;
+
 });

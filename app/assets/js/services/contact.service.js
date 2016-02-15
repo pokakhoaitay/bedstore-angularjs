@@ -7,7 +7,7 @@ appService
 
         contact.createContact = function (submitData, callback) {
             var data = $.param(submitData)
-            $http.post(GetApiUrl('contact/create-contact'), data)
+            $http.post(utils.GetApiUrl('contact/create-contact'), data)
                 .then(function (response) {
                     callback(response);
                 }, function (response) {

@@ -20,14 +20,4 @@ var myApp = angular.module('myApp', [
     'templates',
 
 ]);
-angular.module('templates',[]);
-var appConfig = {
-    apiRoute: 'http://dev.bedstore.com:9999/proxy/',
-    lastUrl: '',
-    xsrfHeaderName: 'X-BSTokenWeb',
-    xsrfCookieName: 'BSTokenWeb',
-}
-
-function GetApiUrl(path) {
-    return appConfig.apiRoute + path;
-}
+angular.module('templates', []);

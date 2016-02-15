@@ -1,3 +1,4 @@
+/app/proxy/Errors.log.txt
 logs/*
 !.gitkeep
 node_modules/

@@ -6,11 +6,9 @@
  * Time: 8:26 PM
  */
 
-namespace lib\core;
-use lib\config\DbConfig;
-use mysqli;
 
-require_once __DIR__.'/../config/database.config.php';
+
+require_once __DIR__ . '/../config/DBConfig.php';
 
 /**
  * Referrence to this: https://www.binpress.com/tutorial/using-php-with-mysql-the-right-way/17
@@ -25,10 +23,10 @@ class Db
     {
         if (!isset(self::$connection)) {
             self::$connection = new mysqli(
-                DbConfig::HOST
-                , DbConfig::USER_NAME
-                , DbConfig::USER_PASSWORD
-                , DbConfig::DB_NAME
+                \DbConfig::HOST
+                , \DbConfig::USER_NAME
+                , \DbConfig::USER_PASSWORD
+                , \DbConfig::DB_NAME
             );
         }
         //If connection was not success, handle the error

@@ -6,7 +6,6 @@
  * Time: 12:48 PM
  */
 
-namespace lib\config;
 class ApiConfig
 {
     const PROXY_SECRET_KEY = 'ng-webs_2016';

@@ -5,7 +5,7 @@ appService
     .factory('SessionService', function ($http, $cookies) {
         var service = {};
         service.initSession = function () {
-            $http.get(GetApiUrl('init-session'))
+            $http.get(utils.GetApiUrl('init-session'))
                 .then(function (response) {
                     //console.log('Renew session success');
                 }, function (response) {

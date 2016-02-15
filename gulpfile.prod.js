@@ -45,8 +45,8 @@ var paths = {
         '!./app/bower_components/slider-revolution/src/js/jquery.themepunch.revolution.js',
     ],
     jsMineUsed: [
-        //'./app/assets/js/plugins.js',
-        //'./app/assets/js/main.js',
+        './app/assets/js/plugins.js',
+        './app/assets/js/main.js',
         './app/app.js',
         './app/app.config.js',
         './app/app.ctrl.js',

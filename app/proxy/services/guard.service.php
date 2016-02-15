@@ -7,7 +7,6 @@
  * Time: 9:39 PM
  */
 
-use lib\config\ApiConfig;
 
 class GuardSevice
 {

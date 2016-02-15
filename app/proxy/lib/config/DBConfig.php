@@ -6,7 +6,6 @@
  * Time: 6:04 PM
  */
 
-namespace lib\config;
 class DbConfig
 {
     const HOST = '127.0.0.1';

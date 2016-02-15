@@ -1,4 +1,3 @@
-
 angular.module('myApp.contact', ['ui.router'])
 
     .config(function ($stateProvider) {
@@ -24,8 +23,7 @@ angular.module('myApp.contact', ['ui.router'])
         }
         $scope.createContact = function (contact) {
             ContactService.createContact(contact, function (response) {
-                if(response.data.status)
-                {
+                if (response.data.status) {
                     $scope.contact = angular.copy($scope.contactOriginal);
                     $scope.contactForm.$setPristine();
                     $scope.contactForm.$setUntouched();
@@ -37,20 +35,18 @@ angular.module('myApp.contact', ['ui.router'])
         }
 
         $scope.test = function () {
-            $http.get(GetApiUrl('test')).then(function (res) {
-                console.log(res.data.data);
+            $http.get(utils.GetApiUrl('test')).then(function (res) {
+                utils.logWithCheck(res.data.data);
             }, function (res) {
-                console.log(res);
             });
         }
         $scope.testPost = function () {
             $http.post(
-                GetApiUrl('test-post'),
-                $.param({'name': 'Hong Tron 100%', 'age': 26,'mes':'^dds $# @30 <> < > ? /'})
+                utils.GetApiUrl('test-post'),
+                $.param({'name': 'Hong Tron 100%', 'age': 26, 'mes': '^dds $# @30 <> < > ? /'})
             ).then(function (response) {
-                console.log(response.data.data);
+                utils.logWithCheck(response.data.data);
             }, function (res) {
-                console.log(res);
             });
         }
     });

@@ -231,7 +231,7 @@ angular.module('myApp.buildABed', ['ui.router'])
             var outsideWidth = docWidth - $document[0].getElementById('eleBuildArea').clientWidth;
             var actual = (docWidth - buildControlWidth);
             var result = actual - 891;
-            console.log(outsideWidth);
+            utils.logWithCheck(outsideWidth);
             return buildControlWidth + (outsideWidth);
         }
     })

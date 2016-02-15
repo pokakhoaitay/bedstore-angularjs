@@ -5,7 +5,6 @@
  * Date: 1/31/2016
  * Time: 9:11 AM
  */
-use lib\config\ApiConfig;
 
 $app->get('/init-session', function ($request, $response) {
     if(!isset($_COOKIE[ApiConfig::TOKEN_NAME_WEB])){

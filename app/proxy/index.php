@@ -1,29 +1,24 @@
 <?php
 
 require 'vendor/autoload.php';
-require 'lib/config/app.config.php';
-require_once 'lib/config/api.config.php';
+require_once 'lib/config/AppConfig.php';
+require_once 'lib/config/ApiConfig.php';
 
-require_once 'lib/core/db.core.php';
-require_once 'lib/core/app.core.php';
+require_once 'lib/core/DB.php';
+require_once 'lib/core/AppCore.php';
 require_once 'services/guard.service.php';
-require_once 'lib/core/app.utils.php';
+require_once 'lib/core/Utils.php';
 
 
-date_default_timezone_set('Asia/Ho_Chi_Minh');
+require_once 'lib/core/bootstrap.core.php';
+require_once 'lib/core/errorhandler.core.php';
 
 session_start();
 $time = $_SERVER['REQUEST_TIME'];
-/**
- * for a 30 minute timeout, specified in seconds
- */
-$timeout_duration = \lib\config\AppConfig::SESSION_TIMEOUT;
 
-/**
- * Here we look for the user’s LAST_ACTIVITY timestamp. If
- * it’s set and indicates our $timeout_duration has passed,
- * blow away any previous $_SESSION data and start a new one.
- */
+$timeout_duration = AppConfig::SESSION_TIMEOUT;
+
+
 if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
     session_unset();
     session_destroy();
@@ -34,47 +29,28 @@ if (isset($_SESSION['LAST_ACTIVITY']) && ($time - $_SESSION['LAST_ACTIVITY']) > 
 //    header("HTTP/1.1 401 Internal Server Error");
 }
 
-/**
- * Finally, update LAST_ACTIVITY so that our timeout
- * is based on it and not the user’s login time.
- */
-$_SESSION['LAST_ACTIVITY'] = $time;
 
+$_SESSION['LAST_ACTIVITY'] = $time;
 
 
 /**-------------------
  * HANDLE ERROR
  *-------------------*/
-$c = new Slim\Container(\lib\config\AppConfig::SLIM_CONFIGS);
-//$c['errorHandler'] = function ($c) {
-//    return function ($request, $response, $exception) use ($c) {
-//        return $c['response']->withStatus(500)
-//            ->withHeader('Content-Type', 'text/html')
-//            ->write('Something went wrong!');
-//    };
-//};
+$c = new Slim\Container(AppConfig::SLIM_CONFIGS);
 
+$c['errorHandler'] = function ($c) {
+    return function ($request, $response, $exception) use ($c) {
+        error_log($exception);
+        return $c['response']->withStatus(500)
+            ->withHeader('Content-Type', 'text/html')
+            ->write(!AppConfig::IS_DEBUG ? AppConfig::SERVER_ERR_MSG : $exception);
+     };
+};
 
-//register_shutdown_function('fatal_handler');
-//
-//function fatal_handler()
-//{
-//    $lastError = error_get_last();
-//    if (!is_null($lastError)) {
-//        header("HTTP/1.1 500 Internal Server Error");
-//    }
-//}
 
 $app = new Slim\App($c);
-
-//$c['xcore\AppCore'] = function ($container) {
-//    return new AppCore($container);
-//};
-
-//$app->add(new AppGuardMiddleware());
-require_once __DIR__.'/middlewares/transporter.middleware.php';
-require_once __DIR__.'/middlewares/appguard.middleware.php';
-
+require_once __DIR__ . '/middlewares/transporter.middleware.php';
+require_once __DIR__ . '/middlewares/appguard.middleware.php';
 
 
 // Automatically load router files

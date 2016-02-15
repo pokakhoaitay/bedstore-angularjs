@@ -115,6 +115,17 @@
     </symbol>
 
 
+    <symbol id="icon-close" viewBox="0 0 17 17">
+        <title>Close</title>
+        <path d="M9.207 8.5l6.646 6.646-0.707 0.707-6.646-6.646-6.646 6.646-0.707-0.707 6.646-6.646-6.647-6.646 0.707-0.707 6.647 6.646 6.646-6.646 0.707 0.707-6.646 6.646z"
+               />
+    </symbol>
+
+    <symbol id="icon-xxx" viewBox="0 0 1024 1024">
+        <title></title>
+
+    </symbol>
+
     <symbol id="icon-xxx" viewBox="0 0 1024 1024">
         <title></title>
 
