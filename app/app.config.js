@@ -4,93 +4,85 @@
 /**
  * Created by Poka on 2/2/2016.
  */
-myApp
+angular.module('myApp')
+    .provider('Bootstrap', Bootstrap)
+    .config(Config)
+    .run(Run);
 
-    .provider('Bootstrap', function ($httpProvider) {
+function Bootstrap($httpProvider) {
 
-        return {
-            initApp: function (options) {
-                $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
-                $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
-                $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                $httpProvider.interceptors.push('ApiHttpIntercepter');
-            },
-            $get: function () {
-                return {}
-            }
+    return {
+        initApp: function (options) {
+            $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
+            $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
+            $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+            $httpProvider.interceptors.push('ApiHttpIntercepter');
+        },
+        $get: function () {
+            return {}
         }
-    })
-    //.factory('$exceptionHandler',function($injector){
-    //
-    //    return function(exception,cause){
-    //        console.log(exception.message,cause)
-    //        var $rootScoope= $injector.get('$rootScope');
-    //        $rootScoope.errors=$rootScoope.errors||[]
-    //        $rootScoope.errors.push(exception.message);
-    //        console.log( $rootScoope.errors)
-    //    }
-    //})
-    .config(function ($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider) {
-        $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise(function ($injector, $location) {
-            $injector.get('$state').go('404');
-        });
-        //$uiViewScrollProvider.useAnchorScroll();
+    }
+}
 
-        $stateProvider
-            .state('root', {
-                abstract: true,
-                url: '',
-                views: {
-                    'footer': {
-                        templateUrl: 'views/partials/footer/_footer.html'
-                    },
-                    'sidebar': {
-                        templateUrl: 'views/partials/sidebar/_sidebar.html',
-                        controller: '_SidebarCtrl',
-                    },
-                    'topmenu': {
-                        templateUrl: 'views/partials/top-menu/_topMenu.html',
-                        controller: '_TopMenuCtrl',
-                    },
-                }
-            })
-            .state('404', {
-                templateUrl: 'views/pages/404.html'
-            })
-        ;
+function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider) {
+    $locationProvider.html5Mode(true);
+    $urlRouterProvider.otherwise(function ($injector, $location) {
+        $injector.get('$state').go('404');
+    });
+    //$uiViewScrollProvider.useAnchorScroll();
 
-
-        $mdThemingProvider.theme('default')
-            .primaryPalette('blue')
-            .accentPalette('deep-orange');
-
-        BootstrapProvider.initApp({
-            setting1: 'value1',
-            setting2: 'value2',
-        });
-    })
-
-    .run(function ($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService, $cookies) {
-
-        //Keep page scroll to top when refresh (F5) the page
-        $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-            if ($stateParams.scrollTo) {
-                $location.hash($stateParams.scrollTo);
-                $anchorScroll();
+    $stateProvider
+        .state('root', {
+            abstract: true,
+            url: '',
+            views: {
+                'footer': {
+                    templateUrl: 'views/partials/footer/_footer.html'
+                },
+                'sidebar': {
+                    templateUrl: 'views/partials/sidebar/_sidebar.html',
+                    controller: '_SidebarCtrl',
+                },
+                'topmenu': {
+                    templateUrl: 'views/partials/top-menu/_topMenu.html',
+                    controller: '_TopMenuCtrl',
+                },
             }
-        });
+        })
+        .state('404', {
+            templateUrl: 'views/pages/404.html'
+        })
+    ;
 
-        //Extend (like extension method in c#) methods should define here
-        angular.extend($cookies, {
-            checkCookieExpired: function () {
-                return !$cookies.get(appConfig.xsrfCookieName);
-            }
-        });
-        SessionService.initSession();
-    })
 
-;
+    $mdThemingProvider.theme('default')
+        .primaryPalette('blue')
+        .accentPalette('deep-orange');
+
+    BootstrapProvider.initApp({
+        setting1: 'value1',
+        setting2: 'value2',
+    });
+}
+
+function Run($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService, $cookies) {
+    //Keep page scroll to top when refresh (F5) the page
+    $rootScope.$on('$stateChangeSuccess', function (event, toState) {
+        if ($stateParams.scrollTo) {
+            $location.hash($stateParams.scrollTo);
+            $anchorScroll();
+        }
+    });
+
+    //Extend (like extension method in c#) methods should define here
+    angular.extend($cookies, {
+        checkCookieExpired: function () {
+            return !$cookies.get(appConfig.xsrfCookieName);
+        }
+    });
+    SessionService.initSession();
+}
+
 //Custom template: https://material.angularjs.org/latest/Theming/03_configuring_a_theme
 //$mdThemingProvider.definePalette('amazingPaletteName', {
 //    '50': 'ffebee',
