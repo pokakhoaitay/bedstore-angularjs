@@ -24,7 +24,7 @@ function Bootstrap($httpProvider) {
     }
 }
 
-function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider) {
+function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider,$ocLazyLoadProvider) {
     $locationProvider.html5Mode(true);
     $urlRouterProvider.otherwise(function ($injector, $location) {
         $injector.get('$state').go('404');
@@ -62,6 +62,20 @@ function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiVi
     BootstrapProvider.initApp({
         setting1: 'value1',
         setting2: 'value2',
+    });
+
+
+    $ocLazyLoadProvider.config({
+        events:true,
+        debug:true,
+        modules:[
+            {
+                name:'contact',
+                files:[
+                    'views/ui/contact/contact.js'
+                ]
+            }
+        ]
     });
 }
 

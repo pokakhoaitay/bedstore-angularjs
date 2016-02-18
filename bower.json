@@ -17,6 +17,7 @@
     "angular": "~1.4.9",
     "angular-material": "^1.0.4",
     "angular-cookies": "^1.4.9",
-    "angular-md5": "^0.1.10"
+    "angular-md5": "^0.1.10",
+    "oclazyload": "^1.0.9"
   }
 }
