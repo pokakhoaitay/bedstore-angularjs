@@ -4,98 +4,99 @@
 /**
  * Created by Poka on 2/2/2016.
  */
-angular.module('myApp')
-    .provider('Bootstrap', Bootstrap)
-    .config(Config)
-    .run(Run);
 
-function Bootstrap($httpProvider) {
+define(['app'], function (app) {
+    app.provider('Bootstrap', Bootstrap)
+        .config(Config)
+        .run(Run);
 
-    return {
-        initApp: function (options) {
-            $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
-            $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
-            $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-            $httpProvider.interceptors.push('ApiHttpIntercepter');
-        },
-        $get: function () {
-            return {}
+    function Bootstrap($httpProvider) {
+
+        return {
+            initApp: function (options) {
+                $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
+                $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
+                $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+               // $httpProvider.interceptors.push('ApiHttpIntercepter');
+            },
+            $get: function () {
+                return {}
+            }
         }
     }
-}
 
-function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider,$ocLazyLoadProvider) {
-    $locationProvider.html5Mode(true);
-    $urlRouterProvider.otherwise(function ($injector, $location) {
-        $injector.get('$state').go('404');
-    });
-    //$uiViewScrollProvider.useAnchorScroll();
+    function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider, $ocLazyLoadProvider) {
+        $locationProvider.html5Mode(true);
+        $urlRouterProvider.otherwise(function ($injector, $location) {
+            $injector.get('$state').go('404');
+        });
+        //$uiViewScrollProvider.useAnchorScroll();
 
-    $stateProvider
-        .state('root', {
-            abstract: true,
-            url: '',
-            views: {
-                'footer': {
-                    templateUrl: 'views/partials/footer/_footer.html'
-                },
-                'sidebar': {
-                    templateUrl: 'views/partials/sidebar/_sidebar.html',
-                    controller: '_SidebarCtrl',
-                },
-                'topmenu': {
-                    templateUrl: 'views/partials/top-menu/_topMenu.html',
-                    controller: '_TopMenuCtrl',
-                },
+        $stateProvider
+            .state('root', {
+                abstract: true,
+                url: '',
+                views: {
+                    'footer': {
+                        templateUrl: 'views/partials/footer/_footer.html'
+                    },
+                    'sidebar': {
+                        templateUrl: 'views/partials/sidebar/_sidebar.html',
+                        controller: '_SidebarCtrl',
+                    },
+                    'topmenu': {
+                        templateUrl: 'views/partials/top-menu/_topMenu.html',
+                        controller: '_TopMenuCtrl',
+                    },
+                }
+            })
+            .state('404', {
+                templateUrl: 'views/pages/404.html'
+            })
+        ;
+
+
+        $mdThemingProvider.theme('default')
+            .primaryPalette('blue')
+            .accentPalette('deep-orange');
+
+        BootstrapProvider.initApp({
+            setting1: 'value1',
+            setting2: 'value2',
+        });
+
+
+        $ocLazyLoadProvider.config({
+            events: true,
+            debug: true,
+            modules: [
+                {
+                    name: 'contact',
+                    files: [
+                        'views/ui/contact/contact.js'
+                    ]
+                }
+            ]
+        });
+    }
+
+    function Run($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService, $cookies) {
+        //Keep page scroll to top when refresh (F5) the page
+        $rootScope.$on('$stateChangeSuccess', function (event, toState) {
+            if ($stateParams.scrollTo) {
+                $location.hash($stateParams.scrollTo);
+                $anchorScroll();
             }
-        })
-        .state('404', {
-            templateUrl: 'views/pages/404.html'
-        })
-    ;
+        });
 
-
-    $mdThemingProvider.theme('default')
-        .primaryPalette('blue')
-        .accentPalette('deep-orange');
-
-    BootstrapProvider.initApp({
-        setting1: 'value1',
-        setting2: 'value2',
-    });
-
-
-    $ocLazyLoadProvider.config({
-        events:true,
-        debug:true,
-        modules:[
-            {
-                name:'contact',
-                files:[
-                    'views/ui/contact/contact.js'
-                ]
+        //Extend (like extension method in c#) methods should define here
+        angular.extend($cookies, {
+            checkCookieExpired: function () {
+                return !$cookies.get(appConfig.xsrfCookieName);
             }
-        ]
-    });
-}
-
-function Run($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService, $cookies) {
-    //Keep page scroll to top when refresh (F5) the page
-    $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-        if ($stateParams.scrollTo) {
-            $location.hash($stateParams.scrollTo);
-            $anchorScroll();
-        }
-    });
-
-    //Extend (like extension method in c#) methods should define here
-    angular.extend($cookies, {
-        checkCookieExpired: function () {
-            return !$cookies.get(appConfig.xsrfCookieName);
-        }
-    });
-    SessionService.initSession();
-}
+        });
+        SessionService.initSession();
+    }
 
 //Custom template: https://material.angularjs.org/latest/Theming/03_configuring_a_theme
 //$mdThemingProvider.definePalette('amazingPaletteName', {
@@ -119,3 +120,5 @@ function Run($rootScope, $location, $stateParams, $anchorScroll, $http, SessionS
 //        '200', '300', '400', 'A100'],
 //    'contrastLightColors': undefined    // could also specify this if default was 'dark'
 //});
+
+});
