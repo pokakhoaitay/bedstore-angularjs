@@ -17,7 +17,7 @@ define(['app'], function (app) {
                 $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
                 $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
                 $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-               // $httpProvider.interceptors.push('ApiHttpIntercepter');
+                // $httpProvider.interceptors.push('ApiHttpIntercepter');
             },
             $get: function () {
                 return {}
@@ -25,35 +25,7 @@ define(['app'], function (app) {
         }
     }
 
-    function Config($locationProvider, $mdThemingProvider, $urlRouterProvider, $uiViewScrollProvider, $stateProvider, BootstrapProvider, $ocLazyLoadProvider) {
-        $locationProvider.html5Mode(true);
-        $urlRouterProvider.otherwise(function ($injector, $location) {
-            $injector.get('$state').go('404');
-        });
-        //$uiViewScrollProvider.useAnchorScroll();
-
-        $stateProvider
-            .state('root', {
-                abstract: true,
-                url: '',
-                views: {
-                    'footer': {
-                        templateUrl: 'views/partials/footer/_footer.html'
-                    },
-                    'sidebar': {
-                        templateUrl: 'views/partials/sidebar/_sidebar.html',
-                        controller: '_SidebarCtrl',
-                    },
-                    'topmenu': {
-                        templateUrl: 'views/partials/top-menu/_topMenu.html',
-                        controller: '_TopMenuCtrl',
-                    },
-                }
-            })
-            .state('404', {
-                templateUrl: 'views/pages/404.html'
-            })
-        ;
+    function Config($mdThemingProvider, BootstrapProvider) {
 
 
         $mdThemingProvider.theme('default')
@@ -64,23 +36,9 @@ define(['app'], function (app) {
             setting1: 'value1',
             setting2: 'value2',
         });
-
-
-        $ocLazyLoadProvider.config({
-            events: true,
-            debug: true,
-            modules: [
-                {
-                    name: 'contact',
-                    files: [
-                        'views/ui/contact/contact.js'
-                    ]
-                }
-            ]
-        });
     }
 
-    function Run($rootScope, $location, $stateParams, $anchorScroll, $http, SessionService, $cookies) {
+    function Run($rootScope, $location, $stateParams, $anchorScroll, $http, $cookies) {
         //Keep page scroll to top when refresh (F5) the page
         $rootScope.$on('$stateChangeSuccess', function (event, toState) {
             if ($stateParams.scrollTo) {
@@ -95,7 +53,7 @@ define(['app'], function (app) {
                 return !$cookies.get(appConfig.xsrfCookieName);
             }
         });
-        SessionService.initSession();
+        // SessionService.initSession();
     }
 
 //Custom template: https://material.angularjs.org/latest/Theming/03_configuring_a_theme

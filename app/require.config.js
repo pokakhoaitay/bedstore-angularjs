@@ -16,16 +16,18 @@ require.config({
         'sliderRevolutionPlugin': 'bower_components/slider-revolution/src/js/jquery.themepunch.plugins.min',
         'sliderRevolution': 'bower_components/slider-revolution/src/js/jquery.themepunch.revolution.min',
         'md5': 'bower_components/angular-md5/angular-md5.min',
-        'ocLazyLoad': 'bower_components/oclazyload/dist/ocLazyLoad.min',
         'svg4everybody': 'bower_components/svg4everybody/dist/svg4everybody.min',
-        'route-resolver': 'assets/js/implement/routeResolver',
-        'oc-lazy-load': 'assets/js/implement/ocLazyLoad',
+        //'route-resolver': 'assets/js/implement/routeResolver',
+        'oc-lazy-load': 'bower_components/oclazyload/dist/ocLazyLoad',
         'appjs': 'assets/js/main',
         'app': 'app',
         'appCtrl': 'app.ctrl',
-        //'appConfig': 'app.config',
+        'lazyLoadConfig': 'lazyload.config',
+        'appConfig': 'app.config',
+        'routerConfig': 'router.config',
+        'module.uitls': 'assets/js/my-utils/utils',
     }, shim: {
-        'angular': {'exports': 'angular', deps: ['jQuery']},
+        'angular': {'exports': 'angular'},
         'jQuery': {'exports': 'jQuery'},
         'angularCookie': {deps: ['angular']},
         'uiRouter': {deps: ['angular']},
@@ -33,21 +35,27 @@ require.config({
         'angularAnimate': {deps: ['angular']},
         'angularAria': {deps: ['angular']},
         'angularMessage': {deps: ['angular']},
-        'angularMaterial': {deps: ['angular','angularMessage','angularAnimate','angularAria']},
+        'angularMaterial': {deps: ['angular', 'angularMessage', 'angularAnimate', 'angularAria']},
         'sliderRevolutionPlugin': {deps: ['jQuery']},
         'sliderRevolution': {deps: ['jQuery']},
-        'route-resolver': {deps: ['uiRouter']},
+        //'route-resolver': {deps: ['uiRouter']},
         'oc-lazy-load': {deps: ['uiRouter']},
         'md5': {deps: ['jQuery']},
-        'appConfig': ['oc-lazy-load', 'angular'],
-        'appCtrl': ['angular','app'],
-        'app': {deps: ['oc-lazy-load']}
+        'appConfig': ['oc-lazy-load','lazyLoadConfig','routerConfig'],
+        'module.uitls': ['oc-lazy-load'],
+        'appCtrl': ['angular', 'app'],
+        'app': {deps: ['oc-lazy-load','jQuery','module.uitls']},
+        'lazyLoadConfig': {deps: ['oc-lazy-load']},
+        'routerConfig': {deps: ['oc-lazy-load']},
     }
 });
 
 
-//Load deps applcation level
-require(['angular', 'angularMaterial', 'uiRouter', 'route-resolver', 'oc-lazy-load', 'app','angularCookie','appjs','appCtrl'], function () {
+//Load deps application level
+require([
+    'angular', 'angularMaterial', 'uiRouter', 'appConfig',
+    'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl',
+], function () {
 
     angular.bootstrap(document, ['myApp']);
 });
