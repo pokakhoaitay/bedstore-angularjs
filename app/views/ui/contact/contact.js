@@ -1,24 +1,7 @@
-angular.module('myApp.contact', ['ui.router'])
-    .config(Config)
+angular.module('myApp')
     .controller('ContactCtrl', ContactCtrl);
 
-
-function Config($stateProvider) {
-    $stateProvider
-        .state('root.contact', {
-            url: '/contact',
-            views: {
-                '@': {
-                    templateUrl: "views/ui/contact/contact.html",
-                    controller: 'ContactCtrl',
-                }
-            }
-
-        })
-
-}
-
-function ContactCtrl(Helper, $scope, ContactService, $http) {
+function ContactCtrl($scope, $http, ContactService) {
     $scope.contact = {name: null, email: null, messages: null};
     $scope.contactOriginal = angular.copy($scope.contact);
     $scope.canPost = function () {
@@ -53,4 +36,5 @@ function ContactCtrl(Helper, $scope, ContactService, $http) {
         }, function (res) {
         });
     }
+
 };

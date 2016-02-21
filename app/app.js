@@ -13,8 +13,8 @@ define(function () {
 
 
             'module.utils',
-            //'module.services',
-            //'module.common',
+            'module.services',
+            'module.common',
             'ngMessages',
             'ngMaterial',
             'ngAnimate',
@@ -24,6 +24,9 @@ define(function () {
 
         ])
     angular.module('templates', []);
+    angular.module('module.services',[]);
+    angular.module('module.utils',[]);
+    angular.module('module.common',[]);
     return app;
 })
 

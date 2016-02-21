@@ -25,7 +25,9 @@ require.config({
         'lazyLoadConfig': 'lazyload.config',
         'appConfig': 'app.config',
         'routerConfig': 'router.config',
-        'module.uitls': 'assets/js/my-utils/utils',
+
+        'sessionService': 'assets/js/services/session.service',
+        'httpInterceptor': 'assets/js/implement/ApiHttpInterceptor',
     }, shim: {
         'angular': {'exports': 'angular'},
         'jQuery': {'exports': 'jQuery'},
@@ -39,22 +41,23 @@ require.config({
         'sliderRevolutionPlugin': {deps: ['jQuery']},
         'sliderRevolution': {deps: ['jQuery']},
         //'route-resolver': {deps: ['uiRouter']},
-        'oc-lazy-load': {deps: ['uiRouter']},
+        'oc-lazy-load': {deps: ['uiRouter','angular']},
         'md5': {deps: ['jQuery']},
-        'appConfig': ['oc-lazy-load','lazyLoadConfig','routerConfig'],
-        'module.uitls': ['oc-lazy-load'],
+        'appConfig': ['oc-lazy-load','lazyLoadConfig','routerConfig','sessionService','httpInterceptor'],
         'appCtrl': ['angular', 'app'],
-        'app': {deps: ['oc-lazy-load','jQuery','module.uitls']},
+        'app': {deps: ['oc-lazy-load','jQuery']},
         'lazyLoadConfig': {deps: ['oc-lazy-load']},
         'routerConfig': {deps: ['oc-lazy-load']},
+        'sessionService': {deps: ['oc-lazy-load']},
+        'httpInterceptor': {deps: ['oc-lazy-load']},
     }
 });
 
 
 //Load deps application level
 require([
-    'angular', 'angularMaterial', 'uiRouter', 'appConfig',
-    'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl',
+    'angularMaterial', 'appConfig',
+    'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl'
 ], function () {
 
     angular.bootstrap(document, ['myApp']);

@@ -1,8 +1,8 @@
 /**
  * Created by Poka on 1/31/2016.
  */
-appService
-    .factory('SessionService', function ($http, $cookies) {
+angular.module('module.services')
+    .factory('SessionService', function ($http) {
         var service = {};
         service.initSession = function () {
             $http.get(utils.GetApiUrl('init-session'))

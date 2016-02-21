@@ -1,4 +1,4 @@
-angular.module('module.utils', ['ui.router'])
+angular.module('module.utils')
     .factory('Helper', function ($rootScope) {
         return {
             getScrollBarWidth: function () {

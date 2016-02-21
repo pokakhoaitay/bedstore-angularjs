@@ -17,7 +17,7 @@ define(['app'], function (app) {
                 $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
                 $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
                 $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                // $httpProvider.interceptors.push('ApiHttpIntercepter');
+                $httpProvider.interceptors.push('ApiHttpIntercepter');
             },
             $get: function () {
                 return {}
@@ -38,7 +38,7 @@ define(['app'], function (app) {
         });
     }
 
-    function Run($rootScope, $location, $stateParams, $anchorScroll, $http, $cookies) {
+    function Run($rootScope, $location, $stateParams, $anchorScroll, $http, $cookies,SessionService) {
         //Keep page scroll to top when refresh (F5) the page
         $rootScope.$on('$stateChangeSuccess', function (event, toState) {
             if ($stateParams.scrollTo) {
@@ -53,7 +53,7 @@ define(['app'], function (app) {
                 return !$cookies.get(appConfig.xsrfCookieName);
             }
         });
-        // SessionService.initSession();
+         SessionService.initSession();
     }
 
 //Custom template: https://material.angularjs.org/latest/Theming/03_configuring_a_theme

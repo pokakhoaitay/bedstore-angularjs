@@ -8,7 +8,6 @@ var appConfig = {
 }
 
 
-
 var utils = {
     GetApiUrl: function (path) {
         return appConfig.apiRoute + path;

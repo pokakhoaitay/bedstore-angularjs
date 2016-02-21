@@ -2,7 +2,7 @@
  * Created by Poka on 2/20/2016.
  */
 define(['app'], function (app) {
-   app.config(Config)
+    app.config(Config)
         .constant('MODULE_CONFIG', [
             {
                 name: 'oc.app',
@@ -10,6 +10,8 @@ define(['app'], function (app) {
                 files: [
                     'views/partials/sidebar/_sidebar.js',
                     'views/partials/top-menu/_topMenu.js',
+                    'assets/js/my-utils/utils.js',
+                    'assets/js/implement/ApiHttpInterceptor.js',
                 ]
             },
             {
@@ -21,9 +23,9 @@ define(['app'], function (app) {
                     'bower_components/slider-revolution/src/js/jquery.themepunch.revolution.min.js',
                 ]
             }, {
-                name: '',
+                name: 'oc.contact',
                 module: false,
-                files: []
+                files: ['views/ui/contact/contact.js','assets/js/services/contact.service.js']
             }, {
                 name: '',
                 module: false,

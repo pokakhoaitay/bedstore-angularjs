@@ -2,7 +2,7 @@
  * Created by Poka on 2/20/2016.
  */
 
-define(['app'],function (app) {
+define(['app'], function (app) {
     app.config(Config);
 
     function Config($locationProvider, $stateProvider, $urlRouterProvider, $uiViewScrollProvider, MODULE_CONFIG) {
@@ -12,6 +12,9 @@ define(['app'],function (app) {
         });
         //$uiViewScrollProvider.useAnchorScroll();
         $stateProvider
+            .state('404', {
+                templateUrl: 'views/pages/404.html'
+            })
             .state('root', {
                 abstract: true,
                 url: '',
@@ -40,8 +43,15 @@ define(['app'],function (app) {
                 },
                 resolve: load('oc.home')
             })
-            .state('404', {
-                templateUrl: 'views/pages/404.html'
+            .state('root.contact', {
+                url: '/contact',
+                views: {
+                    '@': {
+                        templateUrl: "views/ui/contact/contact.html",
+                        controller: 'ContactCtrl',
+                    }
+                },
+                resolve: load('oc.contact')
             })
         ;
 
