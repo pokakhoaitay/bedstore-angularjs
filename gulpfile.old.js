@@ -12,23 +12,23 @@ var del = require('del');
 var basePaths = {
     src: './app/',
     dest: './.build/',
-    bowerSrc: 'app/bower_components/'
+    bowerSrc: 'app/libs/'
 };
 
 var paths = {
     js: [
         './app/assets/js/vendor/modernizr-2.8.3.min.js',
-        './app/bower_components/angular/angular.min.js',
-        './app/bower_components/angular-cookies/angular-cookies.min.js',
-        './app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        './app/bower_components/angular-animate/angular-animate.min.js',
-        './app/bower_components/angular-aria/angular-aria.min.js',
-        './app/bower_components/angular-messages/angular-messages.min.js',
-        './app/bower_components/angular-material/angular-material.min.js',
+        './app/libs/angular/angular.min.js',
+        './app/libs/angular-cookies/angular-cookies.min.js',
+        './app/libs/angular-ui-router/release/angular-ui-router.min.js',
+        './app/libs/angular-animate/angular-animate.min.js',
+        './app/libs/angular-aria/angular-aria.min.js',
+        './app/libs/angular-messages/angular-messages.min.js',
+        './app/libs/angular-material/angular-material.min.js',
         './app/assets/js/vendor/jquery-1.11.3.min.js',
-        './app/bower_components/slider-revolution/src/js/jquery.themepunch.plugins.min.js',
-        './app/bower_components/slider-revolution/src/js/jquery.themepunch.revolution.min.js',
-        './app/bower_components/angular-md5/angular-md5.min.js',
+        './app/libs/slider-revolution/src/js/jquery.themepunch.plugins.min.js',
+        './app/libs/slider-revolution/src/js/jquery.themepunch.revolution.min.js',
+        './app/libs/angular-md5/angular-md5.min.js',
         './app/assets/js/plugins.js',
         './app/assets/js/main.js',
         './app.js',
@@ -46,7 +46,7 @@ var paths = {
         './app/views/partials/left-sidenav/_leftSidenav.js',
         './app/views/ui/build-a-bed/buildABed.js',
         './app/views/ui/contact/contact.js',
-        './app/bower_components/svg4everybody/dist/svg4everybody.min.js',
+        './app/libs/svg4everybody/dist/svg4everybody.min.js',
     ],
     scripts: [
         './app/assets/js/vendor/modernizr-2.8.3.min.js',
@@ -73,10 +73,10 @@ var paths = {
     css: [
         './app/assets/js/vendor/google-material-icons/style.css',
         './app/assets/css/normalize.css',
-        './app/bower_components/angula-material/angular-material.min.css',
+        './app/libs/angula-material/angular-material.min.css',
         './app/assets/js/vendor/outline-icons/themify-icons/themify-icons.css',
         './app/assets/js/vendor/outline-icons/Tonicons-Outline/style.css',
-        './app/bower_components/slider-revolution/src/css/settings.css',
+        './app/libs/slider-revolution/src/css/settings.css',
         './app/assets/svgs/svg-icon-default.theme.css',
         './app/assets/css/main.css',
         './app/assets/css/app.css',
@@ -106,30 +106,30 @@ gulp.task('css', function () {
 
 gulp.task('bower.js', function () {
     return gulp.src([
-            './app/bower_components/**/*.js',
-            '!./app/bower_components/**/documentation/**',
-            '!./app/bower_components/**/examples/**',
-            '!./app/bower_components/**/*.min.js',
-            '!./app/bower_components/**/*index.js',
-        ], {base: basePaths.src + 'bower_components/'})
+            './app/libs/**/*.js',
+            '!./app/libs/**/documentation/**',
+            '!./app/libs/**/examples/**',
+            '!./app/libs/**/*.min.js',
+            '!./app/libs/**/*index.js',
+        ], {base: basePaths.src + 'libs/'})
         .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'));
 });
 
 gulp.task('bower.css', function () {
     return gulp.src([
-            './app/bower_components/**/*.css',
-            '!./app/bower_components/**/documentation/**',
-            '!./app/bower_components/**/examples/**',
-            '!./app/bower_components/**/*.min.css',
-            '!./app/bower_components/**/*index.css',
-        ], {base: basePaths.src + 'bower_components/'})
+            './app/libs/**/*.css',
+            '!./app/libs/**/documentation/**',
+            '!./app/libs/**/examples/**',
+            '!./app/libs/**/*.min.css',
+            '!./app/libs/**/*index.css',
+        ], {base: basePaths.src + 'libs/'})
         .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'));
 });
 
 
 gulp.task('bower.vendor.all', function () {
     return gulp.src([
-            './app/bower_components/slider-revolution/src/**/*.*'
-        ], {base: basePaths.src + 'bower_components/'})
+            './app/libs/slider-revolution/src/**/*.*'
+        ], {base: basePaths.src + 'libs/'})
         .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'));
 });

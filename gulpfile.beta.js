@@ -13,7 +13,7 @@ var templateCache = require('gulp-angular-templatecache');
 var basePaths = {
     src: './app/',
     dest: './.build/',
-    bowerSrc: 'app/bower_components/'
+    bowerSrc: 'app/libs/'
 };
 
 
@@ -44,32 +44,32 @@ gulp.task('default', ['clean', 'bower.js', 'bower.css', 'proxy'], function () {
 
 gulp.task('bower.js', ['bower.vendor.all'], function () {
     return gulp.src([
-            './app/bower_components/**/*.min.js',
-            '!./app/bower_components/**/demos/**',
-            '!./app/bower_components/**/modules/**',
-            '!./app/bower_components/**/documentation/**',
-            '!./app/bower_components/**/examples/**',
-            //'!./app/bower_components/**/*.min.js',
-            '!./app/bower_components/**/*index.js',
+            './app/libs/**/*.min.js',
+            '!./app/libs/**/demos/**',
+            '!./app/libs/**/modules/**',
+            '!./app/libs/**/documentation/**',
+            '!./app/libs/**/examples/**',
+            //'!./app/libs/**/*.min.js',
+            '!./app/libs/**/*index.js',
         ], {base: basePaths.src})
         .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('bower.css', function () {
     return gulp.src([
-            './app/bower_components/**/*.css',
-            '!./app/bower_components/**/demos/**',
-            '!./app/bower_components/**/modules/**',
-            '!./app/bower_components/**/documentation/**',
-            '!./app/bower_components/**/examples/**',
-            '!./app/bower_components/**/*index.css',
+            './app/libs/**/*.css',
+            '!./app/libs/**/demos/**',
+            '!./app/libs/**/modules/**',
+            '!./app/libs/**/documentation/**',
+            '!./app/libs/**/examples/**',
+            '!./app/libs/**/*index.css',
         ], {base: basePaths.src})
         .pipe(gulp.dest(basePaths.dest));
 });
 
 gulp.task('bower.vendor.all', function () {
     return gulp.src([
-            './app/bower_components/slider-revolution/src/**/*.*'
+            './app/libs/slider-revolution/src/**/*.*'
         ], {base: basePaths.src})
         .pipe(gulp.dest(basePaths.dest));
 });

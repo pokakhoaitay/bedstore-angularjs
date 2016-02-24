@@ -19,8 +19,8 @@ define(['app'], function (app) {
                 module: false,
                 files: [
                     'views/ui/home/home.js',
-                    'bower_components/slider-revolution/src/js/jquery.themepunch.plugins.min.js',
-                    'bower_components/slider-revolution/src/js/jquery.themepunch.revolution.min.js',
+                    'libs/slider-revolution/src/js/jquery.themepunch.plugins.min.js',
+                    'libs/slider-revolution/src/js/jquery.themepunch.revolution.min.js',
                 ]
             }, {
                 name: 'oc.contact',

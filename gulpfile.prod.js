@@ -21,28 +21,28 @@ var gulpFilter = require('gulp-filter');
 var basePaths = {
     src: './app/',
     dest: './.prod/',
-    bowerSrc: './app/bower_components/'
+    bowerSrc: './app/libs/'
 };
 
 
 var paths = {
     jsUsed: [
         //'./app/assets/js/vendor/modernizr-2.8.3.min.js',
-        //'./app/bower_components/angular/angular.min.js',
+        //'./app/libs/angular/angular.min.js',
         //'./app/assets/js/vendor/jquery-1.11.3.min.js',
-        './app/bower_components/angular-cookies/angular-cookies.min.js',
-        './app/bower_components/angular-ui-router/release/angular-ui-router.min.js',
-        './app/bower_components/angular-animate/angular-animate.min.js',
-        './app/bower_components/angular-aria/angular-aria.min.js',
-        './app/bower_components/angular-messages/angular-messages.min.js',
-        //'./app/bower_components/angular-material/angular-material.min.js',
-        './app/bower_components/angular-md5/angular-md5.min.js',
-        './app/bower_components/svg4everybody/dist/svg4everybody.min.js',
+        './app/libs/angular-cookies/angular-cookies.min.js',
+        './app/libs/angular-ui-router/release/angular-ui-router.min.js',
+        './app/libs/angular-animate/angular-animate.min.js',
+        './app/libs/angular-aria/angular-aria.min.js',
+        './app/libs/angular-messages/angular-messages.min.js',
+        //'./app/libs/angular-material/angular-material.min.js',
+        './app/libs/angular-md5/angular-md5.min.js',
+        './app/libs/svg4everybody/dist/svg4everybody.min.js',
     ],
     libsCopyAll: [
-        './app/bower_components/slider-revolution/src/**/*.*',
-        '!./app/bower_components/slider-revolution/src/js/jquery.themepunch.plugins.js',
-        '!./app/bower_components/slider-revolution/src/js/jquery.themepunch.revolution.js',
+        './app/libs/slider-revolution/src/**/*.*',
+        '!./app/libs/slider-revolution/src/js/jquery.themepunch.plugins.js',
+        '!./app/libs/slider-revolution/src/js/jquery.themepunch.revolution.js',
     ],
     jsMineUsed: [
         './app/assets/js/plugins.js',
@@ -65,7 +65,7 @@ var paths = {
     ],
     cssUsed: [
         './app/assets/css/normalize.css',
-        './app/bower_components/angular-material/angular-material.min.css',
+        './app/libs/angular-material/angular-material.min.css',
         './app/assets/svgs/svg-icon-default.theme.css',
         './app/assets/css/main.css',
         './app/assets/css/app.css',
@@ -126,7 +126,7 @@ gulp.task('index', function () {
 });
 
 gulp.task('css.bundle', ['clean'], function () {
-    gulp.src(['./app/bower_components/slider-revolution/src/css/settings.css'], {base: basePaths.bowerSrc})
+    gulp.src(['./app/libs/slider-revolution/src/css/settings.css'], {base: basePaths.bowerSrc})
         .pipe(cssnano())
         .pipe(gulp.dest(basePaths.dest + 'assets/js/vendor/'));
     gulp.src(paths.cssUsed)
