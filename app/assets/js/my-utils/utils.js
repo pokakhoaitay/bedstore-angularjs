@@ -1,4 +1,4 @@
-angular.module('module.utils')
+angular.module('module.utils',[])
     .factory('Helper', function ($rootScope) {
         return {
             getScrollBarWidth: function () {

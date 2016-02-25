@@ -1,7 +1,7 @@
 /**
  * Created by Poka on 1/31/2016.
  */
-angular.module('module.services')
+angular.module('module.services',[])
     .factory('SessionService', function ($http) {
         var service = {};
         service.initSession = function () {

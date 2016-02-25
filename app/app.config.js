@@ -17,7 +17,7 @@ define(['app'], function (app) {
                 $httpProvider.defaults.xsrfHeaderName = appConfig.xsrfHeaderName;
                 $httpProvider.defaults.xsrfCookieName = appConfig.xsrfCookieName;//TODO: For Admin CMS we going to use BSTokenAdmin
                 $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-                $httpProvider.interceptors.push('ApiHttpIntercepter');
+                $httpProvider.interceptors.push('ApiHttpInterceptor');
             },
             $get: function () {
                 return {}

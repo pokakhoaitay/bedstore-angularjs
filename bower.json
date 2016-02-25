@@ -20,5 +20,8 @@
     "angular-md5": "^0.1.10",
     "oclazyload": "^1.0.9",
     "requirejs": "^2.1.22"
+  },
+  "devDependencies": {
+    "angular-loading-bar": "^0.8.0"
   }
 }

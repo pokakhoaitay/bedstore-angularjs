@@ -5,24 +5,28 @@
 //TODO: refer to the following link to implement session recovery
 //http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/
 angular.module('module.common', ['ui.router', 'ngCookies'])
-    .factory('ApiHttpIntercepter', function ($q, $injector, $exceptionHandler) {
+    .factory('ApiHttpInterceptor', function ($q, $injector, $exceptionHandler) {
         return {
+            isBusy:false,
             // optional method
             'request': function (config) {
                 var $cookies = $injector.get('$cookies');
                 var $http = $injector.get('$http');
 
 
-                if (!$cookies.checkCookieExpired() && config.url.indexOf('proxy/') < 0)
+                if ((!$cookies.checkCookieExpired() && config.url.indexOf('proxy/') < 0)
+                    || config.url.indexOf('views/') > 0)
                     return config;
                 if (config.url.indexOf('proxy/init-session') >= 0)
                     return config;
 
-                if ($cookies.checkCookieExpired()) {
+                if ($cookies.checkCookieExpired() && !this.isBusy) {
                     var deferred = $q.defer();
                     var lastUrl = config.url;
+                    this.isBusy=true;
                     $http.get(utils.GetApiUrl('init-session'))
                         .then(function (response) {
+                            this.isBusy=false;
                             console.log('Renew session On request success');
                             $http.get(lastUrl)
                                 .then(function (response) {
@@ -31,6 +35,7 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
                                     deferred.resolve(config);
                                 });
                         }, function (response) {
+                            this.isBusy=false;
                             console.log('Renew session On request failed');
                         });
                     return deferred.promise;
