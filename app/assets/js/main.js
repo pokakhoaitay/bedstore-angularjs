@@ -12,7 +12,7 @@ var utils = {
     GetApiUrl: function (path) {
         return appConfig.apiRoute + path;
     },
-    logWithCheck: function (message) {
+    log: function (message) {
         if (appConfig.enableConsoleLog)
             console.log(message);
     }

@@ -9,7 +9,7 @@
     <form>
         <md-toolbar class="error">
             <div class="md-toolbar-tools">
-                <h2>{{errorContent.status}} {{errorContent.statusText}}</h2>
+                <h2>{{::response.status}} {{::response.statusText}}</h2>
                 <span flex></span>
                 <md-button class="md-icon-button" ng-click="hide()" aria-label="close">
                     <svg class="svg-icon s24 icon-close">
@@ -20,7 +20,9 @@
         </md-toolbar>
         <md-dialog-content>
             <div class="md-dialog-content">
-                <div ng-bind-html="errorHtml" style="white-space: pre-line;"></div>
+                <pre style="white-space: pre-line;">
+                    {{::response.data.error|json}}
+                </pre>
 
             </div>
         </md-dialog-content>

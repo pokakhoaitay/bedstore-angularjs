@@ -8,12 +8,16 @@
 
 
 $app->add(function ($request, $response, $next) {
-    if (!isset($_SESSION[ApiConfig::TOKEN_NAME_WEB])) {
+    if (!isset($_SESSION[ApiConfig::TOKEN_NAME])) {
         $gs = new GuardSevice();
-        $gs->InitSession();
-        if ($request->getUri()->getPath() != 'init-session')
+        $url=$request->getUri()->getPath();
+        if ($url != 'init-session' && isset($_COOKIE[ApiConfig::TOKEN_NAME]))
+        {
+            $gs->InitSession();
             $response = $response->withJson(['Reload' => 1]);
-        return $response;
+            return $response;
+        }
+
     }
     //The code for the function like 'BeforeExecute' in .NET MVC here
     //..
@@ -21,15 +25,15 @@ $app->add(function ($request, $response, $next) {
     if (AppCore::CheckIgnoreRoute($request->getUri()->getPath())) {
         $response = $next($request, $response);
     } else {
-        if (!isset($_COOKIE[ApiConfig::TOKEN_NAME_WEB])) {
+        if (!isset($_COOKIE[ApiConfig::TOKEN_NAME])) {
             $response = DenyAccess($request, $response);
         } else {
-            $headerTooken = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME_WEB);
+            $headerTooken = $request->getHeader(ApiConfig::TOKEN_HEADER_NAME);
             if (isset($headerTooken)
                 && !empty($headerTooken[0])
-                && isset($_SESSION[ApiConfig::TOKEN_NAME_WEB])
+                && isset($_SESSION[ApiConfig::TOKEN_NAME])
             ) {
-                $sessionToken = $_SESSION[ApiConfig::TOKEN_NAME_WEB];
+                $sessionToken = $_SESSION[ApiConfig::TOKEN_NAME];
                 if ($headerTooken[0] == $sessionToken) {
                     $response = $next($request, $response);
                 } else {

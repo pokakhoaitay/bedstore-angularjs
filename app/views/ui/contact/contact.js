@@ -23,7 +23,7 @@ function ContactCtrl($scope, $http, ContactService) {
 
     $scope.test = function () {
         $http.get(utils.GetApiUrl('test')).then(function (res) {
-            utils.logWithCheck(res.data.data);
+            utils.log(res.data.data);
         }, function (res) {
         });
     }
@@ -32,7 +32,7 @@ function ContactCtrl($scope, $http, ContactService) {
             utils.GetApiUrl('test-post'),
             $.param({'name': 'Hong Tron 100%', 'age': 26, 'mes': '^dds $# @30 <> < > ? /'})
         ).then(function (response) {
-            utils.logWithCheck(response.data.data);
+            utils.log(response.data.data);
         }, function (res) {
         });
     }

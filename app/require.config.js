@@ -31,24 +31,24 @@ require.config({
         'httpInterceptor': 'assets/js/implement/ApiHttpInterceptor',
         'utils': 'assets/js/my-utils/utils',
     }, shim: {
-        'angular': {'exports': 'angular'},
+        'angular': {'exports': 'angular',deps:['jQuery']},
         'jQuery': {'exports': 'jQuery'},
-        'utils': {'deps': ['jQuery','oc-lazy-load']},
+        'utils': {'deps': ['jQuery', 'oc-lazy-load']},
         'angularCookie': {deps: ['angular']},
         'uiRouter': {deps: ['angular']},
         //'angularMaterial': {deps: ['angular']},
         'angularAnimate': {deps: ['angular']},
         'angularAria': {deps: ['angular']},
         'angularMessage': {deps: ['angular']},
-        'angularMaterial': {deps: ['angular', 'angularMessage', 'angularAnimate', 'angularAria']},
+        'angularMaterial': {deps: ['angular']},
         'sliderRevolutionPlugin': {deps: ['jQuery']},
         'sliderRevolution': {deps: ['jQuery']},
         //'route-resolver': {deps: ['uiRouter']},
-        'oc-lazy-load': {deps: ['uiRouter','angular']},
+        'oc-lazy-load': {deps: ['uiRouter', 'angular']},
         'md5': {deps: ['jQuery']},
-        'appConfig': ['oc-lazy-load','lazyLoadConfig','routerConfig'],
+        'appConfig': ['oc-lazy-load', 'lazyLoadConfig', 'routerConfig'],
         'appCtrl': ['angular', 'app'],
-        'app': {deps: ['oc-lazy-load','jQuery']},
+        'app': {deps: ['oc-lazy-load']},
         'lazyLoadConfig': {deps: ['oc-lazy-load']},
         'routerConfig': {deps: ['oc-lazy-load']},
         'sessionService': {deps: ['oc-lazy-load']},
@@ -60,9 +60,28 @@ require.config({
 
 //Load deps application level
 require([
-    'angularMaterial', 'appConfig','httpInterceptor','utils','sessionService','loading-bar',
-    'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl'
+    'angularMaterial', 'appConfig', 'httpInterceptor', 'utils', 'sessionService', 'loading-bar', 'angularAnimate',
+    'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl', 'jQuery'
+    , 'angularMessage', 'angularAria'
 ], function () {
+    fetchData().then(bootstrapApplication);
 
-    angular.bootstrap(document, ['myApp']);
+    function fetchData() {
+        var initInjector = angular.injector(["ng"]);
+        var $http = initInjector.get("$http");
+        var $log = initInjector.get("$log");
+        return $http.get(utils.GetApiUrl('init-session')).then(function (response) {
+            angular.element('#divLoading').hide();
+            $log.debug('Session init completed success');
+        }, function (errorResponse) {
+            $log.error('Session init completed fail');
+        });
+    }
+
+    function bootstrapApplication() {
+        angular.element(document).ready(function () {
+            angular.bootstrap(document, ['myApp']);
+
+        });
+    }
 });

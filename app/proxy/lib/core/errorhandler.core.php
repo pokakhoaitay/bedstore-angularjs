@@ -12,8 +12,21 @@ register_shutdown_function('fatal_handler');
 function fatal_handler()
 {
     $lastError = error_get_last();
-    if (!is_null($lastError)) {
-        header("HTTP/1.1 500 Internal Server Error");
+    $exception = error_get_last();
+    if (!is_null($exception)) {
+        header('Content-Type: application/json');
+        $data = [
+            'data' => null,
+            'status' => 500,
+            'error' => AppConfig::IS_DEBUG
+                ? ['code' => $exception['type'],
+                    'message' => $exception['message'],
+                    'file' => $exception['file'],
+                    'line' => $exception['line'],
+                    'trace' => null]
+                : AppConfig::SERVER_ERR_MSG
+        ];
+        echo json_encode($data);
     }
 }
 function exceptions_error_handler($severity, $message, $filename, $lineno)
@@ -54,3 +67,24 @@ function exceptions_error_handler($severity, $message, $filename, $lineno)
         throw new ErrorException($message, 0, $severity, $filename, $lineno);
     }
 }
+
+
+
+$c['errorHandler'] = function ($c) {
+    return function ($request, $response, $exception) use ($c) {
+        error_log($exception);
+        $data = [
+            'data' => null,
+            'status' => 500,
+            'error' => AppConfig::IS_DEBUG
+                ? ['code' => $exception->getCode(),
+                    'message' => $exception->getMessage(),
+                    'file' => $exception->getFile(),
+                    'line' => $exception->getLine(),
+                    'trace' => explode("\n", $exception->getTraceAsString())]
+                : AppConfig::SERVER_ERR_MSG
+        ];
+
+        return $c->get('response')->withJson($data)->withStatus(500);
+    };
+};

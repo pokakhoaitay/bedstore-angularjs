@@ -6,40 +6,42 @@
 //http://www.webdeveasy.com/interceptors-in-angularjs-and-useful-examples/
 angular.module('module.common', ['ui.router', 'ngCookies'])
     .factory('ApiHttpInterceptor', function ($q, $injector, $exceptionHandler) {
+        var loadingCount = 0, isBusy = false;
         return {
-            isBusy:false,
             // optional method
             'request': function (config) {
+                ++loadingCount;
                 var $cookies = $injector.get('$cookies');
                 var $http = $injector.get('$http');
-
+                var $log = $injector.get('$log');
 
                 if ((!$cookies.checkCookieExpired() && config.url.indexOf('proxy/') < 0)
-                    || config.url.indexOf('views/') > 0)
+                    || config.url.indexOf('views/') >= 0)
                     return config;
                 if (config.url.indexOf('proxy/init-session') >= 0)
                     return config;
 
-                if ($cookies.checkCookieExpired() && !this.isBusy) {
-                    var deferred = $q.defer();
-                    var lastUrl = config.url;
-                    this.isBusy=true;
-                    $http.get(utils.GetApiUrl('init-session'))
-                        .then(function (response) {
-                            this.isBusy=false;
-                            console.log('Renew session On request success');
-                            $http.get(lastUrl)
-                                .then(function (response) {
-                                    deferred.resolve(config);
-                                }, function (response) {
-                                    deferred.resolve(config);
-                                });
-                        }, function (response) {
-                            this.isBusy=false;
-                            console.log('Renew session On request failed');
-                        });
-                    return deferred.promise;
-                }
+                //if ($cookies.checkCookieExpired() && !isBusy) {
+                //    var deferred = $q.defer();
+                //    var lastUrl = config.url;
+                //    isBusy=true;
+                //    $http.get(utils.GetApiUrl('init-session'))
+                //        .then(function (response) {
+                //            console.log('Renew session On request success');
+                //            $http.get(lastUrl)
+                //                .then(function (response) {
+                //                    isBusy=false;
+                //                    deferred.resolve(config);
+                //                }, function (response) {
+                //                    isBusy=false;
+                //                    deferred.resolve(config);
+                //                });
+                //        }, function (response) {
+                //            isBusy=false;
+                //            console.log('Renew session On request failed');
+                //        });
+                //    return deferred.promise;
+                //}
                 return config;
             },
 
@@ -56,8 +58,10 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
 
             // optional method
             'response': function (response) {
-
-                if (response.data.Reload === 1) {
+                if (--loadingCount === 0) {
+                    //console.log('Request completed');
+                }
+                if (response.data && response.data.Reload === 1) {
                     alert('Your session was expired. The web page will be reload now!')
                     window.location.reload();
                 }
@@ -67,6 +71,9 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
 
             // optional method
             'responseError': function (rejection) {
+                if (--loadingCount === 0) {
+
+                }
                 if (rejection.status != 404) {
                     var $mdDialog = $injector.get('$mdDialog');
                     var $mdMedia = $injector.get('$mdMedia');
@@ -75,11 +82,7 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
                     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
                     $mdDialog.show({
                             locals: {
-                                errorContent: {
-                                    data: rejection.data,
-                                    status: rejection.status,
-                                    statusText: rejection.statusText,
-                                }
+                                response: rejection
                             },
                             controller: DialogController,
                             templateUrl: 'views/partials/popup/dev.errorpopup.html',
@@ -89,9 +92,8 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
                             fullscreen: useFullScreen
                         })
                         .then(function (answer) {
-                        }, function () {
                         });
-                    utils.logWithCheck(rejection);
+                    // utils.logWithCheck(rejection);
                 } else {//Error 404
                     //Check out this: http://stackoverflow.com/questions/31509183/how-to-remove-file-not-found-error-in-angular-js
                     //$exceptionHandler(
@@ -114,11 +116,9 @@ angular.module('module.common', ['ui.router', 'ngCookies'])
     });
 
 
-function DialogController($scope, $mdDialog, errorContent, $sce) {
+function DialogController($scope, $mdDialog, response, $sce) {
     $scope.hide = function () {
         $mdDialog.hide();
     };
-
-    $scope.errorHtml = $sce.trustAsHtml(errorContent.data);
-    $scope.errorContent = errorContent;
+    $scope.response = response;
 }

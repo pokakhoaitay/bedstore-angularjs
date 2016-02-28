@@ -14,9 +14,11 @@ tmp
 /app/assets/svgs/svg-icon-default.theme.css.map
 /app/proxy/vendor
 /app/assets/svgs/svg-icon-default.theme.css
+/app/proxy.bak
 .idea
 /nbproject/private/
 __build__
 /.build
 /.prod
+/app/libs
 /.dist

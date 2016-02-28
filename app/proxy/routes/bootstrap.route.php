@@ -7,10 +7,11 @@
  */
 
 $app->get('/init-session', function ($request, $response) {
-    if(!isset($_COOKIE[ApiConfig::TOKEN_NAME_WEB])){
+    if(!isset($_SESSION[ApiConfig::TOKEN_NAME])){
         $guard = new GuardSevice();
         $guard->InitSession();
         unset($guard);
+       // sleep(180);
     }
 
 });

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="assets/css/normalize.css">
     <link rel="stylesheet" href="libs/angular-material/angular-material.css">
     <link rel="stylesheet" href="libs/angular-loading-bar/build/loading-bar.css">
+    <link rel="stylesheet" href="libs/loaders.css/loaders.min.css">
     <link rel="stylesheet" href="assets/js/vendor/outline-icons/themify-icons/themify-icons.css">
     <link rel="stylesheet" href="assets/js/vendor/outline-icons/Tonicons-Outline/style.css">
     <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">-->
@@ -35,17 +36,31 @@
 
 
 </head>
-<body ng-cloak layout="column" ng-controller="AppCtrl as appVm"
-      ng-class="{'hide-scroll-bar':appVm.isHideBodyScrollbar,'override-padding-top':appVm.isHideTopbar}">
-
+<body>
+<div id="divLoading" style="display: table;height: 100%; width: 100%;background: #3F51B5; text-align: center;">
+    <div class="loader-inner line-scale-pulse-out"
+         style="display: table-cell; vertical-align: middle; margin: auto">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
 <!--[if lt IE 7]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
     your browser</a> to improve your experience.</p>
 <![endif]-->
-<aside ui-view="sidebar"></aside>
-<div ui-view="topmenu"></div>
-<div ui-view></div>
-<div ui-view="footer"></div>
+<div ng-cloak layout="column" ng-controller="AppCtrl as appVm"
+     ng-class="{'hide-scroll-bar':appVm.isHideBodyScrollbar,'override-padding-top':appVm.isHideTopbar}">
+    <aside ui-view="sidebar"></aside>
+    <div ui-view="topmenu"></div>
+    <div ui-view>
+
+    </div>
+    <div ui-view="footer"></div>
+</div>
+
 
 
 
