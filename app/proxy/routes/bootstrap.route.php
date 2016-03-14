@@ -11,7 +11,7 @@ $app->get('/init-session', function ($request, $response) {
         $guard = new GuardSevice();
         $guard->InitSession();
         unset($guard);
-       // sleep(180);
+        //sleep(180);
     }
 
 });

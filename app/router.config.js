@@ -43,11 +43,22 @@ define(['app'], function (app) {
                 },
                 resolve: load('oc.home')
             })
+            .state('root.buildBed', {
+                url: '/build-a-bed',
+                views: {
+                    '@': {
+                        templateUrl: "views/ui/build-a-bed/buildABed.html",
+                        controller: 'BuildABedCtrl',
+                    }
+                },
+                resolve: load('oc.buildbed')
+            })
+            
             .state('root.contact', {
                 url: '/contact',
                 views: {
                     '@': {
-                        templateUrl: "views/ui/contact/contact.html",
+                        templateUrl: "views/ui/contact/contact.html?v=1.0",
                         controller: 'ContactCtrl',
                     }
                 },

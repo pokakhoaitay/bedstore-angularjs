@@ -29,59 +29,70 @@ require.config({
 
         'sessionService': 'assets/js/services/session.service',
         'httpInterceptor': 'assets/js/implement/ApiHttpInterceptor',
-        'utils': 'assets/js/my-utils/utils',
+        'utils': 'assets/js/my-utils/utils'
     }, shim: {
-        'angular': {'exports': 'angular',deps:['jQuery']},
-        'jQuery': {'exports': 'jQuery'},
-        'utils': {'deps': ['jQuery', 'oc-lazy-load']},
-        'angularCookie': {deps: ['angular']},
-        'uiRouter': {deps: ['angular']},
+        'angular': { 'exports': 'angular', deps: ['jQuery'] },
+        'jQuery': { 'exports': 'jQuery' },
+        'utils': { 'deps': ['jQuery', 'oc-lazy-load'] },
+        'angularCookie': { deps: ['angular'] },
+        'uiRouter': { deps: ['angular'] },
         //'angularMaterial': {deps: ['angular']},
-        'angularAnimate': {deps: ['angular']},
-        'angularAria': {deps: ['angular']},
-        'angularMessage': {deps: ['angular']},
-        'angularMaterial': {deps: ['angular']},
-        'sliderRevolutionPlugin': {deps: ['jQuery']},
-        'sliderRevolution': {deps: ['jQuery']},
+        'angularAnimate': { deps: ['angular'] },
+        'angularAria': { deps: ['angular'] },
+        'angularMessage': { deps: ['angular'] },
+        'angularMaterial': { deps: ['angular'] },
+        'sliderRevolutionPlugin': { deps: ['jQuery'] },
+        'sliderRevolution': { deps: ['jQuery'] },
         //'route-resolver': {deps: ['uiRouter']},
-        'oc-lazy-load': {deps: ['uiRouter', 'angular']},
-        'md5': {deps: ['jQuery']},
+        'oc-lazy-load': { deps: ['uiRouter', 'angular'] },
+        'md5': { deps: ['jQuery'] },
         'appConfig': ['oc-lazy-load', 'lazyLoadConfig', 'routerConfig'],
         'appCtrl': ['angular', 'app'],
-        'app': {deps: ['oc-lazy-load']},
-        'lazyLoadConfig': {deps: ['oc-lazy-load']},
-        'routerConfig': {deps: ['oc-lazy-load']},
-        'sessionService': {deps: ['oc-lazy-load']},
-        'httpInterceptor': {deps: ['oc-lazy-load']},
-        'loading-bar': {deps: ['angular']},
-    }
+        'app': { deps: ['oc-lazy-load'] },
+        'lazyLoadConfig': { deps: ['oc-lazy-load'] },
+        'routerConfig': { deps: ['oc-lazy-load'] },
+        'sessionService': { deps: ['oc-lazy-load'] },
+        'httpInterceptor': { deps: ['oc-lazy-load'] },
+        'loading-bar': { deps: ['angular'] },
+    },
+    waitSeconds: 0
 });
 
-
-//Load deps application level
-require([
-    'angularMaterial', 'appConfig', 'httpInterceptor', 'utils', 'sessionService', 'loading-bar', 'angularAnimate',
-    'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl', 'jQuery'
-    , 'angularMessage', 'angularAria'
-], function () {
+require(['angular', 'appjs'], function() {
+    loadCSS("libs/angular-material/angular-material.css", document.getElementById("loadcss"));
+    loadCSS("assets/js/vendor/google-material-icons/style.css", document.getElementById("loadcss"));
+    loadCSS("libs/angular-loading-bar/build/loading-bar.css", document.getElementById("loadcss"));
+    loadCSS("assets/js/vendor/outline-icons/themify-icons/themify-icons.css", document.getElementById("loadcss"));
+    loadCSS("assets/js/vendor/outline-icons/Tonicons-Outline/style.css", document.getElementById("loadcss"));
+    loadCSS("libs/slider-revolution/src/css/settings.css", document.getElementById("loadcss"));
+    loadCSS("assets/svgs/svg-icon-default.theme.css", document.getElementById("loadcss"));
     fetchData().then(bootstrapApplication);
 
     function fetchData() {
         var initInjector = angular.injector(["ng"]);
         var $http = initInjector.get("$http");
         var $log = initInjector.get("$log");
-        return $http.get(utils.GetApiUrl('init-session')).then(function (response) {
-            angular.element('#divLoading').hide();
+        return $http.get(utils.GetApiUrl('init-session')).then(function(response) {
+            //angular.element('#divLoading').hide();
             $log.debug('Session init completed success');
-        }, function (errorResponse) {
+        }, function(errorResponse) {
             $log.error('Session init completed fail');
         });
     }
 
     function bootstrapApplication() {
-        angular.element(document).ready(function () {
-            angular.bootstrap(document, ['myApp']);
-
+        //Load deps application level
+        require([
+            'angularMaterial', 'appConfig', 'httpInterceptor', 'utils', 'sessionService', 'loading-bar', 'angularAnimate',
+            'oc-lazy-load', 'app', 'angularCookie', 'appjs', 'appCtrl', 'jQuery'
+            , 'angularMessage', 'angularAria'
+        ], function() {
+            angular.element(document).ready(function() {
+                angular.bootstrap(document, ['myApp']);
+                angular.element('#divLoading').hide();
+            });
         });
+
     }
-});
+})
+

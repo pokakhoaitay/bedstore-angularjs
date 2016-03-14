@@ -1,7 +1,7 @@
 /**
  * Created by Poka on 2/20/2016.
  */
-define(['app'], function (app) {
+define(['app'], function(app) {
     app.config(Config)
         .constant('MODULE_CONFIG', [
             {
@@ -22,10 +22,16 @@ define(['app'], function (app) {
                     'libs/slider-revolution/src/js/jquery.themepunch.plugins.min.js',
                     'libs/slider-revolution/src/js/jquery.themepunch.revolution.min.js',
                 ]
-            }, {
+            },
+            {
+                name: 'oc.buildbed',
+                module: false,
+                files: ['views/ui/build-a-bed/buildABed.js']
+            }
+            , {
                 name: 'oc.contact',
                 module: false,
-                files: ['views/ui/contact/contact.js','assets/js/services/contact.service.js']
+                files: ['views/ui/contact/contact.js', 'assets/js/services/contact.service.js']
             }, {
                 name: '',
                 module: false,
@@ -64,7 +70,7 @@ define(['app'], function (app) {
                 files: []
             },
         ])
-    ;
+        ;
 
     function Config($ocLazyLoadProvider, MODULE_CONFIG) {
         $ocLazyLoadProvider.config({

@@ -40,7 +40,7 @@
                     <div class="bed-container animate-show-hide"
                          ng-class="{'offset-right':bedData.isRightCabinet,'offset-left':bedData.isLeftCabinet, 'offset-center':!isShowPanel}">
                         <div id="cabinetShadow">
-                            <img ng-if="bedData.orientation=='V'"
+                            <img ng-if="bedData.orientation=='V' && bedData.isLedCabinetLights"
                                  ng-src="assets/img/build-bed/{{bedData.orientation}}/cabinetShadow-{{bedData.isLedCabinetLights?'lights':'noLights'}}.png"
                                  alt="">
                         </div>

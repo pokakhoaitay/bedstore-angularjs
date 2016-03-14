@@ -1,17 +1,5 @@
 
 angular.module('myApp.buildABed', ['ui.router'])
-    .config(function ($stateProvider) {
-        $stateProvider.state('root.buildBed', {
-            url: '/build-a-bed',
-            views: {
-                '@': {
-                    templateUrl: "views/ui/build-a-bed/buildABed.html",
-                    controller: 'BuildABedCtrl',
-                }
-            }
-
-        })
-    })
     .controller('BuildABedCtrl', function ($scope, $timeout, $document) {
         $scope.isOpenDoors = true;
         $scope.isOpenUnit = false;
