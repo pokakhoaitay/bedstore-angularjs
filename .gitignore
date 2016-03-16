@@ -6,6 +6,9 @@ bower_components/
 /app/api_mvc_old
 /app/api_old
 
+/__build
+/__image
+/__vendor
 tmp
 .DS_Store
 /app/bower_components
