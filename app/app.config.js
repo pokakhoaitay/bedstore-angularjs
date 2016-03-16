@@ -55,6 +55,8 @@ define(['app'], function(app) {
             function(event, toState, toParams, fromState, fromParams) {
                 cfpLoadingBar.complete();
                 cfpLoadingBar.start();
+                if(fromState.name=='root.home')
+                    $('.rev_slider').revkill();
             });
 
         //Extend (like extension method in c#) methods should define here

@@ -7,8 +7,6 @@ bower_components/
 /app/api_old
 
 tmp
-/app/assets/css/app.css
-/app/assets/css/app.css.map
 .DS_Store
 /app/bower_components
 /app/assets/svgs/svg-icon-default.theme.css.map

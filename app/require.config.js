@@ -64,7 +64,7 @@ require(['angular', 'appjs'], function() {
     loadCSS("libs/angular-loading-bar/build/loading-bar.css", document.getElementById("loadcss"));
     loadCSS("assets/js/vendor/outline-icons/themify-icons/themify-icons.css", document.getElementById("loadcss"));
     loadCSS("assets/js/vendor/outline-icons/Tonicons-Outline/style.css", document.getElementById("loadcss"));
-    loadCSS("libs/slider-revolution/src/css/settings.css", document.getElementById("loadcss"));
+    loadCSS("assets/js/vendor/revslider/css/settings.css", document.getElementById("loadcss"));
     loadCSS("assets/svgs/svg-icon-default.theme.css", document.getElementById("loadcss"));
     fetchData().then(bootstrapApplication);
 
