@@ -1,16 +1,22 @@
 @import "_tools.css";
 
 /*--------------------------------------------------
+ * TAGS
+ *--------------------------------------------------*/
+html { height: 100%; overflow-y: auto; overflow-x: hidden !important; }
+body { font-family: 'Segoe UI', serif; _padding-top: 32px; -webkit-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); -moz-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); -ms-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); -o-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); color: #666; }
+body.hide-scroll-bar { overflow-y: hidden; _padding-right: 17px; position: fixed; top: 0; width: 100%; }
+body.override-padding-top { padding-top: 0px; }
+form { width: 100%; }
+
+
+/*--------------------------------------------------
  * OVERRIDE ANGULAR MATERIAL
  *--------------------------------------------------*/
 md-input-container.md-input-has-messages { padding-bottom: 26px; }
 md-input-container textarea.md-input { height: auto; }
 footer .f-hotline md-icon, footer .f-address md-icon, footer .f-menu > a md-icon { height: inherit; width: inherit; font-size: inherit; color: inherit; margin: 0 10px 0 0; }
-html { height: 100%; overflow-y: auto; overflow-x: hidden !important; }
-body { _padding-top: 32px; -webkit-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); -moz-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); -ms-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); -o-transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); transition: padding-top 0.5s cubic-bezier(0.215, 0.61, 0.355, 1); color: #666; }
-body.hide-scroll-bar { overflow-y: hidden; _padding-right: 17px; position: fixed; top: 0; width: 100%; }
-body.override-padding-top { padding-top: 0px; }
-form { width: 100%; }
+
 /*--------------------------------------------------
 * MENU
 *--------------------------------------------------*/
@@ -68,12 +74,12 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 .build-control .md-display-1, .build-control-sm .md-display-1 { font-weight: 300; color: #5A4B69; margin: 15px 0 0 0; }
 .build-control .md-subhead, .build-control-sm .md-subhead { margin: 0; color: #5A4B69; text-transform: uppercase; }
 .build-control .sub-option, .build-control-sm .sub-option { margin-bottom: 0; font-size: 14px; color: #969696; }
-.build-control .sub-option + .border, .build-control-sm .sub-option + .border { margin-top: 4px; padding: 7px 20px; }
+.build-control .sub-option + .border, .build-control-sm .sub-option + .border { margin-top: 4px; padding: 18px 20px; }
 .build-control .sub-rad-group, .build-control-sm .sub-rad-group { margin: 0 0 15px 40px; font-size: 13px; }
 .build-control .sub-rad-group md-radio-button, .build-control-sm .sub-rad-group md-radio-button { margin: 0; padding: 0; }
 .build-control md-radio-button, .build-control-sm md-radio-button { color: #666; }
 .build-control .note, .build-control-sm .note { font-size: 12px; font-style: italic; }
-.build-control .note + .border, .build-control-sm .note + .border { margin-top: 4px; padding: 7px 20px; }
+.build-control .note + .border, .build-control-sm .note + .border { margin-top: 4px; padding: 18px 20px; }
 .build-control .md-button.add-to-cart, .build-control-sm .md-button.add-to-cart { width: 170px; font-size: 16px !important; padding: 5px 0; }
 .build-control .md-button.add-to-cart i, .build-control-sm .md-button.add-to-cart i { vertical-align: middle; }
 .build-control-sm { margin-bottom: 20px; width: 100%; background: #C7C7C7; padding: 20px 16px; }
@@ -129,6 +135,7 @@ md-input-container .svg-icon { width: 24px !important; height: 24px !important; 
 .rad-white .md-on { background-color: #FFF !important; }
 .rad-white .md-off:not(.md-checked .md-off) { background-color: #FFF !important; }
 .border { border: 1px solid rgba(68, 138, 218, 0.28); border-radius: 5px; background: #D6E1EC; }
+.border md-radio-button{ margin-bottom: 7px!important; }
 .fixed { position: fixed; }
 .container { padding: 0 16px; }
 /*--------------------------------------------------

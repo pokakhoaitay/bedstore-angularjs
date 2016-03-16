@@ -1,6 +1,6 @@
 <div class="top-menu-wrapper" ng-class="{'hide-topbar':appVm.isHideTopbar}">
     <div class="top-bar" layout="row" layout-align="center center">
-        <div flex="80" flex-sm="100" layout="row" class="container">
+        <div flex-gt-md="70" flex-md="100" flex-sm="100" flex-xs="100" layout="row" class="container">
             <div flex>
                 <ol class="link-bar">
                     <li><a href="#">Help</a></li>
@@ -24,14 +24,14 @@
     <md-toolbar class="main-toolbar">
         <nav layout="column">
             <div layout="row" layout-align="center center">
-                <div flex flex-sm="100" flex-gt-lg="80" class="container">
+                <div flex-gt-md="70" flex-md="100" flex-sm="100" flex-xs="100" flex-gt-lg="70" class="container">
                     <div class="md-toolbar-tools">
 
                         <a ui-sref="app.index" class="comp-name">
                             <md-icon md-svg-src="assets/img/logo.svg" class="logo-icon"></md-icon>
                             <span>BED STORE</span></a>
                         <span flex></span>
-                        <div hide-sm class="menu-items">
+                        <div hide-sm  hide-xs class="menu-items">
                             <a ui-sref="root.home" class="top-menu-item">Home</a>
                             <a ui-sref="root.shop" class="top-menu-item">Shop</a>
                             <a ui-sref="root.buildBed" class="top-menu-item">Build a Bed</a>

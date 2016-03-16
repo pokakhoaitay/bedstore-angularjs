@@ -137,9 +137,9 @@ gulp.task('bower_public', ['clean'], function () {
     var jsFilter = gulpFilter('**/*.js', {restore: true});
     return gulp.src(mainBowerFiles({
             overrides: {
-                'slider-revolution': {
-                    main: ['./src/**/*.*']
-                },
+                //'slider-revolution': {
+                //    main: ['./src/**/*.*']
+                //},
                 'angular-loading-bar': {main: ['./build/**/*.*']}
             }
         }), {base: config.bowerSrc})
@@ -186,7 +186,7 @@ gulp.watch('./app/assets/css/**/*.scss', ['sass'])
 gulp.task('bs', function () {
     browserSync.init({
         proxy: "dev.bedstore.com:9999",
-        xip: true,
+        //xip: true,
         notify: false
     });
     gulp.watch(["./app/**/*.html","./app/**/*.css","./app/**/*.js"]).on("change", browserSync.reload);

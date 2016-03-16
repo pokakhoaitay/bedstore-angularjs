@@ -1,11 +1,11 @@
-	/*-----------------------------------------------------------------------------
+/*-----------------------------------------------------------------------------
 
 -	Revolution Slider 5.0 Default Style Settings -
 
 Screen Stylesheet
 
 version:   	5.0.0
-date:      	18/03/15
+date:      	29/10/15
 author:		themepunch
 email:     	info@themepunch.com
 website:   	http://www.themepunch.com
@@ -52,49 +52,49 @@ website:   	http://www.themepunch.com
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.revicon-search-1:before { content: '\e802'; } /* '' */
-.revicon-pencil-1:before { content: '\e831'; } /* '' */
-.revicon-picture-1:before { content: '\e803'; } /* '' */
-.revicon-cancel:before { content: '\e80a'; } /* '' */
-.revicon-info-circled:before { content: '\e80f'; } /* '' */
-.revicon-trash:before { content: '\e801'; } /* '' */
-.revicon-left-dir:before { content: '\e817'; } /* '' */
-.revicon-right-dir:before { content: '\e818'; } /* '' */
-.revicon-down-open:before { content: '\e83b'; } /* '' */
-.revicon-left-open:before { content: '\e819'; } /* '' */
-.revicon-right-open:before { content: '\e81a'; } /* '' */
-.revicon-angle-left:before { content: '\e820'; } /* '' */
-.revicon-angle-right:before { content: '\e81d'; } /* '' */
-.revicon-left-big:before { content: '\e81f'; } /* '' */
-.revicon-right-big:before { content: '\e81e'; } /* '' */
-.revicon-magic:before { content: '\e807'; } /* '' */
-.revicon-picture:before { content: '\e800'; } /* '' */
-.revicon-export:before { content: '\e80b'; } /* '' */
-.revicon-cog:before { content: '\e832'; } /* '' */
-.revicon-login:before { content: '\e833'; } /* '' */
-.revicon-logout:before { content: '\e834'; } /* '' */
-.revicon-video:before { content: '\e805'; } /* '' */
-.revicon-arrow-combo:before { content: '\e827'; } /* '' */
-.revicon-left-open-1:before { content: '\e82a'; } /* '' */
-.revicon-right-open-1:before { content: '\e82b'; } /* '' */
-.revicon-left-open-mini:before { content: '\e822'; } /* '' */
-.revicon-right-open-mini:before { content: '\e823'; } /* '' */
-.revicon-left-open-big:before { content: '\e824'; } /* '' */
-.revicon-right-open-big:before { content: '\e825'; } /* '' */
-.revicon-left:before { content: '\e836'; } /* '' */
-.revicon-right:before { content: '\e826'; } /* '' */
-.revicon-ccw:before { content: '\e808'; } /* '' */
-.revicon-arrows-ccw:before { content: '\e806'; } /* '' */
-.revicon-palette:before { content: '\e829'; } /* '' */
-.revicon-list-add:before { content: '\e80c'; } /* '' */
-.revicon-doc:before { content: '\e809'; } /* '' */
-.revicon-left-open-outline:before { content: '\e82e'; } /* '' */
-.revicon-left-open-2:before { content: '\e82c'; } /* '' */
-.revicon-right-open-outline:before { content: '\e82f'; } /* '' */
-.revicon-right-open-2:before { content: '\e82d'; } /* '' */
-.revicon-equalizer:before { content: '\e83a'; } /* '' */
-.revicon-layers-alt:before { content: '\e804'; } /* '' */
-.revicon-popup:before { content: '\e828'; } /* '' */
+.revicon-search-1:before { content: '\e802'; } /* 'î ‚' */
+.revicon-pencil-1:before { content: '\e831'; } /* 'î ±' */
+.revicon-picture-1:before { content: '\e803'; } /* 'î ƒ' */
+.revicon-cancel:before { content: '\e80a'; } /* 'î Š' */
+.revicon-info-circled:before { content: '\e80f'; } /* 'î ' */
+.revicon-trash:before { content: '\e801'; } /* 'î ' */
+.revicon-left-dir:before { content: '\e817'; } /* 'î —' */
+.revicon-right-dir:before { content: '\e818'; } /* 'î ˜' */
+.revicon-down-open:before { content: '\e83b'; } /* 'î »' */
+.revicon-left-open:before { content: '\e819'; } /* 'î ™' */
+.revicon-right-open:before { content: '\e81a'; } /* 'î š' */
+.revicon-angle-left:before { content: '\e820'; } /* 'î  ' */
+.revicon-angle-right:before { content: '\e81d'; } /* 'î ' */
+.revicon-left-big:before { content: '\e81f'; } /* 'î Ÿ' */
+.revicon-right-big:before { content: '\e81e'; } /* 'î ž' */
+.revicon-magic:before { content: '\e807'; } /* 'î ‡' */
+.revicon-picture:before { content: '\e800'; } /* 'î €' */
+.revicon-export:before { content: '\e80b'; } /* 'î ‹' */
+.revicon-cog:before { content: '\e832'; } /* 'î ²' */
+.revicon-login:before { content: '\e833'; } /* 'î ³' */
+.revicon-logout:before { content: '\e834'; } /* 'î ´' */
+.revicon-video:before { content: '\e805'; } /* 'î …' */
+.revicon-arrow-combo:before { content: '\e827'; } /* 'î §' */
+.revicon-left-open-1:before { content: '\e82a'; } /* 'î ª' */
+.revicon-right-open-1:before { content: '\e82b'; } /* 'î «' */
+.revicon-left-open-mini:before { content: '\e822'; } /* 'î ¢' */
+.revicon-right-open-mini:before { content: '\e823'; } /* 'î £' */
+.revicon-left-open-big:before { content: '\e824'; } /* 'î ¤' */
+.revicon-right-open-big:before { content: '\e825'; } /* 'î ¥' */
+.revicon-left:before { content: '\e836'; } /* 'î ¶' */
+.revicon-right:before { content: '\e826'; } /* 'î ¦' */
+.revicon-ccw:before { content: '\e808'; } /* 'î ˆ' */
+.revicon-arrows-ccw:before { content: '\e806'; } /* 'î †' */
+.revicon-palette:before { content: '\e829'; } /* 'î ©' */
+.revicon-list-add:before { content: '\e80c'; } /* 'î Œ' */
+.revicon-doc:before { content: '\e809'; } /* 'î ‰' */
+.revicon-left-open-outline:before { content: '\e82e'; } /* 'î ®' */
+.revicon-left-open-2:before { content: '\e82c'; } /* 'î ¬' */
+.revicon-right-open-outline:before { content: '\e82f'; } /* 'î ¯' */
+.revicon-right-open-2:before { content: '\e82d'; } /* 'î ­' */
+.revicon-equalizer:before { content: '\e83a'; } /* 'î º' */
+.revicon-layers-alt:before { content: '\e804'; } /* 'î „' */
+.revicon-popup:before { content: '\e828'; } /* 'î ¨' */
 
 							
 
@@ -118,10 +118,10 @@ website:   	http://www.themepunch.com
 .tp-simpleresponsive img,
 .rev_slider img{
 	max-width:none !important;
-	-moz-transition: none 0;
-	-webkit-transition: none 0;
-	-o-transition: none 0;
-	transition: none 0;
+	-moz-transition: none;
+	-webkit-transition: none;
+	-o-transition: none;
+	transition: none;
 	margin:0px;
 	padding:0px;
 	border-width:0px;
@@ -177,8 +177,16 @@ website:   	http://www.themepunch.com
 	list-style:none !important;
 }
 
+.rev_slider li.tp-revslider-slidesli {
+    position: absolute !important;
+}
 
 
+.tp-caption .rs-untoggled-content { display:block;}
+.tp-caption .rs-toggled-content { display:none;}
+
+.rs-toggle-content-active.tp-caption .rs-toggled-content { display:block;}
+.rs-toggle-content-active.tp-caption .rs-untoggled-content { display:none;}
 
 .rev_slider .tp-caption,
 .rev_slider .caption 	{ 
@@ -228,7 +236,12 @@ website:   	http://www.themepunch.com
 	-webkit-font-smoothing: antialiased !important;
 }
 
-
+.tp-caption.tp-layer-selectable {
+	-moz-user-select: all;
+	-khtml-user-select: all;
+	-webkit-user-select: all;
+	-o-user-select: all;	
+}
 
 .tp-forcenotvisible,
 .tp-hide-revslider,
@@ -243,6 +256,8 @@ website:   	http://www.themepunch.com
 .rev_slider video {
 	max-width: none !important
 }
+
+
 
 
 
@@ -276,7 +291,10 @@ website:   	http://www.themepunch.com
 **********************************/
 
 .tp-static-layers				{	
-	position:absolute; z-index:505; top:0px;left:0px}
+	position:absolute; z-index:101; top:0px;left:0px;
+	/*pointer-events:none;*/
+
+}
 
 
 .tp-caption .frontcorner		{
@@ -460,6 +478,7 @@ img.tp-slider-alternative-image	{
 .rs-fullvideo-cover					{	width:100%;height:100%;top:0px;left:0px;position: absolute; background:transparent;z-index:5;}
 
 
+.rs-background-video-layer video::-webkit-media-controls { display:none !important;}
 
 
 /********************************
@@ -759,7 +778,6 @@ img.tp-slider-alternative-image	{
 .rev-scroll-btn > *:focus,
 .rev-scroll-btn > *:active,
 .rev-scroll-btn > *.active {
-	opacity: 0.8;
 	filter: alpha(opacity=80);
 }
 
@@ -835,7 +853,7 @@ img.tp-slider-alternative-image	{
 
 .rev-cbutton-light-sr	{		
 	color: #333;  	
-	border-radius: 3;		
+	border-radius: 3px;		
 	background-color: rgba(255,255,255, 0.75);
 }
 
@@ -893,6 +911,68 @@ img.tp-slider-alternative-image	{
 .tp-shape {	width:100%;height:100%;}
 
 
+
+/*********************************************
+-	WOOCOMMERCE STYLES	-
+***********************************************/
+
+.tp-caption .rs-starring				{	display: inline-block}
+.tp-caption .rs-starring .star-rating	{	float: none;}
+
+.tp-caption .rs-starring .star-rating {
+	color: #FFC321 !important;
+	display: inline-block;
+    vertical-align: top;
+}
+
+.tp-caption .rs-starring .star-rating, 
+.tp-caption .rs-starring-page .star-rating {	
+	position: relative;
+	height: 1em;
+	
+	width: 5.4em;
+	font-family: star;
+}
+
+.tp-caption  .rs-starring .star-rating:before, 
+.tp-caption  .rs-starring-page .star-rating:before {
+	content: "\73\73\73\73\73";
+	color: #E0DADF;
+	float: left;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+
+.tp-caption .rs-starring .star-rating span {
+	overflow: hidden;
+	float: left;
+	top: 0;
+	left: 0;
+	position: absolute;
+	padding-top: 1.5em;
+	font-size: 1em !important;
+}
+
+.tp-caption .rs-starring .star-rating span:before,
+.tp-caption .rs-starring .star-rating span:before {
+	content: "\53\53\53\53\53";
+	top: 0;
+	position: absolute;
+	left: 0;
+}
+
+.tp-caption .rs-starring .star-rating {
+	color: #FFC321 !important;
+}
+
+
+.tp-caption .rs-starring .star-rating, 
+.tp-caption .rs-starring-page .star-rating {
+	
+	font-size: 1em !important;
+	font-family: star;
+}
 
 
 /******************************
@@ -1094,6 +1174,7 @@ img.tp-slider-alternative-image	{
 .tp-tab,
 .tp-thumb 						{	cursor: pointer; position:absolute;opacity:0.5;  box-sizing: border-box;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;}
 
+.tp-arr-imgholder,
 .tp-videoposter,
 .tp-thumb-image,
 .tp-tab-image					{	background-position: center center; background-size:cover;width:100%;height:100%; display:block; position:absolute;top:0px;left:0px;}
@@ -1123,6 +1204,11 @@ img.tp-slider-alternative-image	{
 .tparrows.tp-rightarrow:before	{	content: '\e825'; }
 
 
+/***************************
+	- 3D SHADOW MODE -
+***************************/
+
+.dddwrappershadow { box-shadow:0 45px 100px rgba(0, 0, 0, 0.4);}
 
 /*******************
 	- DEBUG MODE -
@@ -1142,4 +1228,4 @@ img.tp-slider-alternative-image	{
 .hginfo 					   { 	position:absolute;top:-2px;left:-2px;color:#e74c3c;font-size:12px;font-weight:600; background:#000;padding:2px 5px;}
 .indebugmode .tp-caption:hover { 	border:1px dashed #c0392b !important;}
 .helpgrid 					   { 	border:2px dashed #c0392b;position:absolute;top:0px;peft:0px;z-index:0 }
-
+#revsliderlogloglog				{	padding:15px;color:#fff;position:fixed; top:0px;left:0px;width:200px;height:150px;background:rgba(0,0,0,0.7); z-index:100000; font-size:10px; overflow:scroll;}

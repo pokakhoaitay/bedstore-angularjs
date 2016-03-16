@@ -16,8 +16,16 @@ function HomeCtrl(Helper) {
             //// fullScreen:'on'
             //onHoverStop: 'off'
             sliderType:"standard",
-            gridwidth:1230,
-            gridheight:720
+            sliderLayout:"fullwidth",
+            lazyType:"smart",
+            responsiveLevels:[1920,1024,778,480,320],
+            gridwidth:[1200,860,760,460],
+            gridheight:720,
+            navigation:{
+                arrows:{
+                    enable:true
+                }
+            }
         });
 
     });

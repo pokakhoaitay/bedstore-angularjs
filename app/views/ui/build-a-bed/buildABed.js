@@ -5,7 +5,7 @@ angular.module('myApp.buildABed', ['ui.router'])
         $scope.isOpenUnit = false;
         $scope.isOpenUnit2 = false;
         $scope.isBedOpening = false;
-        $scope.currentStep = 4;
+        $scope.currentStep = 1;
         $scope.isShowPanel = true;
 
 

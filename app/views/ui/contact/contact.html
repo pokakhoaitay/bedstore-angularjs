@@ -1,6 +1,6 @@
 <div layout="column">
     <div layout="row" layout-align="center">
-        <div flex-gt-lg="80" flex-lg="100" class="container" style="margin: 60px 0" id="eleContactContainer">
+        <div flex-gt-md="70" flex-md="100" flex-sm="100" flex-xs="100" class="container" style="margin: 60px 0" id="eleContactContainer">
             <h3 class="page-title">
                 <svg class="svg-icon s48 contact">
                     <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-face-smile"
@@ -13,7 +13,7 @@
             <p class="tool-text-center">We understand that sometimes you need help with things that might not come
                 naturally to you,
                 which is why we offer quick and helpful support. Let’s Get in Touch!</p>
-            <div layout="row" layout-md="column" layout-sm="column">
+            <div layout-gt-md="row" layout-md="column" layout-sm="column">
                 <div layout="column" flex-gt-lg="40" flex-sm="100" flex-md="100" layout-align="center">
                     <div flex class="col">
                         <h4 class="title">VISIT US SHOWROOM</h4>
@@ -122,10 +122,10 @@
                                 <md-button class="md-raised md-primary" ng-click="createContact(contact)"
                                            ng-disabled="!canPost()">Send
                                 </md-button>
-                                <md-button class="md-raised md-primary" ng-click="test()">Test
-                                </md-button>
-                                <md-button class="md-raised md-primary" ng-click="testPost()">Test Post
-                                </md-button>
+                                <!--<md-button class="md-raised md-primary" ng-click="test()">Test-->
+                                <!--</md-button>-->
+                                <!--<md-button class="md-raised md-primary" ng-click="testPost()">Test Post-->
+                                <!--</md-button>-->
                             </div>
                         </div>
                     </form>
