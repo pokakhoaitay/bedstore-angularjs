@@ -3,7 +3,7 @@
         <div flex-gt-lg="80" flex-lg="100" class="container" style="margin: 60px 0" id="eleContactContainer">
             <h3 class="page-title">
                 <svg class="svg-icon s48 contact">
-                    <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-face-smile"
+                    <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-face-smile"
                          preserveAspectRatio="xMidYMid meet"></use>
                 </svg>
                 <span>Contact</span>
@@ -19,19 +19,19 @@
                         <h4 class="title">VISIT US SHOWROOM</h4>
                         <div class="tool-vertical tool-margin-b-10">
                             <svg class="svg-icon s16 direction">
-                                <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-direction"></use>
+                                <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-direction"></use>
                             </svg>
                             <b>Address: </b><span>&nbsp;123 Quang Trung St., 11 Ward, Q.Go Vap Dist, HCM City</span>
                         </div>
                         <div class="tool-vertical tool-margin-b-10">
                             <svg class="svg-icon s16 mobile">
-                                <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-mobile"></use>
+                                <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-mobile"></use>
                             </svg>
                             <b>Hotline: </b><span style="font-size: 18px; color: orangered;">&nbsp;0167 459 3343</span>
                         </div>
                         <div class="tool-vertical tool-margin-b-10">
                             <svg class="svg-icon s16 email">
-                                <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-email"></use>
+                                <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-email"></use>
                             </svg>
                             <b>Email: </b>&nbsp;<a href="mailto:contact@bedstore.com"
                                                    class="tool-no-decoration tool-flat">contact@bedstore.com</a>
@@ -41,19 +41,19 @@
                         <h4 class="title">BUSINESS HOURS</h4>
                         <div class="tool-vertical tool-margin-b-10">
                             <svg class="svg-icon s16">
-                                <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-time"></use>
+                                <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-time"></use>
                             </svg>
                             <b>Monday to Friday: </b><span>&nbsp;8:00 AM - 5:00 PM</span>
                         </div>
                         <div class="tool-vertical tool-margin-b-10">
                             <svg class="svg-icon s16">
-                                <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-time"></use>
+                                <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-time"></use>
                             </svg>
                             <b>Saturday: </b><span>&nbsp;8:00 AM - 1:00 PM</span>
                         </div>
                         <div class="tool-vertical tool-margin-b-10">
                             <svg class="svg-icon s16">
-                                <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-time"></use>
+                                <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-time"></use>
                             </svg>
                             <b>Sunday: </b><span>&nbsp;Closed</span>
                         </div>
@@ -74,7 +74,7 @@
                                     <label>Name</label>
                                     <md-icon class="name">
                                         <svg class="svg-icon s16 text-color">
-                                            <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-user"></use>
+                                            <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-user"></use>
                                         </svg>
                                     </md-icon>
                                     <input ng-model="contact.name" type="text" required name="name"
@@ -88,7 +88,7 @@
                                     <label>Email</label>
                                     <md-icon class="name">
                                         <svg class="svg-icon s16 text-color">
-                                            <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-email"></use>
+                                            <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-email"></use>
                                         </svg>
                                     </md-icon>
                                     <input ng-model="contact.email" type="email" required name="email"
@@ -103,7 +103,7 @@
                                     <label>Messages</label>
                                     <md-icon class="name">
                                         <svg class="svg-icon s16 text-color flat">
-                                            <use xlink:href="" ng-href="{{appVm.svgFile}}#icon-comment-alt"></use>
+                                            <use xlink:href="" ng-href="{{::appVm.svgFile}}#icon-comment-alt"></use>
                                         </svg>
                                     </md-icon>
                                 <textarea columns="1" md-maxlength="500" md-no-autogrow name="message"
