@@ -7,7 +7,7 @@
                ng-class="{selected:step.isSelected()}"
                ng-hide="step.isHide()"
             >
-                <img ng-src="{{step.img()}}" alt="Step {{step.stepNum}}">
+                <img ng-src="{{step.img()}}" alt="Step {{step.stepNum}}" hide-xs>
                 <span>{{bedData.orientation=='V'? step.stepNum:(step.stepNum==4?3:step.stepNum)}}</span>
                 <!--<i class="buty">&nbsp;</i>-->
             </a>

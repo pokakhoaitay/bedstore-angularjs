@@ -21,6 +21,7 @@ function HomeCtrl(Helper) {
             responsiveLevels:[1920,1024,778,480,320],
             gridwidth:[1200,860,760,460],
             gridheight:720,
+            debug:false,
             navigation:{
                 arrows:{
                     enable:true

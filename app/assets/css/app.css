@@ -59,9 +59,9 @@ md-toolbar .btn-toggle-nav md-icon { color: #FFF !important; }
 .steper .step-item:last-child { border: 0; }
 .steper .step-item span { font-size: 50px; font-weight: 300; color: inherit; display: block; text-align: center; line-height: 1; margin-top: 7px; }
 .steper-sm { height: 64px; width: 100%; }
-.steper-sm > .step-item { text-transform: uppercase; padding: 7px 10px 7px 40px; text-decoration: none; background: #FFF; position: relative; color: #77A4FF; overflow: hidden; }
-.steper-sm > .step-item img { height: 32px; }
-.steper-sm > .step-item span { font-size: 32px; font-weight: 300; color: inherit; text-align: center; vertical-align: middle; display: inline-block; }
+.steper-sm > .step-item { text-transform: uppercase; text-align: center; text-decoration: none; background: #FFF; position: relative; color: #77A4FF; overflow: hidden; }
+.steper-sm > .step-item img { height: 32px;vertical-align: middle }
+.steper-sm > .step-item span { font-size: 32px; font-weight: 300; color: inherit; text-align: center; vertical-align: middle; display: inline-block;line-height: 60px }
 .steper-sm > .step-item:before { content: ''; display: block; position: absolute; right: 0px; top: 0px; height: 0px; width: 0px; border-top: 30px solid transparent; border-left: 15px solid #FFF; border-bottom: 30px solid transparent; }
 .steper-sm > .step-item:after { content: ''; display: block; position: absolute; left: 0px; top: 0px; height: 0px; width: 0px; border-top: 30px solid #FFF; border-left: 0px solid transparent; border-bottom: 30px solid #FFF; }
 .steper-sm > .step-item.selected { background: #77A4FF; color: #0045D2; }
