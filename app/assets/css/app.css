@@ -116,6 +116,18 @@ footer .f-col-title { text-transform: uppercase; color: #FFF; margin: 14px 0; pa
 footer .footer-col { padding: 0 16px; }
 footer .footer-col.first { padding-left: 0; }
 footer .footer-col.last { padding-right: 0; }
+
+/*--------------------------------------------------
+ * SIDEBAR
+ *--------------------------------------------------*/
+#leftSideNav{ position: fixed}
+#leftSideNav ul{padding: 0 }
+#leftSideNav ul li{ display: block; }
+#leftSideNav ul li a{display: block; padding: 0 16px; line-height: 36px; margin: 0; }
+#leftSideNav ul li a:hover{background: #EAEAEA }
+
+
+
 /*--------------------------------------------------
  * CONTACT PAGE
  *--------------------------------------------------*/

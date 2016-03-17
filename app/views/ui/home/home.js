@@ -22,6 +22,7 @@ function HomeCtrl(Helper) {
             gridwidth:[1200,860,760,460],
             gridheight:720,
             debug:false,
+            disableProgressBar: 'on',
             navigation:{
                 arrows:{
                     enable:true

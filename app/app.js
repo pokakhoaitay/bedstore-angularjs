@@ -21,7 +21,8 @@ define(function () {
         'ui.router',
         'ngCookies',
         'templates',
-        'angular-loading-bar'
+        'cfp.loadingBar'
+        //'angular-loading-bar'
 
     ]);
     angular.module('templates', []);

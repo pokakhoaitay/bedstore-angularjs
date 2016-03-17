@@ -31,6 +31,7 @@ define(['app'], function(app) {
     function Config($mdThemingProvider, BootstrapProvider, cfpLoadingBarProvider) {
 
         cfpLoadingBarProvider.latencyThreshold = 500;
+        cfpLoadingBarProvider.includeSpinner = false;
         $mdThemingProvider.theme('default')
             .primaryPalette('blue')
             .accentPalette('deep-orange');
@@ -53,7 +54,7 @@ define(['app'], function(app) {
 
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams) {
-                cfpLoadingBar.complete();
+                //cfpLoadingBar.complete();
                 cfpLoadingBar.start();
                 if(fromState.name=='root.home')
                     $('.rev_slider').revkill();
