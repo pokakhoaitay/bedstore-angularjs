@@ -207,7 +207,7 @@
     <div ng-cloak layout="column" ng-controller="AppCtrl as appVm" ng-class="{'hide-scroll-bar':appVm.isHideBodyScrollbar,'override-padding-top':appVm.isHideTopbar}">
         <aside ui-view="sidebar"></aside>
         <div ui-view="topmenu"></div>
-        <div ui-view>
+        <div ui-view autoscroll="true">
 
         </div>
         <div ui-view="footer"></div>

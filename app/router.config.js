@@ -10,7 +10,7 @@ define(['app'], function (app) {
         $urlRouterProvider.otherwise(function ($injector, $location) {
             $injector.get('$state').go('404');
         });
-        //$uiViewScrollProvider.useAnchorScroll();
+        $uiViewScrollProvider.useAnchorScroll();
         $stateProvider
             .state('404', {
                 templateUrl: 'views/pages/404.html'
