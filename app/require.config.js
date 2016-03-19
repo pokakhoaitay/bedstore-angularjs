@@ -59,13 +59,6 @@ require.config({
 });
 
 require(['angular', 'appjs'], function() {
-    loadCSS("libs/angular-material/angular-material.css", document.getElementById("loadcss"));
-    loadCSS("assets/js/vendor/google-material-icons/style.css", document.getElementById("loadcss"));
-    loadCSS("libs/angular-loading-bar/build/loading-bar.css", document.getElementById("loadcss"));
-    loadCSS("assets/js/vendor/outline-icons/themify-icons/themify-icons.css", document.getElementById("loadcss"));
-    loadCSS("assets/js/vendor/outline-icons/Tonicons-Outline/style.css", document.getElementById("loadcss"));
-    loadCSS("assets/js/vendor/revslider/css/settings.css", document.getElementById("loadcss"));
-    loadCSS("assets/svgs/svg-icon-default.theme.css", document.getElementById("loadcss"));
     fetchData().then(bootstrapApplication);
 
     function fetchData() {
@@ -73,7 +66,7 @@ require(['angular', 'appjs'], function() {
         var $http = initInjector.get("$http");
         var $log = initInjector.get("$log");
         return $http.get(utils.GetApiUrl('init-session')).then(function(response) {
-            //angular.element('#divLoading').hide();
+            angular.element('#divLoading').hide();
             $log.debug('Session init completed success');
         }, function(errorResponse) {
             $log.error('Session init completed fail');
@@ -89,7 +82,7 @@ require(['angular', 'appjs'], function() {
         ], function() {
             angular.element(document).ready(function() {
                 angular.bootstrap(document, ['myApp']);
-                angular.element('#divLoading').hide();
+               // angular.element('#divLoading').hide();
             });
         });
 
